@@ -10,6 +10,7 @@ import javax.persistence.Id;
 
 @Entity
 public class User {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -22,6 +23,16 @@ public class User {
 	
 	private boolean enabled;
 	
+	private String role;
+	
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
 	@Column(name="first_name")
 	private String firstName;
 	
