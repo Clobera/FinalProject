@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -21,13 +23,14 @@ public class LanguageResource {
 	private String resourceUrl;
 
 	private String description;
+
 	// languageId
 	// @JoinColumn(name = "language_id")
 	// private Language language;
 
-	// addedBy;
-	// @JoinColumn(name = "added_by")
-	// private User user;
+	@JoinColumn(name = "added_by")
+	@ManyToOne
+	private User user;
 
 	@CreationTimestamp
 	private LocalDateTime createDate;
