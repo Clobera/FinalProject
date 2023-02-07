@@ -12,23 +12,21 @@ import javax.persistence.Id;
 import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
-public class Post {
+public class Comment {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=  GenerationType.IDENTITY)
 	private int id;
 	
 	private String content;
 	
-	private String imageUrl;
-	
-	@Column(name="post_date")
+	@Column(name="comment_date")
 	@CreationTimestamp
-	private LocalDateTime postDate;
+	private LocalDateTime commentDate;
 	
 	private boolean enabled;
 
-	public Post() {
+	public Comment() {
 		super();
 	}
 
@@ -48,20 +46,12 @@ public class Post {
 		this.content = content;
 	}
 
-	public String getImageUrl() {
-		return imageUrl;
+	public LocalDateTime getCommentDate() {
+		return commentDate;
 	}
 
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
-	}
-
-	public LocalDateTime getPostDate() {
-		return postDate;
-	}
-
-	public void setPostDate(LocalDateTime postDate) {
-		this.postDate = postDate;
+	public void setCommentDate(LocalDateTime commentDate) {
+		this.commentDate = commentDate;
 	}
 
 	public boolean isEnabled() {
@@ -74,7 +64,7 @@ public class Post {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(commentDate, content, enabled, id);
 	}
 
 	@Override
@@ -85,14 +75,15 @@ public class Post {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Post other = (Post) obj;
-		return id == other.id;
+		Comment other = (Comment) obj;
+		return Objects.equals(commentDate, other.commentDate) && Objects.equals(content, other.content)
+				&& enabled == other.enabled && id == other.id;
 	}
 
 	@Override
 	public String toString() {
-		return "Post [id=" + id + ", content=" + content + ", imageUrl=" + imageUrl + ", postDate=" + postDate
-				+ ", enabled=" + enabled + "]";
+		return "Comment [id=" + id + ", content=" + content + ", commentDate=" + commentDate + ", enabled=" + enabled
+				+ "]";
 	}
 	
 	
