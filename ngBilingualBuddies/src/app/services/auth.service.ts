@@ -10,7 +10,6 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthService {
    // Set port number to server's port
-   private baseUrl = 'http://localhost:8089/';
    private url = environment.baseUrl;
 
    constructor(private http: HttpClient) {}
