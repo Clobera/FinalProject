@@ -23,8 +23,6 @@ DROP TABLE IF EXISTS `address` ;
 CREATE TABLE IF NOT EXISTS `address` (
   `id` INT NOT NULL,
   `address` VARCHAR(50) NULL,
-  `addresscol` VARCHAR(45) NULL,
-  `city_id` INT NOT NULL,
   `state` VARCHAR(50) NULL,
   `postal_code` VARCHAR(10) NULL,
   `city` VARCHAR(100) NULL,
@@ -378,6 +376,16 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- -----------------------------------------------------
+-- Data for table `address`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `bilingualbuddiesdb`;
+INSERT INTO `address` (`id`, `address`, `state`, `postal_code`, `city`, `enabled`) VALUES (1, '810 Garrison St.', 'Colorado', '80215', 'Lakewood', 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
 -- Data for table `country`
 -- -----------------------------------------------------
 START TRANSACTION;
@@ -392,7 +400,118 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `bilingualbuddiesdb`;
-INSERT INTO `user` (`id`, `email`, `username`, `password`, `date_created`, `last_login`, `enabled`, `role`, `sponsor`, `first_name`, `last_name`, `image_url`, `bio`, `address_id`, `origin_country`) VALUES (1, 'admin@admin.com', 'admin', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', NULL, NULL, 1, 'admin', 0, 'admin', 'admin', NULL, NULL, NULL, 'US');
+INSERT INTO `user` (`id`, `email`, `username`, `password`, `date_created`, `last_login`, `enabled`, `role`, `sponsor`, `first_name`, `last_name`, `image_url`, `bio`, `address_id`, `origin_country`) VALUES (1, 'admin@admin.com', 'admin', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', '2023-01-01', '2023-01-01', 1, 'admin', 0, 'admin', 'admin', NULL, NULL, NULL, 'US');
+INSERT INTO `user` (`id`, `email`, `username`, `password`, `date_created`, `last_login`, `enabled`, `role`, `sponsor`, `first_name`, `last_name`, `image_url`, `bio`, `address_id`, `origin_country`) VALUES (2, 'joe@shmoe.com', 'joeshmoe', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', '2023-01-01', '2023-01-01', 1, 'admin', 0, 'Joe', 'Shmoe', NULL, NULL, NULL, 'US');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `post`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `bilingualbuddiesdb`;
+INSERT INTO `post` (`id`, `user_id`, `content`, `image_url`, `post_date`, `enabled`) VALUES (1, 1, 'This is so cool!', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT92-R1QhOfOpRc9FmRhePfW3eBBwLWSO4GVC72iqGDoA&s', '2023-01-01', 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `team`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `bilingualbuddiesdb`;
+INSERT INTO `team` (`id`, `owner_id`, `content`, `image_url`, `name`, `create_date`, `enabled`) VALUES (1, 1, 'We are a group who just wants to make the world a better place', 'https://d3mvlb3hz2g78.cloudfront.net/wp-content/uploads/2020/11/thumb_720_450_dreamstime_m_44810592_(1).jpg', 'Better People Better World', '2023-01-01', 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `meetup`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `bilingualbuddiesdb`;
+INSERT INTO `meetup` (`id`, `meetup_date`, `content`, `address_id`, `enabled`, `owner_id`, `team_id`, `start_time`, `end_time`, `created_date`, `image_url`, `title`) VALUES (1, '2023-01-01', 'Meet Here to Learn English', 1, 1, 1, 1, NULL, NULL, '2023-01-01', 'https://www.lakewood.org/files/assets/public/community-resources/parks/holbrook-park.jpg?w=1200', 'English Time');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `alert`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `bilingualbuddiesdb`;
+INSERT INTO `alert` (`id`, `sender_id`, `content`, `receiver_id`, `meetup_id`, `notification_date`, `seen`) VALUES (1, 1, 'Learn English', 2, 1, '2023-01-01', 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `comment`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `bilingualbuddiesdb`;
+INSERT INTO `comment` (`id`, `post_id`, `user_id`, `content`, `comment_date`, `enabled`) VALUES (1, 1, 1, 'I agree!', '2023-01-01', 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `team_has_member`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `bilingualbuddiesdb`;
+INSERT INTO `team_has_member` (`group_id`, `user_id`) VALUES (1, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `language`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `bilingualbuddiesdb`;
+INSERT INTO `language` (`id`, `name`, `description`) VALUES (1, 'English', 'Most spoken language in the world');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `user_has_meetup`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `bilingualbuddiesdb`;
+INSERT INTO `user_has_meetup` (`user_id`, `event_id`) VALUES (1, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `language_has_user`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `bilingualbuddiesdb`;
+INSERT INTO `language_has_user` (`language_id`, `user_id`) VALUES (1, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `country_has_language`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `bilingualbuddiesdb`;
+INSERT INTO `country_has_language` (`country_country_code`, `language_id`) VALUES ('US', 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `language_resource`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `bilingualbuddiesdb`;
+INSERT INTO `language_resource` (`id`, `name`, `resource_url`, `description`, `language_id`, `added_by`, `create_date`) VALUES (1, 'Learn English', 'https://learnenglishkids.britishcouncil.org/', 'A website where a user can read, write, listen, watch, speak, and spell.', 1, 1, '2023-01-01');
 
 COMMIT;
 
