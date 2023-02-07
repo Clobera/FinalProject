@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -25,9 +27,9 @@ public class LanguageResource {
 	// @JoinColumn(name = "language_id")
 	// private Language language;
 
-	// addedBy;
-	// @JoinColumn(name = "added_by")
-	// private User user;
+	@JoinColumn(name = "added_by")
+	@ManyToOne
+	private User user;
 
 	@CreationTimestamp
 	private LocalDateTime createDate;
@@ -36,11 +38,12 @@ public class LanguageResource {
 		super();
 	}
 
-	public LanguageResource(int id, String resourceUrl, String description, LocalDateTime createDate) {
+	public LanguageResource(int id, String resourceUrl, String description, User user, LocalDateTime createDate) {
 		super();
 		this.id = id;
 		this.resourceUrl = resourceUrl;
 		this.description = description;
+		this.user = user;
 		this.createDate = createDate;
 	}
 
@@ -76,6 +79,14 @@ public class LanguageResource {
 		this.createDate = createDate;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -96,7 +107,7 @@ public class LanguageResource {
 	@Override
 	public String toString() {
 		return "LanguageResource [id=" + id + ", resourceUrl=" + resourceUrl + ", description=" + description
-				+ ", createDate=" + createDate + "]";
+				+ ", user=" + user + ", createDate=" + createDate + "]";
 	}
 
 }
