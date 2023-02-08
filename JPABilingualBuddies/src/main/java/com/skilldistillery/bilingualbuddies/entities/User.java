@@ -10,9 +10,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class User {
@@ -47,7 +50,15 @@ public class User {
 
 	@Column(name = "image_url")
 	private String imageUrl;
+
 	private String bio;
+
+	@JsonIgnore
+	@OneToOne(mappedBy = "owner")
+	private Team myTeam;
+
+	@ManyToMany(mappedBy = "members")
+	private List<Team> memberOfTeams;
 
 	@ManyToOne
 	@JoinColumn(name = "origin_country")
@@ -212,6 +223,22 @@ public class User {
 
 	public void setCountry(Country country) {
 		this.country = country;
+	}
+
+	public Team getMyTeam() {
+		return myTeam;
+	}
+
+	public void setMyTeam(Team myTeam) {
+		this.myTeam = myTeam;
+	}
+
+	public List<Team> getMemberOfTeams() {
+		return memberOfTeams;
+	}
+
+	public void setMemberOfTeams(List<Team> memberOfTeams) {
+		this.memberOfTeams = memberOfTeams;
 	}
 
 	@Override

@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -38,7 +39,8 @@ public class Meetup {
 	@ManyToOne
 	@JoinColumn(name = "owner_id")
 	private User owner;
-	
+		
+	@ManyToOne
 	@JoinColumn(name = "team_id")
 	private Team team;
 	

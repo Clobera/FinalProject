@@ -57,7 +57,19 @@ class UserTest {
 	@Test
 	void test_ManyToOne_country() {
 		assertNotNull(user);
-		assertEquals(null, user.getCountry());
+		assertEquals("United States", user.getCountry().getCountry());
 	}
+
+	@Test
+	void test_oneToOne_team() {
+		assertNotNull(user);
+		assertEquals("Better People Better World", user.getMyTeam().getName());
+	}
+	
+//	@Test
+//	void test_ManyToMany_team() {
+//		assertNotNull(user);
+//		assertEquals("Better People Better World", user.getMyTeam().getName());
+//	}
 
 }

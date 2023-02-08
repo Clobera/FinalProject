@@ -9,9 +9,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Team {
@@ -20,8 +26,9 @@ public class Team {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-//	@Column(name = "owner_id")
-//	private int ownerId;
+	@OneToOne
+	@JoinColumn(name = "owner_id")
+	private User owner;
 
 	private String content;
 
@@ -39,20 +46,27 @@ public class Team {
 	@OneToMany(mappedBy = "team")
 	private List<Meetup> meetups;
 
+	@JsonIgnore
+	@ManyToMany
+	@JoinTable(name = "team_has_member", joinColumns = @JoinColumn(name = "group_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+	private List<User> members;
+
 	public Team() {
 		super();
 	}
 
-	public Team(int id, String content, String imageUrl, String name, LocalDateTime createdAt, Boolean enabled,
-			List<Meetup> meetups) {
+	public Team(int id, User owner, String content, String imageUrl, String name, LocalDateTime createdAt,
+			Boolean enabled, List<Meetup> meetups, List<User> members) {
 		super();
 		this.id = id;
+		this.owner = owner;
 		this.content = content;
 		this.imageUrl = imageUrl;
 		this.name = name;
 		this.createdAt = createdAt;
 		this.enabled = enabled;
 		this.meetups = meetups;
+		this.members = members;
 	}
 
 	public int getId() {
@@ -63,13 +77,13 @@ public class Team {
 		this.id = id;
 	}
 
-//	public int getOwnerId() {
-//		return ownerId;
-//	}
+	public User getOwner() {
+		return owner;
+	}
 
-//	public void setOwnerId(int ownerId) {
-//		this.ownerId = ownerId;
-//	}
+	public void setOwner(User owner) {
+		this.owner = owner;
+	}
 
 	public String getContent() {
 		return content;
@@ -99,18 +113,6 @@ public class Team {
 		return createdAt;
 	}
 
-	public void setCreateDate(LocalDateTime createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public List<Meetup> getMeetups() {
-		return meetups;
-	}
-
-	public void setMeetups(List<Meetup> meetups) {
-		this.meetups = meetups;
-	}
-
 	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
@@ -121,6 +123,22 @@ public class Team {
 
 	public void setEnabled(Boolean enabled) {
 		this.enabled = enabled;
+	}
+
+	public List<Meetup> getMeetups() {
+		return meetups;
+	}
+
+	public void setMeetups(List<Meetup> meetups) {
+		this.meetups = meetups;
+	}
+
+	public List<User> getMembers() {
+		return members;
+	}
+
+	public void setMembers(List<User> members) {
+		this.members = members;
 	}
 
 	@Override
@@ -142,8 +160,9 @@ public class Team {
 
 	@Override
 	public String toString() {
-		return "Team [id=" + id + ", content=" + content + ", imageUrl=" + imageUrl + ", name=" + name + ", createdAt="
-				+ createdAt + ", enabled=" + enabled + ", meetups=" + meetups + "]";
+		return "Team [id=" + id + ", owner=" + owner + ", content=" + content + ", imageUrl=" + imageUrl + ", name="
+				+ name + ", createdAt=" + createdAt + ", enabled=" + enabled + ", meetups=" + meetups + ", members="
+				+ members + "]";
 	}
 
 }
