@@ -7,6 +7,10 @@ const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
 
+
+
+
+  //add other route above this line ^^
   {path: '**', component: NotfoundComponent},
 ];
 
