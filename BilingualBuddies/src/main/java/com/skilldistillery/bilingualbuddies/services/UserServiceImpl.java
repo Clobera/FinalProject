@@ -67,8 +67,9 @@ public class UserServiceImpl implements UserService {
 		User deleteMe = show(username);
 		boolean deleted = false;
 		if (deleteMe != null) {
-			userRepo.delete(deleteMe);
+			deleteMe.setEnabled(false);
 			deleted = true;
+			userRepo.saveAndFlush(deleteMe);
 		}
 		return deleted;
 	}

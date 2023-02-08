@@ -11,6 +11,10 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
+import { AccountComponent } from './components/account/account.component';
+import { MygroupsComponent } from './components/mygroups/mygroups.component';
+import { AlertsComponent } from './components/alerts/alerts.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,11 @@ import { LoginComponent } from './components/login/login.component';
     NotfoundComponent,
     NavbarComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    AccountComponent,
+    MygroupsComponent,
+    AlertsComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
