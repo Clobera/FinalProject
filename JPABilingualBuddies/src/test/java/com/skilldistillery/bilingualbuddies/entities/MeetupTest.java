@@ -44,6 +44,16 @@ class MeetupTest {
 
 	@Test
 	void test() {
+		assertNotNull(meetup);
+		assertEquals("Meet Here to Learn English", meetup.getContent());
+		assertEquals("English Time", meetup.getTitle());
+	}
+
+	@Test
+	void test_RM_meetup_address() {
+		assertNotNull(meetup);
+		assertEquals("Lakewood", meetup.getAddress().getCity());
+		assertEquals("Colorado", meetup.getAddress().getState());
 	}
 
 }
