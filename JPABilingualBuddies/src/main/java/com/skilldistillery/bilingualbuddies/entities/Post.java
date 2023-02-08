@@ -1,6 +1,7 @@
 package com.skilldistillery.bilingualbuddies.entities;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -39,6 +40,25 @@ public class Post {
 
 	@OneToMany(mappedBy = "post")
 	private List<Comment> comments;
+	
+	
+	public void addComment(Comment comment) {
+		if (comments == null ) {
+			comments = new ArrayList<>();
+		}
+		if (! comments.contains(comment)) {
+			comments.add(comment);
+			comment.getUser().removeComment(comment);
+		}
+		comment.setPost(this);
+	}
+	
+	public void removeComment(Comment comment) {
+		if (comments != null && comments.contains(comment)) {
+			comments.remove(comment);
+			comment.setUser(null);
+		}
+	}
 
 	public Post() {
 		super();
