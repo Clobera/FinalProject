@@ -42,11 +42,16 @@ class PostTest {
 			post = null;
 		}
 
-
 		@Test
 		void test() {
 			assertNotNull(post);
 			assertEquals("This is so cool!", post.getContent()); 
+		}
+		
+		@Test
+		void test_ManyToOne_to_users() {
+			assertNotNull(post);
+			assertEquals("admin", post.getUser().getFirstName()); 
 		}
 
 

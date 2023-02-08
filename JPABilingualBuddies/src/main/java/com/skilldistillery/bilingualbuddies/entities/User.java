@@ -9,7 +9,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class User {
@@ -47,8 +50,16 @@ public class User {
 
 	private String bio;
 
+	@ManyToOne
+	@JoinColumn(name = "origin_country")
+	private Country country;
+
 	@OneToMany(mappedBy = "post")
 	private List<Comment> comments;
+
+	@OneToOne
+	@JoinColumn(name = "address_id")
+	private Address address;
 
 	public User() {
 		super();
@@ -56,7 +67,7 @@ public class User {
 
 	public User(int id, String email, String username, String password, LocalDateTime dateCreated,
 			LocalDateTime lastLogin, boolean enabled, String role, boolean sponsor, String firstName, String lastName,
-			String imageUrl, String bio, List<Comment> comments) {
+			String imageUrl, String bio, Country country, List<Comment> comments, Address address) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -71,7 +82,9 @@ public class User {
 		this.lastName = lastName;
 		this.imageUrl = imageUrl;
 		this.bio = bio;
+		this.country = country;
 		this.comments = comments;
+		this.address = address;
 	}
 
 	public int getId() {
@@ -184,6 +197,22 @@ public class User {
 
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public Country getCountry() {
+		return country;
+	}
+
+	public void setCountry(Country country) {
+		this.country = country;
 	}
 
 	@Override

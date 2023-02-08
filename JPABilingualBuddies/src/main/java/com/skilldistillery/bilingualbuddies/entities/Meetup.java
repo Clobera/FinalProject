@@ -35,8 +35,9 @@ public class Meetup {
 //	@JoinColumn(name = "owner_id")
 //	private User owner;
 
-//	@JoinColumn(name = "team_id")
-//	private Team team;
+	@JoinColumn(name = "team_id")
+	@ManyToOne
+	private Team team;
 
 	@Column(name = "start_time")
 	private LocalTime startTime;
@@ -53,22 +54,19 @@ public class Meetup {
 
 	private String title;
 
-
-
 	public Meetup() {
 		super();
 	}
 
-	public Meetup(int id, LocalDateTime meetupDate, String content, Address address, Boolean enabled, 
+	public Meetup(int id, LocalDateTime meetupDate, String content, Address address, Boolean enabled, Team team,
 			LocalTime startTime, LocalTime endTime, LocalDateTime createdDate, String imgUrl, String title) {
-		//User owner,
 		super();
 		this.id = id;
 		this.meetupDate = meetupDate;
 		this.content = content;
 		this.address = address;
 		this.enabled = enabled;
-		//this.owner = owner;
+		this.team = team;
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.createdDate = createdDate;
@@ -154,6 +152,14 @@ public class Meetup {
 
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+
+	public Team getTeam() {
+		return team;
+	}
+
+	public void setTeam(Team team) {
+		this.team = team;
 	}
 
 	@Override

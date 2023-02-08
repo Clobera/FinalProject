@@ -42,11 +42,16 @@ class TestTeam {
 
 	@Test
 	void test() {
-		
 		assertNotNull(team);
 		assertEquals(1, team.getId());
 		assertEquals("https://d3mvlb3hz2g78.cloudfront.net/wp-content/uploads/2020/11/thumb_720_450_dreamstime_m_44810592_(1).jpg", team.getImageUrl());
 		assertEquals("Better People Better World", team.getName());
+	}
+
+	@Test
+	void test_OneToMany_meetup() {
+		assertNotNull(team);
+		assertTrue(team.getMeetups().size() > 0);
 	}
 
 }

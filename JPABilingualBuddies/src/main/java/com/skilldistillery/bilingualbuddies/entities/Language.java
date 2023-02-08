@@ -1,11 +1,13 @@
 package com.skilldistillery.bilingualbuddies.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Language {
@@ -14,24 +16,23 @@ public class Language {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-
 	private String name;
 
 	private String description;
 
+	@OneToMany(mappedBy = "language")
+	private List<LanguageResource> resources;
+
 	public Language() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Language(int id, String name, String description) {
+	public Language(int id, String name, String description, List<LanguageResource> resources) {
 		super();
 		this.id = id;
-	
 		this.name = name;
-		
 		this.description = description;
-
+		this.resources = resources;
 	}
 
 	public int getId() {
@@ -42,7 +43,6 @@ public class Language {
 		this.id = id;
 	}
 
-
 	public String getName() {
 		return name;
 	}
@@ -50,7 +50,6 @@ public class Language {
 	public void setName(String name) {
 		this.name = name;
 	}
-
 
 	public String getDescription() {
 		return description;
@@ -60,10 +59,12 @@ public class Language {
 		this.description = description;
 	}
 
+	public List<LanguageResource> getResources() {
+		return resources;
+	}
 
-	@Override
-	public String toString() {
-		return "Language [id=" + id + ", name=" + name + ", description=" + description + "]";
+	public void setResources(List<LanguageResource> resources) {
+		this.resources = resources;
 	}
 
 	@Override
@@ -81,6 +82,12 @@ public class Language {
 			return false;
 		Language other = (Language) obj;
 		return id == other.id;
+	}
+
+	@Override
+	public String toString() {
+		return "Language [id=" + id + ", name=" + name + ", description=" + description + ", resources=" + resources
+				+ "]";
 	}
 
 }

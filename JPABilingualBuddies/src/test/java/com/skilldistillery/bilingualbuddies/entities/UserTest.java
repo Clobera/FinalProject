@@ -48,4 +48,16 @@ class UserTest {
 		assertEquals("admin", user.getUsername());
 	}
 
+	@Test
+	void test_OneToOne_address() {
+		assertNotNull(user);
+		assertEquals(null, user.getAddress());
+	}
+
+	@Test
+	void test_ManyToOne_country() {
+		assertNotNull(user);
+		assertEquals(null, user.getCountry());
+	}
+
 }

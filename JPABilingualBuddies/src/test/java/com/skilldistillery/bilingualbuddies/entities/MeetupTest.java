@@ -56,4 +56,10 @@ class MeetupTest {
 		assertEquals("Colorado", meetup.getAddress().getState());
 	}
 
+	@Test
+	void test_RM_meetup_team() {
+		assertNotNull(meetup);
+		assertEquals("Better People Better World", meetup.getTeam().getName());
+	}
+
 }

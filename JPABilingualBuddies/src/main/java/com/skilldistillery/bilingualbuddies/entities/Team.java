@@ -1,6 +1,7 @@
 package com.skilldistillery.bilingualbuddies.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -8,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -28,25 +30,29 @@ public class Team {
 
 	private String name;
 
-
 	@CreationTimestamp
 	@Column(name = "create_date")
 	private LocalDateTime createdAt;
-	
+
+	private Boolean enabled;
+
+	@OneToMany(mappedBy = "team")
+	private List<Meetup> meetups;
 
 	public Team() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Team(int id, String content, String imageUrl, String name, LocalDateTime createdAt) {
+	public Team(int id, String content, String imageUrl, String name, LocalDateTime createdAt, Boolean enabled,
+			List<Meetup> meetups) {
 		super();
 		this.id = id;
-//		this.ownerId = ownerId;
 		this.content = content;
 		this.imageUrl = imageUrl;
 		this.name = name;
 		this.createdAt = createdAt;
+		this.enabled = enabled;
+		this.meetups = meetups;
 	}
 
 	public int getId() {
@@ -94,13 +100,27 @@ public class Team {
 	}
 
 	public void setCreateDate(LocalDateTime createdAt) {
-		this.createdAt= createdAt;
+		this.createdAt = createdAt;
 	}
 
-	@Override
-	public String toString() {
-		return "Group [id=" + id + ", content=" + content + ", imageUrl=" + imageUrl
-				+ ", name=" + name + ", createDate=" + createdAt + "]";
+	public List<Meetup> getMeetups() {
+		return meetups;
+	}
+
+	public void setMeetups(List<Meetup> meetups) {
+		this.meetups = meetups;
+	}
+
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public Boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
 	}
 
 	@Override
@@ -118,6 +138,12 @@ public class Team {
 			return false;
 		Team other = (Team) obj;
 		return id == other.id;
+	}
+
+	@Override
+	public String toString() {
+		return "Team [id=" + id + ", content=" + content + ", imageUrl=" + imageUrl + ", name=" + name + ", createdAt="
+				+ createdAt + ", enabled=" + enabled + ", meetups=" + meetups + "]";
 	}
 
 }

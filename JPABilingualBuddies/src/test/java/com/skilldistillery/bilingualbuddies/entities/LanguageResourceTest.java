@@ -47,4 +47,10 @@ class LanguageResourceTest {
 		assertEquals("Learn English", lr.getName());
 	}
 
+	@Test
+	void test_ManyToOne_to_Lang() {
+		assertNotNull(lr);
+		assertEquals("English", lr.getLanguage().getName());
+	}
+
 }

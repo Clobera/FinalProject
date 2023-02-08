@@ -20,7 +20,7 @@ class TestLanguage {
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 		emf = Persistence.createEntityManagerFactory("JPABilingualBuddies");
-		}
+	}
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
@@ -46,5 +46,15 @@ class TestLanguage {
 		assertEquals("English", language.getName());
 		assertEquals("Most spoken language in the world", language.getDescription());
 
-}
+	}
+
+	@Test
+	void test_RM_OneToMany_to_langResource() {
+		assertNotNull(language);
+		assertTrue(language.getResources().size() > 0);
+		
+		
+	}
+	
+	
 }

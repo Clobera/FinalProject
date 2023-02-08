@@ -22,16 +22,17 @@ public class LanguageResource {
 	private int id;
 
 	private String name;
-	
+
 	@Column(name = "resource_url")
 	private String resourceUrl;
 
 	private String description;
 
-//	 //languageId
-//	 @JoinColumn(name = "language_id")
-//	 private Language language;
-
+	// languageId
+	
+	@JoinColumn(name = "language_id")
+	@ManyToOne
+	private Language language;
 
 	@JoinColumn(name = "added_by")
 	@ManyToOne
@@ -45,20 +46,17 @@ public class LanguageResource {
 		super();
 	}
 
-	
-
-	public LanguageResource(int id, String name, String resourceUrl, String description, User user,
+	public LanguageResource(int id, String name, String resourceUrl, String description, Language language, User user,
 			LocalDateTime createDate) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.resourceUrl = resourceUrl;
 		this.description = description;
+		this.language = language;
 		this.user = user;
 		this.createDate = createDate;
 	}
-
-
 
 	public int getId() {
 		return id;
@@ -99,19 +97,22 @@ public class LanguageResource {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
 
 	public String getName() {
 		return name;
 	}
 
-
-
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	public Language getLanguage() {
+		return language;
+	}
 
+	public void setLanguage(Language language) {
+		this.language = language;
+	}
 
 	@Override
 	public int hashCode() {
@@ -132,8 +133,8 @@ public class LanguageResource {
 
 	@Override
 	public String toString() {
-		return "LanguageResource [id=" + id + ", resourceUrl=" + resourceUrl + ", description=" + description
-				+ ", user=" + user + ", createDate=" + createDate + "]";
+		return "LanguageResource [id=" + id + ", name=" + name + ", resourceUrl=" + resourceUrl + ", description="
+				+ description + ", language=" + language + ", user=" + user + ", createDate=" + createDate + "]";
 	}
 
 }
