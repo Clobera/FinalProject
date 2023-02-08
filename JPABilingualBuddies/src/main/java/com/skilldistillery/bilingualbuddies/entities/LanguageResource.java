@@ -27,6 +27,7 @@ public class LanguageResource {
 	// @JoinColumn(name = "language_id")
 	// private Language language;
 
+	
 	@JoinColumn(name = "added_by")
 	@ManyToOne
 	private User user;
@@ -45,6 +46,7 @@ public class LanguageResource {
 		this.description = description;
 		this.user = user;
 		this.createDate = createDate;
+		System.out.println("helllo");
 	}
 
 	public int getId() {
