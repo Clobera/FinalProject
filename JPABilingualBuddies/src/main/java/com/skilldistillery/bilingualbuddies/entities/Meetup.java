@@ -14,8 +14,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -25,10 +23,10 @@ public class Meetup {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@Column(name = "meetup_date")
 	private LocalDateTime meetupDate;
-	
+
 	private String content;
 	
 	@ManyToOne
@@ -41,8 +39,8 @@ public class Meetup {
 	@JoinColumn(name = "owner_id")
 	private User owner;
 	
-//	@JoinColumn(name = "team_id")
-//	private Team team;
+	@JoinColumn(name = "team_id")
+	private Team team;
 	
 	@ManyToMany
 	@JoinTable(name="user_has_meetup", 
@@ -53,18 +51,41 @@ public class Meetup {
 	
 	@Column(name = "start_time")
 	private LocalTime startTime;
-	
+
 	@Column(name = "end_time")
 	private LocalTime endTime;
-	
+
 	@Column(name = "created_date")
 	@CreationTimestamp
 	private LocalDateTime createdDate;
-	
+
 	@Column(name = "image_url")
 	private String imgUrl;
-	
+
 	private String title;
+
+
+
+	public Meetup() {
+		super();
+	}
+
+	public Meetup(int id, LocalDateTime meetupDate, String content, Address address, Boolean enabled, 
+			LocalTime startTime, LocalTime endTime, LocalDateTime createdDate, String imgUrl, String title) {
+		//User owner,
+		super();
+		this.id = id;
+		this.meetupDate = meetupDate;
+		this.content = content;
+		this.address = address;
+		this.enabled = enabled;
+		//this.owner = owner;
+		this.startTime = startTime;
+		this.endTime = endTime;
+		this.createdDate = createdDate;
+		this.imgUrl = imgUrl;
+		this.title = title;
+	}
 
 	public int getId() {
 		return id;
@@ -138,6 +159,14 @@ public class Meetup {
 		this.title = title;
 	}
 
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -155,17 +184,11 @@ public class Meetup {
 		return id == other.id;
 	}
 
-	public Meetup() {
-		super();
-	}
-
 	@Override
 	public String toString() {
-		return "Meetup [id=" + id + ", meetupDate=" + meetupDate + ", content=" + content + ", enabled=" + enabled
-				+ ", startTime=" + startTime + ", endTime=" + endTime + ", createdDate=" + createdDate + ", imgUrl="
-				+ imgUrl + ", title=" + title + "]";
+		return "Meetup [id=" + id + ", meetupDate=" + meetupDate + ", content=" + content + ", address=" + address
+				+ ", enabled=" + enabled + ", startTime=" + startTime + ", endTime=" + endTime + ", createdDate="
+				+ createdDate + ", imgUrl=" + imgUrl + ", title=" + title + "]";
 	}
-	
-	
-	
+
 }

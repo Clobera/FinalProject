@@ -9,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -19,37 +19,83 @@ public class Alert {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	// Sender ID User Many to one mapping goes here
-	@OneToMany
-	@JoinColumn(name="sender_id")
+	@ManyToOne
+	@JoinColumn(name = "sender_id")
 	private User sender;
-	
-	
 	// reciever ID User Many to one mapping goes here
-	@OneToMany
-	@JoinColumn(name="receiver_id")
+	@ManyToOne
+	@JoinColumn(name = "receiver_id")
 	private User receiver;
-	
-	
-	
+
 	// meetup ID many to one mapping goes here
-	@OneToMany
-	@JoinColumn(name="meetup_id")
+	@ManyToOne
+	@JoinColumn(name = "meetup_id")
 	private Meetup meetup;
-	
-	
+
 	private String content;
-	
+
 	@CreationTimestamp
 	@Column(name = "notification_date")
 	private LocalDateTime notificationDate;
-	
+
 	private Boolean seen;
 
-	
 	public Alert() {
 		super();
+	}
+
+	public Alert(int id, User sender, User receiver, Meetup meetup, String content, LocalDateTime notificationDate,
+			Boolean seen) {
+		super();
+		this.id = id;
+		this.sender = sender;
+		this.receiver = receiver;
+		this.meetup = meetup;
+		this.content = content;
+		this.notificationDate = notificationDate;
+		this.seen = seen;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public User getSender() {
+		return sender;
+	}
+
+	public void setSender(User sender) {
+		this.sender = sender;
+	}
+
+	public User getReceiver() {
+		return receiver;
+	}
+
+	public void setReceiver(User receiver) {
+		this.receiver = receiver;
+	}
+
+	public Meetup getMeetup() {
+		return meetup;
+	}
+
+	public void setMeetup(Meetup meetup) {
+		this.meetup = meetup;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 	public LocalDateTime getNotificationDate() {
@@ -68,27 +114,6 @@ public class Alert {
 		this.seen = seen;
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-	@Override
-	public String toString() {
-		return "Alert [id=" + id + ", content=" + content + ", notificationDate=" + notificationDate + ", seen="
-				+ seen + "]";
-	}
 
 	@Override
 	public int hashCode() {
@@ -106,7 +131,11 @@ public class Alert {
 		Alert other = (Alert) obj;
 		return id == other.id;
 	}
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return "Alert [id=" + id + ", sender=" + sender + ", receiver=" + receiver + ", meetup=" + meetup + ", content="
+				+ content + ", notificationDate=" + notificationDate + ", seen=" + seen + "]";
+	}
+
 }

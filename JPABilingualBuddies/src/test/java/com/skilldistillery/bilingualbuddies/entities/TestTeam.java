@@ -1,8 +1,6 @@
 package com.skilldistillery.bilingualbuddies.entities;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,13 +12,12 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class AlertTest {
+class TestTeam {
 
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Alert alert;
+	private Team team;
 	
-
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 		emf = Persistence.createEntityManagerFactory("JPABilingualBuddies");
@@ -34,20 +31,22 @@ class AlertTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		alert = em.find(Alert.class, 1);
+		team = em.find(Team.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		alert = null;
+		team = null;
 	}
 
 	@Test
-	void test_basic_mappings() {
-		assertNotNull(alert);
-		assertEquals("admin", alert.getContent());
+	void test() {
+		
+		assertNotNull(team);
+		assertEquals(1, team.getId());
+		assertEquals("https://d3mvlb3hz2g78.cloudfront.net/wp-content/uploads/2020/11/thumb_720_450_dreamstime_m_44810592_(1).jpg", team.getImageUrl());
+		assertEquals("Better People Better World", team.getName());
 	}
-
 
 }

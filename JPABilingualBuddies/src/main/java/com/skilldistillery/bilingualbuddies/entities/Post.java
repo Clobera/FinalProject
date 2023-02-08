@@ -1,6 +1,7 @@
 package com.skilldistillery.bilingualbuddies.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -10,19 +11,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
-public class Comment {
+public class Post {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
-	@ManyToOne
-	@JoinColumn(name = "post_id")
-	private Post post;
 
 	@ManyToOne
 	@JoinColumn(name = "user_id")
@@ -30,24 +28,32 @@ public class Comment {
 
 	private String content;
 
-	@Column(name = "comment_date")
+	@Column(name = "image_url")
+	private String imageUrl;
+
+	@Column(name = "post_date")
 	@CreationTimestamp
-	private LocalDateTime commentDate;
+	private LocalDateTime postDate;
 
 	private boolean enabled;
 
-	public Comment() {
+	@OneToMany(mappedBy = "post")
+	private List<Comment> comments;
+
+	public Post() {
 		super();
 	}
 
-	public Comment(int id, Post post, User user, String content, LocalDateTime commentDate, boolean enabled) {
+	public Post(int id, User user, String content, String imageUrl, LocalDateTime postDate, boolean enabled,
+			List<Comment> comments) {
 		super();
 		this.id = id;
-		this.post = post;
 		this.user = user;
 		this.content = content;
-		this.commentDate = commentDate;
+		this.imageUrl = imageUrl;
+		this.postDate = postDate;
 		this.enabled = enabled;
+		this.comments = comments;
 	}
 
 	public int getId() {
@@ -58,22 +64,6 @@ public class Comment {
 		this.id = id;
 	}
 
-	public Post getPost() {
-		return post;
-	}
-
-	public void setPost(Post post) {
-		this.post = post;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
 	public String getContent() {
 		return content;
 	}
@@ -82,12 +72,20 @@ public class Comment {
 		this.content = content;
 	}
 
-	public LocalDateTime getCommentDate() {
-		return commentDate;
+	public String getImageUrl() {
+		return imageUrl;
 	}
 
-	public void setCommentDate(LocalDateTime commentDate) {
-		this.commentDate = commentDate;
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
+	public LocalDateTime getPostDate() {
+		return postDate;
+	}
+
+	public void setPostDate(LocalDateTime postDate) {
+		this.postDate = postDate;
 	}
 
 	public boolean isEnabled() {
@@ -98,9 +96,25 @@ public class Comment {
 		this.enabled = enabled;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(commentDate, content, enabled, id);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -111,15 +125,14 @@ public class Comment {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Comment other = (Comment) obj;
-		return Objects.equals(commentDate, other.commentDate) && Objects.equals(content, other.content)
-				&& enabled == other.enabled && id == other.id;
+		Post other = (Post) obj;
+		return id == other.id;
 	}
 
 	@Override
 	public String toString() {
-		return "Comment [id=" + id + ", post=" + post + ", user=" + user + ", content=" + content + ", commentDate="
-				+ commentDate + ", enabled=" + enabled + "]";
+		return "Post [id=" + id + ", user=" + user + ", content=" + content + ", imageUrl=" + imageUrl + ", postDate="
+				+ postDate + ", enabled=" + enabled + ", comments=" + comments + "]";
 	}
 
 }

@@ -9,52 +9,68 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class User {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String email;
-	
+
 	private String username;
-	
+
 	private String password;
-	
-	@Column(name="date_created")
+
+	@Column(name = "date_created")
 	private LocalDateTime dateCreated;
-	
-	@Column(name="last_login")
+
+	@Column(name = "last_login")
 	private LocalDateTime lastLogin;
-	
+
 	private boolean enabled;
-	
+
 	private String role;
-	
+
 	private boolean sponsor;
-	
-	
-	@Column(name="first_name")
+
+	@Column(name = "first_name")
 	private String firstName;
-	
-	@Column(name="last_name")
+
+	@Column(name = "last_name")
 	private String lastName;
-	
-	@Column(name="image_url")
+
+	@Column(name = "image_url")
 	private String imageUrl;
-	
-	
 	private String bio;
+
+	@OneToMany(mappedBy = "post")
+	private List<Comment> comments;
 
 	public User() {
 		super();
+	}
+
+	public User(int id, String email, String username, String password, LocalDateTime dateCreated,
+			LocalDateTime lastLogin, boolean enabled, String role, boolean sponsor, String firstName, String lastName,
+			String imageUrl, String bio, List<Comment> comments) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.username = username;
+		this.password = password;
+		this.dateCreated = dateCreated;
+		this.lastLogin = lastLogin;
+		this.enabled = enabled;
+		this.role = role;
+		this.sponsor = sponsor;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.imageUrl = imageUrl;
+		this.bio = bio;
+		this.comments = comments;
 	}
 
 	public int getId() {
@@ -112,8 +128,6 @@ public class User {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	
-	
 
 	public boolean isSponsor() {
 		return sponsor;
@@ -163,6 +177,14 @@ public class User {
 		this.bio = bio;
 	}
 
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -183,10 +205,9 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", email=" + email + ", username=" + username + ", password=" + password
-				+ ", enabled=" + enabled + ", firstName=" + firstName + ", lastName=" + lastName + "]";
+				+ ", dateCreated=" + dateCreated + ", lastLogin=" + lastLogin + ", enabled=" + enabled + ", role="
+				+ role + ", sponsor=" + sponsor + ", firstName=" + firstName + ", lastName=" + lastName + ", imageUrl="
+				+ imageUrl + ", bio=" + bio + ", comments=" + comments + "]";
 	}
-	
-	
-	
 
 }

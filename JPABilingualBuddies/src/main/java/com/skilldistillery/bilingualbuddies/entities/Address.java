@@ -17,49 +17,68 @@ public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String address;
-	
+
+	private String city;
+
 	private String state;
-	
+
 	@Column(name = "postal_code")
 	private String postalCode;
-	
-	private String city;
-	
+
 	private Boolean enabled;
 	
+	public Address() {
+		super();
+	}
+
+	@Override
+	public String toString() {
+		return "Address [id=" + id + ", address=" + address + ", city=" + city + ", state=" + state + ", postalCode="
+				+ postalCode + ", enabled=" + enabled + ", user=" + user + ", meetup=" + meetup + ", meetups=" + meetups
+				+ "]";
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public List<Meetup> getMeetup() {
+		return meetup;
+	}
+
+	public void setMeetup(List<Meetup> meetup) {
+		this.meetup = meetup;
+	}
+
 	@OneToOne(mappedBy="address")
 	private User user;
 	
 	@OneToMany(mappedBy="address")
 	private List<Meetup> meetup;
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Address other = (Address) obj;
-		return id == other.id;
-	}
-
-	@Override
-	public String toString() {
-		return "Address [id=" + id + ", address=" + address + ", state=" + state + ", postalCode=" + postalCode
-				+ ", city=" + city + ", enabled=" + enabled + "]";
-	}
+	@OneToMany(mappedBy = "address")
+	private List<Meetup> meetups;
 
 	public Address() {
 		super();
+	}
+
+	public Address(int id, String address, String city, String state, String postalCode, Boolean enabled
+			,List<Meetup> meetups) {
+		super();
+		this.id = id;
+		this.address = address;
+		this.city = city;
+		this.state = state;
+		this.postalCode = postalCode;
+		this.enabled = enabled;
+		this.meetups = meetups;
 	}
 
 	public int getId() {
@@ -78,6 +97,14 @@ public class Address {
 		this.address = address;
 	}
 
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
 	public String getState() {
 		return state;
 	}
@@ -94,37 +121,37 @@ public class Address {
 		this.postalCode = postalCode;
 	}
 
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
 	public Boolean getEnabled() {
 		return enabled;
 	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
 
 	public void setEnabled(Boolean enabled) {
 		this.enabled = enabled;
 	}
 
-	public List<Meetup> getMeetup() {
-		return meetup;
+	public List<Meetup> getMeetups() {
+		return meetups;
 	}
 
-	public void setMeetup(List<Meetup> meetup) {
-		this.meetup = meetup;
+	public void setMeetups(List<Meetup> meetups) {
+		this.meetups = meetups;
 	}
-	
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Address other = (Address) obj;
+		return id == other.id;
+	}
+
 }

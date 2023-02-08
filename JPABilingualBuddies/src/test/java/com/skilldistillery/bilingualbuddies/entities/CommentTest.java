@@ -47,5 +47,17 @@ class CommentTest {
 		assertEquals("I agree!", comment.getContent());
 	}
 
+	@Test
+	void test_RM_ManyToOne_to_Post() {
+		assertNotNull(comment);
+		assertEquals("This is so cool!", comment.getPost().getContent());
+	}
+	
+	@Test
+	void test_RM_ManyToOne_to_User() {
+		assertNotNull(comment);
+		assertEquals("admin", comment.getPost().getUser().getFirstName());
+	}
+
 
 }

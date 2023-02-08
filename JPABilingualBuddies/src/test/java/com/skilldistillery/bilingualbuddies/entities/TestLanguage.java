@@ -1,8 +1,6 @@
 package com.skilldistillery.bilingualbuddies.entities;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,12 +12,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class AlertTest {
-
+class TestLanguage {
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Alert alert;
-	
+	private Language language;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -34,20 +30,21 @@ class AlertTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		alert = em.find(Alert.class, 1);
+		language = em.find(Language.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		alert = null;
+		language = null;
 	}
 
 	@Test
-	void test_basic_mappings() {
-		assertNotNull(alert);
-		assertEquals("admin", alert.getContent());
+	void test() {
+		assertNotNull(language);
+		assertEquals(1, language.getId());
+		assertEquals("English", language.getName());
+		assertEquals("Most spoken language in the world", language.getDescription());
+
 	}
-
-
 }
