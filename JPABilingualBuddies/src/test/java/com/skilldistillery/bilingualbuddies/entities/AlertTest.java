@@ -59,6 +59,12 @@ class AlertTest {
 		assertEquals(1, alert.getSender().getId());
 		
 	}
+	
+	@Test
+	void test_RM_meetup_Alert() {
+		assertNotNull(alert);
+		assertEquals(1, alert.getMeetup().getId());
+	}
 
 
 }

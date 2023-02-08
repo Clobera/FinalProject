@@ -62,4 +62,10 @@ class MeetupTest {
 		assertEquals("Better People Better World", meetup.getTeam().getName());
 	}
 
+	@Test
+	void test_RM_meetup_Alert() {
+		assertNotNull(meetup);
+		assertTrue(meetup.getAlerts().size() > 0);
+	}
+
 }

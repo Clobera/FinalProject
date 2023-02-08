@@ -65,6 +65,9 @@ public class Meetup {
 	private String imgUrl;
 
 	private String title;
+	
+	@OneToMany(mappedBy="meetup")
+	private List<Alert> alerts;
 
 	public Meetup() {
 		super();
@@ -172,6 +175,30 @@ public class Meetup {
 
 	public void setTeam(Team team) {
 		this.team = team;
+	}
+
+	public User getOwner() {
+		return owner;
+	}
+
+	public void setOwner(User owner) {
+		this.owner = owner;
+	}
+
+	public List<User> getAttendees() {
+		return attendees;
+	}
+
+	public void setAttendees(List<User> attendees) {
+		this.attendees = attendees;
+	}
+
+	public List<Alert> getAlerts() {
+		return alerts;
+	}
+
+	public void setAlerts(List<Alert> alerts) {
+		this.alerts = alerts;
 	}
 
 	@Override
