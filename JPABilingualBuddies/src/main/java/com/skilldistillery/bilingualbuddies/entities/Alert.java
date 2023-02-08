@@ -12,7 +12,7 @@ import javax.persistence.Id;
 import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
-public class Notification {
+public class Alert {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +32,7 @@ public class Notification {
 	private Boolean seen;
 
 	
-	public Notification() {
+	public Alert() {
 		super();
 	}
 
@@ -87,7 +87,7 @@ public class Notification {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Notification other = (Notification) obj;
+		Alert other = (Alert) obj;
 		return id == other.id;
 	}
 	
