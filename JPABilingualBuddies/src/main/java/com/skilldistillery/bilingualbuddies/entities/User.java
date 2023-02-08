@@ -67,8 +67,11 @@ public class User {
 	@ManyToMany(mappedBy="users")
 	private List<Language> languages;
 
-	@OneToMany(mappedBy = "post")
+	@OneToMany(mappedBy = "user")
 	private List<Comment> comments;
+
+	@OneToMany(mappedBy = "user")
+	private List<Post> posts;
 
 	@OneToOne
 	@JoinColumn(name = "address_id")
@@ -292,6 +295,14 @@ public class User {
 
 	public void setLanguageResource(List<LanguageResource> languageResource) {
 		this.languageResource = languageResource;
+	}
+
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
 	}
 
 	@Override

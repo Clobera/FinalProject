@@ -94,6 +94,13 @@ class UserTest {
 		assertTrue(user.getLanguageResource().size() > 0);
 		
 	}
+	
+	@Test
+	void test_MTO_mapping_to_post() {
+		assertNotNull(user);
+		assertTrue(user.getPosts().size() > 0);
+		
+	}
 
 
 }
