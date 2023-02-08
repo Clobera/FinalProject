@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.bilingualbuddies.entities.Comment;
+import com.skilldistillery.bilingualbuddies.services.CommentService;
 
 @RestController
 @RequestMapping("api")
@@ -24,48 +25,46 @@ public class CommentController {
 	
 
 	@Autowired
-	//CommentService commentService;
+	CommentService commentService;
 	
 	
 	@GetMapping("posts/{id}/comments")
-	public List<Comment> index( HttpServletRequest req, HttpServletResponse res){
-		return null;
+	public List<Comment> index( HttpServletRequest req, HttpServletResponse res, @PathVariable Integer id){
 		
-		//return comentService.index(getName());
+		return commentService.findAllComments(id);
 	}
 	
 	@GetMapping("comments/{id}")
 	public Comment show( HttpServletRequest req, HttpServletResponse res, @PathVariable int id) {
-		return null;
-		//return commentService.show(principal.getName(), id);
+		return commentService.findById(id);
 				
 	}
 	@PostMapping("posts/{id}/comments")
 	public Comment create(HttpServletRequest req, HttpServletResponse res, @RequestBody Comment comment, @PathVariable Integer id) {
-//		try {
-//			commentService.createNewCommentForPost(id, comment);
-//			res.setStatus(201);
-//			StringBuffer url = req.getRequestURL();
-//			url.append("/").append(comment.getId());
-//			res.setHeader("Location", url.toString());
-//		} catch(Exception e) {
-//			e.printStackTrace();
-//			res.setStatus(400);
-//			comment = null;
-//		}
+		try {
+			commentService.createComment(id, comment);
+			res.setStatus(201);
+			StringBuffer url = req.getRequestURL();
+			url.append("/").append(comment.getId());
+			res.setHeader("Location", url.toString());
+		} catch(Exception e) {
+			e.printStackTrace();
+			res.setStatus(400);
+			comment = null;
+		}
 		return null;
 	}
 	
 	
 	@DeleteMapping("posts/{id}/comments/{cid}")
-	public void delete( HttpServletRequest req, HttpServletResponse res, @PathVariable Integer id, @PathVariable Comment cid) {
-//		try {
-//			commentService.deleteComment(id, cid);
-//			res.setStatus(204);
-//		} catch(Exception e) {
-//			e.printStackTrace();
-//			res.setStatus(400);
-//		}
+	public void delete( HttpServletRequest req, HttpServletResponse res, @PathVariable Integer id, @PathVariable Integer cid) {
+		try {
+			commentService.deleteCommentById(id, cid);
+			res.setStatus(204);
+		} catch(Exception e) {
+			e.printStackTrace();
+			res.setStatus(400);
+		}
 	}
 }
 
