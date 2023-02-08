@@ -12,10 +12,12 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class TestLanguage {
+class CountryTest {
+
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Language language;
+	private Country country;
+	
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -30,42 +32,24 @@ class TestLanguage {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		language = em.find(Language.class, 1);
+		country = em.find(Country.class, "US");
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		language = null;
+		country = null;
 	}
 
 	@Test
-	void test() {
-		assertNotNull(language);
-		assertEquals(1, language.getId());
-		assertEquals("English", language.getName());
-		assertEquals("Most spoken language in the world", language.getDescription());
+	void test_basic_mappings() {
+		assertNotNull(country);
+		assertEquals("US", country.getCountryCode());
+	}
+	@Test
+	void test_MTM_mappings_to_language() {
+		assertNotNull(country);
+		assertTrue(country.getLangauges().size() > 0);
+	}
 
-	}
-
-	@Test
-	void test_RM_OneToMany_to_langResource() {
-		assertNotNull(language);
-		assertTrue(language.getResources().size() > 0);
-		
-		
-	}
-	@Test
-	void test_RM_ManyToMany_to_user() {
-		assertNotNull(language);
-		assertTrue(language.getUsers().size() > 0);
-		
-	}
-	@Test
-	void test_MTM_mappings_to_country() {
-		assertNotNull(language);
-		assertTrue(language.getCountries().size() > 0);
-	}
-	
-	
 }

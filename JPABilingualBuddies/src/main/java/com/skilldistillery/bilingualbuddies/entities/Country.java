@@ -6,6 +6,9 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -19,6 +22,13 @@ public class Country {
 
 	@OneToMany(mappedBy = "country")
 	private List<User> users;
+	
+	@ManyToMany
+	@JoinTable(name="country_has_language",
+			joinColumns=@JoinColumn(name="country_country_code"),
+			inverseJoinColumns = @JoinColumn(name="language_id")
+			)
+	private List<Language> langauges;
 
 	public Country() {
 		super();
@@ -53,6 +63,14 @@ public class Country {
 
 	public void setUsers(List<User> users) {
 		this.users = users;
+	}
+
+	public List<Language> getLangauges() {
+		return langauges;
+	}
+
+	public void setLangauges(List<Language> langauges) {
+		this.langauges = langauges;
 	}
 
 	@Override

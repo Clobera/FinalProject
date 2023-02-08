@@ -31,6 +31,9 @@ public class Language {
 			joinColumns=@JoinColumn(name="language_id"),
 			inverseJoinColumns=@JoinColumn(name="user_id"))
 	private List<User> users;
+	
+	@ManyToMany(mappedBy="langauges")
+	private List<Country> countries;
 
 	public Language() {
 		super();
@@ -88,6 +91,14 @@ public class Language {
 
 	public void setUsers(List<User> users) {
 		this.users = users;
+	}
+
+	public List<Country> getCountries() {
+		return countries;
+	}
+
+	public void setCountries(List<Country> countries) {
+		this.countries = countries;
 	}
 
 	@Override
