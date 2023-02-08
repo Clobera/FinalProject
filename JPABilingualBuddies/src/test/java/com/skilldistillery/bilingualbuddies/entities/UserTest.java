@@ -72,6 +72,21 @@ class UserTest {
 		assertTrue(user.getLanguages().size() > 0);
 			
 	}
+	
+	@Test
+	void test_RM_OneToMany_to_sentAlerts_Alert() {
+		assertNotNull(user);
+		assertTrue(user.getSentAlert().size() > 0);
+			
+	}
+	@Test
+	void test_RM_OneToMany_to_alerts_Alert() {
+		User user2 = em.find(User.class, 2);
+		assertNotNull(user2);
+		assertTrue(user2.getAlerts().size() > 0);
+		user2 = null;
+		
+	}
 
 
 }

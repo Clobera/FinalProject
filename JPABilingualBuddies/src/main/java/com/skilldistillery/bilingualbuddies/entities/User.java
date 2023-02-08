@@ -73,6 +73,12 @@ public class User {
 	@OneToOne
 	@JoinColumn(name = "address_id")
 	private Address address;
+	
+	@OneToMany(mappedBy="sender")
+	private List<Alert> sentAlert;
+
+	@OneToMany(mappedBy="receiver")
+	private List<Alert> alerts;
 
 	public User() {
 		super();
@@ -256,6 +262,24 @@ public class User {
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
+	}
+	
+	
+
+	public List<Alert> getSentAlert() {
+		return sentAlert;
+	}
+
+	public void setSentAlert(List<Alert> sentAlert) {
+		this.sentAlert = sentAlert;
+	}
+
+	public List<Alert> getAlerts() {
+		return alerts;
+	}
+
+	public void setAlerts(List<Alert> alerts) {
+		this.alerts = alerts;
 	}
 
 	@Override
