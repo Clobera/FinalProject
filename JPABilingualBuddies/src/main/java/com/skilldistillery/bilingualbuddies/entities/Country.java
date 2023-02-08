@@ -11,6 +11,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Country {
 
@@ -19,10 +21,12 @@ public class Country {
 	private String countryCode;
 
 	private String country;
-
+	
+	@JsonIgnore
 	@OneToMany(mappedBy = "country")
 	private List<User> users;
 	
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name="country_has_language",
 			joinColumns=@JoinColumn(name="country_country_code"),

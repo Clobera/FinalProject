@@ -10,9 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Alert {
@@ -21,16 +22,15 @@ public class Alert {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	// Sender ID User Many to one mapping goes here
 	@ManyToOne
 	@JoinColumn(name = "sender_id")
 	private User sender;
-	// reciever ID User Many to one mapping goes here
+	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "receiver_id")
 	private User receiver;
 
-	// meetup ID many to one mapping goes here
 	@ManyToOne
 	@JoinColumn(name = "meetup_id")
 	private Meetup meetup;

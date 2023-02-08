@@ -85,4 +85,9 @@ public class UserController {
 			res.setStatus(400);
 		}
 	}
+	
+	public User login( User user) {
+		
+		return user;
+	}
 }

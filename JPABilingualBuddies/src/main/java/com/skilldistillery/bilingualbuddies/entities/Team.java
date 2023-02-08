@@ -25,7 +25,8 @@ public class Team {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
+	
+	
 	@OneToOne
 	@JoinColumn(name = "owner_id")
 	private User owner;

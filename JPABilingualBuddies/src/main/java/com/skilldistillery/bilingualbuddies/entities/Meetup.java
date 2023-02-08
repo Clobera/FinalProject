@@ -19,6 +19,8 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Meetup {
 
@@ -41,6 +43,7 @@ public class Meetup {
 	@JoinColumn(name = "owner_id")
 	private User owner;
 		
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "team_id")
 	private Team team;
@@ -67,6 +70,7 @@ public class Meetup {
 
 	private String title;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="meetup")
 	private List<Alert> alerts;
 	
