@@ -57,7 +57,8 @@ public class User {
 	@JsonIgnore
 	@OneToOne(mappedBy = "owner")
 	private Team myTeam;
-
+	
+	@JsonIgnore
 	@ManyToMany(mappedBy = "members")
 	private List<Team> memberOfTeams;
 	
@@ -65,20 +66,23 @@ public class User {
 	@ManyToMany(mappedBy="owner")
 	private List<Meetup> myMeetups;
 
-	
+	@JsonIgnore
 	@ManyToMany(mappedBy="attendees")
 	private List<Meetup> memberOfMeetups;
-
+	
+	
 	@ManyToOne
 	@JoinColumn(name = "origin_country")
 	private Country country;
 	
 	@ManyToMany(mappedBy="users")
 	private List<Language> languages;
-
+	
+	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	private List<Comment> comments;
-
+	
+	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	private List<Post> posts;
 
@@ -86,12 +90,14 @@ public class User {
 	@JoinColumn(name = "address_id")
 	private Address address;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="sender")
 	private List<Alert> sentAlert;
 
 	@OneToMany(mappedBy="receiver")
 	private List<Alert> alerts;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "addedBy")
 	private List<LanguageResource> languageResource;
 	
