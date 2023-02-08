@@ -10,23 +10,27 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
+@Table(name = "language_resource")
 public class LanguageResource {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+	private String name;
+	
 	@Column(name = "resource_url")
 	private String resourceUrl;
 
 	private String description;
 
-	// languageId
-	// @JoinColumn(name = "language_id")
-	// private Language language;
+//	 //languageId
+//	 @JoinColumn(name = "language_id")
+//	 private Language language;
 
 
 	@JoinColumn(name = "added_by")
@@ -34,21 +38,27 @@ public class LanguageResource {
 	private User user;
 
 	@CreationTimestamp
+	@Column(name = "create_date")
 	private LocalDateTime createDate;
 
 	public LanguageResource() {
 		super();
 	}
 
-	public LanguageResource(int id, String resourceUrl, String description, User user, LocalDateTime createDate) {
+	
+
+	public LanguageResource(int id, String name, String resourceUrl, String description, User user,
+			LocalDateTime createDate) {
 		super();
 		this.id = id;
+		this.name = name;
 		this.resourceUrl = resourceUrl;
 		this.description = description;
 		this.user = user;
 		this.createDate = createDate;
-		System.out.println("helllo");
 	}
+
+
 
 	public int getId() {
 		return id;
@@ -89,6 +99,19 @@ public class LanguageResource {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
+
+	public String getName() {
+		return name;
+	}
+
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
 
 	@Override
 	public int hashCode() {

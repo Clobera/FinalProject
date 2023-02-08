@@ -8,26 +8,46 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 public class Comment {
-	
+
 	@Id
-	@GeneratedValue(strategy=  GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
+	@ManyToOne
+	@JoinColumn(name = "post_id")
+	private Post post;
+
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+
 	private String content;
-	
-	@Column(name="comment_date")
+
+	@Column(name = "comment_date")
 	@CreationTimestamp
 	private LocalDateTime commentDate;
-	
+
 	private boolean enabled;
 
 	public Comment() {
 		super();
+	}
+
+	public Comment(int id, Post post, User user, String content, LocalDateTime commentDate, boolean enabled) {
+		super();
+		this.id = id;
+		this.post = post;
+		this.user = user;
+		this.content = content;
+		this.commentDate = commentDate;
+		this.enabled = enabled;
 	}
 
 	public int getId() {
@@ -36,6 +56,22 @@ public class Comment {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public Post getPost() {
+		return post;
+	}
+
+	public void setPost(Post post) {
+		this.post = post;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public String getContent() {
@@ -82,10 +118,8 @@ public class Comment {
 
 	@Override
 	public String toString() {
-		return "Comment [id=" + id + ", content=" + content + ", commentDate=" + commentDate + ", enabled=" + enabled
-				+ "]";
+		return "Comment [id=" + id + ", post=" + post + ", user=" + user + ", content=" + content + ", commentDate="
+				+ commentDate + ", enabled=" + enabled + "]";
 	}
-	
-	
 
 }
