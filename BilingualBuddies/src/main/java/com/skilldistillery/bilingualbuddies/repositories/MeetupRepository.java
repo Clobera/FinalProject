@@ -10,7 +10,7 @@ public interface MeetupRepository extends JpaRepository<Meetup, Integer> {
 
 Meetup findByMeetupDate(LocalDateTime meetupDate);
 
-	Meetup findMeetupByDate(LocalDateTime meetupDate);
+	Meetup findMeetupByMeetupDate(LocalDateTime meetupDate);
 
 	Meetup findMeetupByTitle(String meetupTitle);
 
