@@ -1,5 +1,6 @@
 package com.skilldistillery.bilingualbuddies.entities;
 
+import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -43,9 +44,9 @@ class AlertTest {
 	}
 
 	@Test
-	void test() {
+	void test_basic_mappings() {
 		assertNotNull(alert);
-		assertEquals("Learn English", alert.getContent());
+		assertEquals("admin", alert.getContent());
 	}
 
 

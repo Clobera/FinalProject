@@ -114,6 +114,7 @@ public class Alert {
 		this.seen = seen;
 	}
 
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);

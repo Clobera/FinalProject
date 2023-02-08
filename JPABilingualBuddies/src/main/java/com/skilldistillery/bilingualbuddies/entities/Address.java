@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Address {
@@ -27,13 +28,42 @@ public class Address {
 	private String postalCode;
 
 	private Boolean enabled;
-
-	@OneToMany(mappedBy = "address")
-	private List<Meetup> meetups;
-
+	
 	public Address() {
 		super();
 	}
+
+	@Override
+	public String toString() {
+		return "Address [id=" + id + ", address=" + address + ", city=" + city + ", state=" + state + ", postalCode="
+				+ postalCode + ", enabled=" + enabled + ", user=" + user + ", meetup=" + meetup + ", meetups=" + meetups
+				+ "]";
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public List<Meetup> getMeetup() {
+		return meetup;
+	}
+
+	public void setMeetup(List<Meetup> meetup) {
+		this.meetup = meetup;
+	}
+
+	@OneToOne(mappedBy="address")
+	private User user;
+	
+	@OneToMany(mappedBy="address")
+	private List<Meetup> meetup;
+
+	@OneToMany(mappedBy = "address")
+	private List<Meetup> meetups;
 
 	public Address(int id, String address, String city, String state, String postalCode, Boolean enabled
 			,List<Meetup> meetups) {
@@ -118,12 +148,6 @@ public class Address {
 			return false;
 		Address other = (Address) obj;
 		return id == other.id;
-	}
-
-	@Override
-	public String toString() {
-		return "Address [id=" + id + ", address=" + address + ", city=" + city + ", state=" + state + ", postalCode="
-				+ postalCode + ", enabled=" + enabled + ", meetups=" + meetups + "]";
 	}
 
 }
