@@ -1,6 +1,8 @@
 package com.skilldistillery.bilingualbuddies.entities;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -17,7 +19,6 @@ class CountryTest {
 	private static EntityManagerFactory emf;
 	private EntityManager em;
 	private Country country;
-	
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -46,6 +47,7 @@ class CountryTest {
 		assertNotNull(country);
 		assertEquals("US", country.getCountryCode());
 	}
+
 	@Test
 	void test_MTM_mappings_to_language() {
 		assertNotNull(country);
