@@ -43,9 +43,15 @@ class MeetupTest {
 
 
 //	@Test
-//	void test() {
+//	void test_basic_mappings() {
 //		assertNotNull(meetup);
 //		assertEquals(1, meetup.getId());
+//	}
+	
+//	@Test
+//	void test_MTO_OTO_OTM_mappings() {
+//		assertNotNull(address);
+//		fail("not implemented yet");
 //	}
 
 }

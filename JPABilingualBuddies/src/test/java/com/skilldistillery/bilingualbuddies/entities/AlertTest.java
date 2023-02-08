@@ -42,10 +42,15 @@ class AlertTest {
 	}
 
 //	@Test
-//	void test() {
+//	void test_basic_mappings() {
 //		assertNotNull(alert);
 //		assertEquals("admin", alert.getContent());
 //	}
 
+//	@Test
+//	void test_MTO_OTO_OTM_mappings() {
+//		assertNotNull(address);
+//		fail("not implemented yet");
+//	}
 
 }
