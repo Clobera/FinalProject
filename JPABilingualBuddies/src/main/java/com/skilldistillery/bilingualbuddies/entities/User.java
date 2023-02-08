@@ -1,6 +1,7 @@
 package com.skilldistillery.bilingualbuddies.entities;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -93,6 +94,46 @@ public class User {
 	
 	@OneToMany(mappedBy = "addedBy")
 	private List<LanguageResource> languageResource;
+	
+	
+	// MTO/OTM add remove methods
+	public void addComment(Comment comment) {
+		if (comments == null ) {
+			comments = new ArrayList<>();
+		}
+		if (! comments.contains(comment)) {
+			comments.add(comment);
+			comment.getUser().removeComment(comment);
+		}
+		comment.setUser(this);
+	}
+	
+	public void removeComment(Comment comment) {
+		if (comments != null && comments.contains(comment)) {
+			comments.remove(comment);
+			comment.setUser(null);
+		}
+	}
+	
+	
+	
+	//MTM add remove methods
+	public void addMeetup(Meetup member) {
+		if(memberOfMeetups == null) {
+			memberOfMeetups = new ArrayList<>();
+		}
+		if (! memberOfMeetups.contains(member)) {
+			memberOfMeetups.add(member);
+			member.addMeetup(this);
+		}
+	}
+	
+	public void removeMeetup(Meetup member) {
+		if (memberOfMeetups != null && memberOfMeetups.contains(member)) {
+			memberOfMeetups.remove(member);
+			member.removeMeetup(this);
+		}
+	}
 
 	public User() {
 		super();

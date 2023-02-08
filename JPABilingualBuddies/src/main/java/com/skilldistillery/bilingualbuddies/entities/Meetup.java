@@ -2,6 +2,7 @@ package com.skilldistillery.bilingualbuddies.entities;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -68,6 +69,24 @@ public class Meetup {
 	
 	@OneToMany(mappedBy="meetup")
 	private List<Alert> alerts;
+	
+	//MTM add remove methods
+	public void addMeetup(User member) {
+		if(attendees == null) {
+			attendees = new ArrayList<>();
+		}
+		if (! attendees.contains(member)) {
+			attendees.add(member);
+			member.addMeetup(this);
+		}
+	}
+	
+	public void removeMeetup(User member) {
+		if (attendees != null && attendees.contains(member)) {
+			attendees.remove(member);
+			member.removeMeetup(this);
+		}
+	}
 
 	public Meetup() {
 		super();
