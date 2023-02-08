@@ -47,26 +47,42 @@ public class MeetupServiceImpl implements MeetupService {
 
 	@Override
 	public Meetup show(String meetupName) {
-		
-		return null;
+		Meetup meetup = meetupRepo.findMeetupByTitle(meetupName);
+		return meetup;
 	}
 
 	@Override
 	public Meetup create(Meetup meetup) {
-		// TODO Auto-generated method stub
-		return null;
+		meetupRepo.saveAndFlush(meetup);
+		return meetup;
 	}
 
 	@Override
 	public Meetup update(String meetupName, Meetup meetupUpdates) {
-		// TODO Auto-generated method stub
-		return null;
+		Meetup output = show(meetupName);
+		if (output != null) {
+			output.setMeetupDate(meetupUpdates.getMeetupDate());
+			output.setContent(meetupUpdates.getContent());
+			output.setStartTime(meetupUpdates.getStartTime());
+			output.setEndTime(meetupUpdates.getEndTime());
+			output.setImgUrl(meetupUpdates.getImgUrl());
+			output.setTitle(meetupUpdates.getTitle());
+			
+			output = meetupRepo.saveAndFlush(output);
+		}
+		return output;
 	}
 
 	@Override
 	public boolean destroy(String meetupName) {
-		// TODO Auto-generated method stub
-		return false;
+		Meetup deleteMe = show(meetupName);
+		boolean deleted = false;
+		if (deleteMe != null) {
+			deleteMe.setEnabled(false);
+			deleted = true;
+			meetupRepo.saveAndFlush(deleteMe);
+		}
+		return deleted;
 	}
 
 }
