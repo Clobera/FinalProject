@@ -55,6 +55,13 @@ class TestLanguage {
 		
 		
 	}
+	@Test
+	void test_RM_ManyToMany_to_user() {
+		assertNotNull(language);
+		assertTrue(language.getUsers().size() > 0);
+		
+		
+	}
 	
 	
 }

@@ -63,6 +63,9 @@ public class User {
 	@ManyToOne
 	@JoinColumn(name = "origin_country")
 	private Country country;
+	
+	@ManyToMany(mappedBy="users")
+	private List<Language> languages;
 
 	@OneToMany(mappedBy = "post")
 	private List<Comment> comments;
@@ -239,6 +242,15 @@ public class User {
 
 	public void setMemberOfTeams(List<Team> memberOfTeams) {
 		this.memberOfTeams = memberOfTeams;
+	}
+
+	
+	public List<Language> getLanguages() {
+		return languages;
+	}
+
+	public void setLanguages(List<Language> languages) {
+		this.languages = languages;
 	}
 
 	@Override

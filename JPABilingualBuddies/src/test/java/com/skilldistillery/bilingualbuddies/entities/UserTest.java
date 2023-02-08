@@ -2,6 +2,7 @@ package com.skilldistillery.bilingualbuddies.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -65,11 +66,12 @@ class UserTest {
 		assertNotNull(user);
 		assertEquals("Better People Better World", user.getMyTeam().getName());
 	}
-	
-//	@Test
-//	void test_ManyToMany_team() {
-//		assertNotNull(user);
-//		assertEquals("Better People Better World", user.getMyTeam().getName());
-//	}
+	@Test
+	void test_RM_ManyToMany_to_language() {
+		assertNotNull(user);
+		assertTrue(user.getLanguages().size() > 0);
+			
+	}
+
 
 }

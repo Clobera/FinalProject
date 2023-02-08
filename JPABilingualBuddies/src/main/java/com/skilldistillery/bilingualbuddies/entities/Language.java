@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -22,6 +25,12 @@ public class Language {
 
 	@OneToMany(mappedBy = "language")
 	private List<LanguageResource> resources;
+	
+	@ManyToMany
+	@JoinTable(name = "language_has_user",
+			joinColumns=@JoinColumn(name="language_id"),
+			inverseJoinColumns=@JoinColumn(name="user_id"))
+	private List<User> users;
 
 	public Language() {
 		super();
@@ -70,6 +79,15 @@ public class Language {
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
+	}
+	
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
 
 	@Override
