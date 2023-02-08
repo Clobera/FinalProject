@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.bilingualbuddies.entities.User;
+import com.skilldistillery.bilingualbuddies.services.UserService;
 
 @RestController
 @RequestMapping("api")
@@ -25,66 +26,63 @@ import com.skilldistillery.bilingualbuddies.entities.User;
 public class UserController {
 	
 	@Autowired
-	//UserService userService;
+	UserService userService;
 	
 	
 	@GetMapping("users")
 	public List<User> index(Principal principal, HttpServletRequest req, HttpServletResponse res){
-		return null;
 		
-		//return userService.index(principal.getName());
+		return userService.index();
 	}
 	
-	@GetMapping("users/{id}")
-	public User show(Principal principal, HttpServletRequest req, HttpServletResponse res, @PathVariable int id) {
-		return null;
-		//return userService.show(principal.getName(), id);
+	@GetMapping("users/{username}")
+	public User show(Principal principal, HttpServletRequest req, HttpServletResponse res, @PathVariable String username) {
+		
+		return userService.show(username);
 				
 	}
 	@PostMapping("users")
 	public User create(Principal principal ,HttpServletRequest req, HttpServletResponse res, @RequestBody User user) {
-//		try {
-//			userService.create(principal.getName(), user);
-//			res.setStatus(201);
-//			StringBuffer url = req.getRequestURL();
-//			url.append("/").append(user.getId());
-//			res.setHeader("Location", url.toString());
-//		} catch(Exception e) {
-//			e.printStackTrace();
-//			res.setStatus(400);
-//			user = null;
-//		}
-//		return user;
-		return null;
+		try {
+			userService.create(user);
+			res.setStatus(201);
+			StringBuffer url = req.getRequestURL();
+			url.append("/").append(user.getId());
+			res.setHeader("Location", url.toString());
+		} catch(Exception e) {
+			e.printStackTrace();
+			res.setStatus(400);
+			user = null;
+		}
+		return user;
 	}
 	
-	@PutMapping("users/{id}")
-	public User update(Principal principal, HttpServletRequest req, HttpServletResponse res, @PathVariable Integer id, @RequestBody User user) {
-//		try {
-//			user= userService.update(principal.getName(), id, user );
-//			if(user == null) {
-//				res.setStatus(404);
-//			}
-//		} catch(Exception e) {
-//			e.printStackTrace();
-//			res.setStatus(400);
-//			user = null;
-//		}
-//		return user;
-		return null;
+	@PutMapping("users/{username}")
+	public User update(Principal principal, HttpServletRequest req, HttpServletResponse res, @PathVariable String username, @RequestBody User user) {
+		try {
+			user= userService.update( username, user );
+			if(user == null) {
+				res.setStatus(404);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+			res.setStatus(400);
+			user = null;
+		}
+		return user;
 	}
-	@DeleteMapping("users/{id}")
-	public void delete(Principal principal, HttpServletRequest req, HttpServletResponse res, @PathVariable Integer id) {
-//		try {
-//			if(userService.destroy(principal.getName()), id) {
-//				res.setStatus(204);
-//			}
-//			else {
-//				res.setStatus(404);
-//			}
-//		} catch(Exception e){
-//			e.printStackTrace();
-//			res.setStatus(400);
-//		}
+	@DeleteMapping("users/{username}")
+	public void delete(Principal principal, HttpServletRequest req, HttpServletResponse res, @PathVariable String username) {
+		try {
+			if(userService.destroy(username)) {
+				res.setStatus(204);
+			}
+			else {
+				res.setStatus(404);
+			}
+		} catch(Exception e){
+			e.printStackTrace();
+			res.setStatus(400);
+		}
 	}
 }
