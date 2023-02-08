@@ -62,10 +62,19 @@ class UserTest {
 	}
 
 	@Test
-	void test_oneToOne_team() {
+	void test_oneToOne_team_myTeam() {
 		assertNotNull(user);
 		assertEquals("Better People Better World", user.getMyTeam().getName());
 	}
+
+	@Test
+	void test_MTM_team_memberOfTeams() {
+		assertNotNull(user);
+		assertTrue(user.getMemberOfTeams().size() > 0);
+	}
+	
+	// need another test for teams MTM mapping
+	
 	@Test
 	void test_RM_ManyToMany_to_language() {
 		assertNotNull(user);
@@ -100,6 +109,25 @@ class UserTest {
 		assertNotNull(user);
 		assertTrue(user.getPosts().size() > 0);
 		
+	}
+	
+//	uncomment and finish this test when proper address is added to db.
+//	@Test
+//	void test_RM_address_user() {
+//		assertNotNull(user);
+//		assertEquals(1, user.getAddress().getId());
+//	}
+//	
+	@Test
+	void test_MTM_mapping_to_Meetup_myMeetups() {
+		assertNotNull(user);
+		assertTrue(user.getMyMeetups().size() > 0);
+	}
+
+	@Test
+	void test_MTM_mapping_to_Meetup_memberOfMeetups() {
+		assertNotNull(user);
+		assertTrue(user.getMemberOfMeetups().size() > 0);
 	}
 
 

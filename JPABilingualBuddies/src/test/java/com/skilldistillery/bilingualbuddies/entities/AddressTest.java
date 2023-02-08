@@ -58,5 +58,15 @@ class AddressTest {
 		assertTrue(address.getMeetups().size() > 0);
 	}
 
+	
+//	uncomment and finish this test when proper address is added to db.
+//	@Test
+//	void test_RM_address_user() {
+//		assertNotNull(address);
+//		assertEquals(1, address.getUser().getId());
+//	}
+//	
+	
+
 
 }

@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -28,6 +29,15 @@ public class Address {
 	private String postalCode;
 
 	private Boolean enabled;
+	
+	@OneToOne(mappedBy="address")
+	private User user;
+	
+	@OneToMany(mappedBy="address")
+	private List<Meetup> meetup;
+
+	@OneToMany(mappedBy = "address")
+	private List<Meetup> meetups;
 	
 	public Address() {
 		super();
@@ -56,14 +66,7 @@ public class Address {
 		this.meetup = meetup;
 	}
 
-	@OneToOne(mappedBy="address")
-	private User user;
-	
-	@OneToMany(mappedBy="address")
-	private List<Meetup> meetup;
 
-	@OneToMany(mappedBy = "address")
-	private List<Meetup> meetups;
 
 	public Address(int id, String address, String city, String state, String postalCode, Boolean enabled
 			,List<Meetup> meetups) {

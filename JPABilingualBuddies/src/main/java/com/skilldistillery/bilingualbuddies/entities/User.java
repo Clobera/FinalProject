@@ -59,6 +59,14 @@ public class User {
 
 	@ManyToMany(mappedBy = "members")
 	private List<Team> memberOfTeams;
+	
+	@JsonIgnore
+	@ManyToMany(mappedBy="owner")
+	private List<Meetup> myMeetups;
+
+	
+	@ManyToMany(mappedBy="attendees")
+	private List<Meetup> memberOfMeetups;
 
 	@ManyToOne
 	@JoinColumn(name = "origin_country")
@@ -303,6 +311,22 @@ public class User {
 
 	public void setPosts(List<Post> posts) {
 		this.posts = posts;
+	}
+
+	public List<Meetup> getMyMeetups() {
+		return myMeetups;
+	}
+
+	public void setMyMeetups(List<Meetup> myMeetups) {
+		this.myMeetups = myMeetups;
+	}
+
+	public List<Meetup> getMemberOfMeetups() {
+		return memberOfMeetups;
+	}
+
+	public void setMemberOfMeetups(List<Meetup> memberOfMeetups) {
+		this.memberOfMeetups = memberOfMeetups;
 	}
 
 	@Override
