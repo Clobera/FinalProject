@@ -1,6 +1,7 @@
 package com.skilldistillery.bilingualbuddies.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -8,29 +9,51 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 public class Post {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+
 	private String content;
-	
-	@Column(name="image_url")
+
+	@Column(name = "image_url")
 	private String imageUrl;
-	
-	@Column(name="post_date")
+
+	@Column(name = "post_date")
 	@CreationTimestamp
 	private LocalDateTime postDate;
-	
+
 	private boolean enabled;
+
+	@OneToMany(mappedBy = "post")
+	private List<Comment> comments;
 
 	public Post() {
 		super();
+	}
+
+	public Post(int id, User user, String content, String imageUrl, LocalDateTime postDate, boolean enabled,
+			List<Comment> comments) {
+		super();
+		this.id = id;
+		this.user = user;
+		this.content = content;
+		this.imageUrl = imageUrl;
+		this.postDate = postDate;
+		this.enabled = enabled;
+		this.comments = comments;
 	}
 
 	public int getId() {
@@ -73,6 +96,22 @@ public class Post {
 		this.enabled = enabled;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -92,11 +131,8 @@ public class Post {
 
 	@Override
 	public String toString() {
-		return "Post [id=" + id + ", content=" + content + ", imageUrl=" + imageUrl + ", postDate=" + postDate
-				+ ", enabled=" + enabled + "]";
+		return "Post [id=" + id + ", user=" + user + ", content=" + content + ", imageUrl=" + imageUrl + ", postDate="
+				+ postDate + ", enabled=" + enabled + ", comments=" + comments + "]";
 	}
-	
-	
-	
 
 }
