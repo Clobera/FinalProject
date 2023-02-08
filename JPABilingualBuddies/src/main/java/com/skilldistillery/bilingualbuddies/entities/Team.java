@@ -160,9 +160,8 @@ public class Team {
 
 	@Override
 	public String toString() {
-		return "Team [id=" + id + ", owner=" + owner + ", content=" + content + ", imageUrl=" + imageUrl + ", name="
-				+ name + ", createdAt=" + createdAt + ", enabled=" + enabled + ", meetups=" + meetups + ", members="
-				+ members + "]";
+		return "Team [id=" + id + ", content=" + content + ", imageUrl=" + imageUrl + ", name="
+				+ name + ", createdAt=" + createdAt + ", enabled=" + enabled + ", meetups=" + meetups +"]";
 	}
 
 }

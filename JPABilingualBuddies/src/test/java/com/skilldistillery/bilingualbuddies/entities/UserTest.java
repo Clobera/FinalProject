@@ -52,7 +52,7 @@ class UserTest {
 	@Test
 	void test_OneToOne_address() {
 		assertNotNull(user);
-		assertEquals(null, user.getAddress());
+		assertEquals(1, user.getAddress().getId());
 	}
 
 	@Test
@@ -112,12 +112,12 @@ class UserTest {
 	}
 	
 //	uncomment and finish this test when proper address is added to db.
-//	@Test
-//	void test_RM_address_user() {
-//		assertNotNull(user);
-//		assertEquals(1, user.getAddress().getId());
-//	}
-//	
+	@Test
+	void test_RM_address_user() {
+		assertNotNull(user);
+		assertEquals(1, user.getAddress().getId());
+	}
+	
 	@Test
 	void test_MTM_mapping_to_Meetup_myMeetups() {
 		assertNotNull(user);

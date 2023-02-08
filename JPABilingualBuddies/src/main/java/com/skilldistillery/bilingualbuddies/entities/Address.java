@@ -45,9 +45,7 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return "Address [id=" + id + ", address=" + address + ", city=" + city + ", state=" + state + ", postalCode="
-				+ postalCode + ", enabled=" + enabled + ", user=" + user + ", meetup=" + meetup + ", meetups=" + meetups
-				+ "]";
+		return "no";
 	}
 
 	public User getUser() {

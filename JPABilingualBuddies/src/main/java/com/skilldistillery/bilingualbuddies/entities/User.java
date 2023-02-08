@@ -116,7 +116,6 @@ public class User {
 	}
 	
 	
-	
 	//MTM add remove methods
 	public void addMeetup(Meetup member) {
 		if(memberOfMeetups == null) {
