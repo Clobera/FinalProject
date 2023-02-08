@@ -1,0 +1,10 @@
+<div class="login row col-10">
+  <div class="card">
+    <form>
+      <input type="text" placeholder="Username" [(ngModel)]="username">
+      <input type="password" placeholder="Password" [(ngModel)]="password">
+      <button (click)="login(username, password)">Login</button> <button (click)="register()">Register</button>
+
+    </form>
+  </div>
+</div>

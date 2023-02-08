@@ -8,12 +8,26 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NotfoundComponent } from './components/notfound/notfound.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { LoginComponent } from './components/login/login.component';
+import { AccountComponent } from './components/account/account.component';
+import { MygroupsComponent } from './components/mygroups/mygroups.component';
+import { AlertsComponent } from './components/alerts/alerts.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    NavbarComponent,
+    FooterComponent,
+    LoginComponent,
+    AccountComponent,
+    MygroupsComponent,
+    AlertsComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
