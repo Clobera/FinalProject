@@ -87,6 +87,13 @@ class UserTest {
 		user2 = null;
 		
 	}
+	
+	@Test
+	void test_MTO_mapping_to_LanguageResource() {
+		assertNotNull(user);
+		assertTrue(user.getLanguageResource().size() > 0);
+		
+	}
 
 
 }

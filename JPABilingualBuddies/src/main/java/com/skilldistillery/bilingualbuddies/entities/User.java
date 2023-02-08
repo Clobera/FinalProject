@@ -79,6 +79,9 @@ public class User {
 
 	@OneToMany(mappedBy="receiver")
 	private List<Alert> alerts;
+	
+	@OneToMany(mappedBy = "addedBy")
+	private List<LanguageResource> languageResource;
 
 	public User() {
 		super();
@@ -281,6 +284,15 @@ public class User {
 	public void setAlerts(List<Alert> alerts) {
 		this.alerts = alerts;
 	}
+	
+
+	public List<LanguageResource> getLanguageResource() {
+		return languageResource;
+	}
+
+	public void setLanguageResource(List<LanguageResource> languageResource) {
+		this.languageResource = languageResource;
+	}
 
 	@Override
 	public boolean equals(Object obj) {
@@ -299,7 +311,9 @@ public class User {
 		return "User [id=" + id + ", email=" + email + ", username=" + username + ", password=" + password
 				+ ", dateCreated=" + dateCreated + ", lastLogin=" + lastLogin + ", enabled=" + enabled + ", role="
 				+ role + ", sponsor=" + sponsor + ", firstName=" + firstName + ", lastName=" + lastName + ", imageUrl="
-				+ imageUrl + ", bio=" + bio + ", comments=" + comments + "]";
+				+ imageUrl + ", bio=" + bio + ", myTeam=" + myTeam + ", memberOfTeams=" + memberOfTeams + ", country="
+				+ country + ", languages=" + languages + ", comments=" + comments + ", address=" + address
+				+ ", sentAlert=" + sentAlert + ", alerts=" + alerts + ", languageResource=" + languageResource + "]";
 	}
 
 }

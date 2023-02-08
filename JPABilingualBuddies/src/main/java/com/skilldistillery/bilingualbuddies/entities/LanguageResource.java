@@ -11,8 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.xml.ws.soap.MTOM;
 
 import org.hibernate.annotations.CreationTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 @Entity
 @Table(name = "language_resource")
@@ -34,29 +37,31 @@ public class LanguageResource {
 	@ManyToOne
 	private Language language;
 
-	@JoinColumn(name = "added_by")
-	@ManyToOne
-	private User user;
-
 	@CreationTimestamp
 	@Column(name = "create_date")
 	private LocalDateTime createDate;
+	
+	@ManyToOne
+	@JoinColumn(name = "added_by")
+	private User addedBy;
 
 	public LanguageResource() {
 		super();
 	}
 
-	public LanguageResource(int id, String name, String resourceUrl, String description, Language language, User user,
-			LocalDateTime createDate) {
+
+	public LanguageResource(int id, String name, String resourceUrl, String description, Language language,
+			LocalDateTime createDate, User addedBy) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.resourceUrl = resourceUrl;
 		this.description = description;
 		this.language = language;
-		this.user = user;
 		this.createDate = createDate;
+		this.addedBy = addedBy;
 	}
+
 
 	public int getId() {
 		return id;
@@ -90,13 +95,6 @@ public class LanguageResource {
 		this.createDate = createDate;
 	}
 
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
 
 	public String getName() {
 		return name;
@@ -112,6 +110,15 @@ public class LanguageResource {
 
 	public void setLanguage(Language language) {
 		this.language = language;
+	}
+	
+
+	public User getAddedBy() {
+		return addedBy;
+	}
+
+	public void setAddedBy(User addedBy) {
+		this.addedBy = addedBy;
 	}
 
 	@Override
@@ -134,7 +141,9 @@ public class LanguageResource {
 	@Override
 	public String toString() {
 		return "LanguageResource [id=" + id + ", name=" + name + ", resourceUrl=" + resourceUrl + ", description="
-				+ description + ", language=" + language + ", user=" + user + ", createDate=" + createDate + "]";
+				+ description + ", language=" + language + ", createDate=" + createDate + ", addedBy=" + addedBy + "]";
 	}
+
+
 
 }

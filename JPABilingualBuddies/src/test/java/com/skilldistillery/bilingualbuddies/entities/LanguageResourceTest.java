@@ -52,5 +52,12 @@ class LanguageResourceTest {
 		assertNotNull(lr);
 		assertEquals("English", lr.getLanguage().getName());
 	}
+	
+	@Test
+	void test_MTO_mapping_to_user() {
+		assertNotNull(lr);
+		assertEquals(1, lr.getAddedBy().getId());
+		
+	}
 
 }
