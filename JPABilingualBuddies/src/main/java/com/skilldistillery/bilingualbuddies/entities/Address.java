@@ -1,5 +1,6 @@
 package com.skilldistillery.bilingualbuddies.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -7,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Address {
@@ -25,6 +28,12 @@ public class Address {
 	private String city;
 	
 	private Boolean enabled;
+	
+	@OneToOne(mappedBy="address")
+	private User user;
+	
+	@OneToMany(mappedBy="address")
+	private List<Meetup> meetup;
 
 	@Override
 	public int hashCode() {
@@ -97,8 +106,25 @@ public class Address {
 		return enabled;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+
 	public void setEnabled(Boolean enabled) {
 		this.enabled = enabled;
+	}
+
+	public List<Meetup> getMeetup() {
+		return meetup;
+	}
+
+	public void setMeetup(List<Meetup> meetup) {
+		this.meetup = meetup;
 	}
 	
 }

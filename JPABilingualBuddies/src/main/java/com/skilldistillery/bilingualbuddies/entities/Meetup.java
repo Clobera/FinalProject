@@ -2,6 +2,7 @@ package com.skilldistillery.bilingualbuddies.entities;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -10,6 +11,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -25,16 +31,25 @@ public class Meetup {
 	
 	private String content;
 	
-//	 @JoinColumn(name = "address_id")
-//	 private Address address;
+	@ManyToOne
+	 @JoinColumn(name = "address_id")
+	 private Address address;
 	
 	private Boolean enabled;
 	
-//	@JoinColumn(name = "owner_id")
-//	private User owner
+	@ManyToOne
+	@JoinColumn(name = "owner_id")
+	private User owner;
 	
 //	@JoinColumn(name = "team_id")
 //	private Team team;
+	
+	@ManyToMany
+	@JoinTable(name="user_has_meetup", 
+		joinColumns=@JoinColumn(name = "user_id"),
+		inverseJoinColumns=@JoinColumn(name="event_id"))
+	private List<User> attendees;
+	
 	
 	@Column(name = "start_time")
 	private LocalTime startTime;

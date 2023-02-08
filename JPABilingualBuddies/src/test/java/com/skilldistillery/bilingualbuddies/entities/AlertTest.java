@@ -12,11 +12,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class NotificationTest {
+class AlertTest {
 
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Notification notification;
+	private Alert alert;
 	
 
 	@BeforeAll
@@ -32,19 +32,19 @@ class NotificationTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		notification = em.find(Notification.class, 1);
+		alert = em.find(Alert.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		notification = null;
+		alert = null;
 	}
 
 //	@Test
 //	void test() {
-//		assertNotNull(notification);
-//		assertEquals("admin", notification.getContent());
+//		assertNotNull(alert);
+//		assertEquals("admin", alert.getContent());
 //	}
 
 
