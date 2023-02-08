@@ -42,8 +42,10 @@ class MeetupTest {
 	}
 
 
-	@Test
-	void test() {
-	}
+//	@Test
+//	void test() {
+//		assertNotNull(meetup);
+//		assertEquals(1, meetup.getId());
+//	}
 
 }

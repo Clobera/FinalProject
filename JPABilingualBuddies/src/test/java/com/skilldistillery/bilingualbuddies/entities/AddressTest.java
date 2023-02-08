@@ -1,6 +1,7 @@
 package com.skilldistillery.bilingualbuddies.entities;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -42,9 +43,11 @@ class AddressTest {
 	}
 
 
-	@Test
-	void test() {
-	}
+//	@Test
+//	void test() {
+//		assertNotNull(address);
+//		assertEquals(1, address.getId());
+//	}
 
 
 }
