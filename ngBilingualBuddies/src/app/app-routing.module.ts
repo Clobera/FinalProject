@@ -10,12 +10,12 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
-  {path: 'Home', component: HomeComponent},
-  {path: 'Login', component: LoginComponent},
-  {path: 'Account', component: AccountComponent},
-  {path: 'MyGroups', component: MygroupsComponent},
-  {path: 'Alerts', component: AlertsComponent},
-  {path: 'LogOut', component: LogoutComponent},
+  {path: 'home', component: HomeComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'account', component: AccountComponent},
+  {path: 'mygroups', component: MygroupsComponent},
+  {path: 'alerts', component: AlertsComponent},
+  {path: 'logOut', component: LogoutComponent},
 
   {path: '**', component: NotfoundComponent}
 ];
