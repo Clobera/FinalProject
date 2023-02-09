@@ -6,9 +6,9 @@
     <div class="card orange">
       <form>
        <h3> Username: </h3> <br>
-        <input class="form-control" type="text" placeholder="Username" [(ngModel)]="username"> <br>
+        <input class="form-control" type="text" placeholder="Username" name="Username" [(ngModel)]="username"> <br>
         <h3> Password:</h3> <br>
-        <input class="form-control" type="password" placeholder="Password" [(ngModel)]="password"> <br>
+        <input class="form-control" type="password" placeholder="Password" name="Password" [(ngModel)]="password"> <br>
         <button class="btn btn-dark" (click)="login(username, password)">Login</button> <span class="text-orange">-------</span><button class="btn btn-dark" (click)="register()">Register</button>
 
       </form>
