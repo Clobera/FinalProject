@@ -1,6 +1,8 @@
+import { SeenPipe } from './../../pipes/seen.pipe';
 import { Router } from '@angular/router';
 import { AuthService } from './../../services/auth.service';
 import { Component, Input } from '@angular/core';
+import { User } from 'src/app/models/user';
 
 
 @Component({
@@ -11,23 +13,25 @@ import { Component, Input } from '@angular/core';
 })
 export class NavbarComponent {
   collapsed = true;
-  @Input() loggedIn = this.authservice.checkLogin();
+  user = new User();
+  alerts = this.seen.transform(this.user.alerts);
+
+
+  constructor(private authservice : AuthService, private router : Router, private seen : SeenPipe){
+  }
   toggleCollapsed(): void {
     this.collapsed = !this.collapsed;
 
   }
-  constructor(private authservice : AuthService, private router : Router){
-  }
+
+loggedInMethod(){
+  return this.authservice.checkLogin();
+}
 
 onLogout(){
   this.authservice.logout();
 this.router.navigate(['/home']);
-this.loggedIn = this.checkLogin();
-}
 
-checkLogin(){
-  return this.authservice.checkLogin();
 }
-
 
 }

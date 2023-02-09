@@ -17,6 +17,8 @@ import { MygroupsComponent } from './components/mygroups/mygroups.component';
 import { AlertsComponent } from './components/alerts/alerts.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { IncompletePipe } from './pipes/incomplete.pipe';
+import { SearchComponent } from './components/search/search.component';
+import { SeenPipe } from './pipes/seen.pipe';
 
 @NgModule({
     declarations: [
@@ -31,9 +33,13 @@ import { IncompletePipe } from './pipes/incomplete.pipe';
         AlertsComponent,
         LogoutComponent,
         IncompletePipe,
-        RegisterComponent
+        RegisterComponent,
+        SearchComponent,
+        SeenPipe
     ],
-    providers: [],
+    providers: [
+      SeenPipe
+    ],
     bootstrap: [AppComponent],
     imports: [
         BrowserModule,
