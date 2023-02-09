@@ -57,10 +57,9 @@ public class CommentController {
 	}
 
 	@DeleteMapping("posts/{id}/comments/{cid}")
-	public void delete(HttpServletRequest req, HttpServletResponse res, @PathVariable Integer id,
-			@PathVariable Integer cid) {
+	public void delete(HttpServletRequest req, HttpServletResponse res, @PathVariable Comment cid) {
 		try {
-			commentService.deleteCommentById(id, cid);
+			commentService.deleteCommentById(cid);
 			res.setStatus(204);
 		} catch (Exception e) {
 			e.printStackTrace();

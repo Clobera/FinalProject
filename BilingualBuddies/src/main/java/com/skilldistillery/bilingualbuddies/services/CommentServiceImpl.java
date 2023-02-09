@@ -55,32 +55,13 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 	@Override
-	public boolean deleteCommentById(int postId, int commentId) {
+	public boolean deleteCommentById(Comment comment) {
 		boolean deleted = false;
-		Post post = new Post();
-		Comment deleteMe = new Comment();
-
-		Optional<Post> postOpt = postRepo.findById(postId);
-		if (postOpt.isPresent()) {
-			post = postOpt.get();
-
-			Optional<Comment> comment = commentRepo.findById(commentId);
-			if (comment.isPresent()) {
-				deleteMe = comment.get();
-
-				List<Comment> comments = post.getComments();
-				int num = comments.indexOf(deleteMe);
-				if (num != -1) {
-					deleteMe = comments.get(num);
-					post.removeComment(deleteMe);
-					postRepo.saveAndFlush(post);
-					deleteMe.setEnabled(false);
-					deleted = true;
-					commentRepo.saveAndFlush(deleteMe);
-				}
-
-			}
-
+		Comment deleteMe = findById(comment.getId());
+		if (deleteMe != null) {
+			comment.setEnabled(false);
+			deleted = true;
+			commentRepo.saveAndFlush(comment);
 		}
 
 		return deleted;
