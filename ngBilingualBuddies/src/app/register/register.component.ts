@@ -13,7 +13,6 @@ export class RegisterComponent {
 
 
   register(user: User) {
-    user.createDate = new Date();
-    user.enabled = true;
+
   }
 }
