@@ -12,6 +12,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Language {
 
@@ -22,10 +24,12 @@ public class Language {
 	private String name;
 
 	private String description;
-
+	
+	@JsonIgnore
 	@OneToMany(mappedBy = "language")
 	private List<LanguageResource> resources;
 	
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "language_has_user",
 			joinColumns=@JoinColumn(name="language_id"),

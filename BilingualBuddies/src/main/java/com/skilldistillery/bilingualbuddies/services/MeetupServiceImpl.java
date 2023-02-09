@@ -33,7 +33,7 @@ public class MeetupServiceImpl implements MeetupService {
 
 	@Override
 	public Meetup findByDate(LocalDateTime meetupDate) {
-		Meetup meetup = meetupRepo.findMeetupByDate(meetupDate);
+		Meetup meetup = meetupRepo.findByMeetupDate(meetupDate);
 		return meetup;
 	}
 

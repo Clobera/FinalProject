@@ -381,6 +381,8 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 START TRANSACTION;
 USE `bilingualbuddiesdb`;
 INSERT INTO `address` (`id`, `address`, `state`, `postal_code`, `city`, `enabled`) VALUES (1, '810 Garrison St.', 'Colorado', '80215', 'Lakewood', 1);
+INSERT INTO `address` (`id`, `address`, `state`, `postal_code`, `city`, `enabled`) VALUES (2, '715 Street St.', 'Colorado', '80312', 'Lakewood', 1);
+INSERT INTO `address` (`id`, `address`, `state`, `postal_code`, `city`, `enabled`) VALUES (3, '515 Big St.', 'Colorado', '80721', 'Lakewood', 1);
 
 COMMIT;
 
@@ -401,7 +403,7 @@ COMMIT;
 START TRANSACTION;
 USE `bilingualbuddiesdb`;
 INSERT INTO `user` (`id`, `email`, `username`, `password`, `date_created`, `last_login`, `enabled`, `role`, `sponsor`, `first_name`, `last_name`, `image_url`, `bio`, `address_id`, `origin_country`) VALUES (1, 'admin@admin.com', 'admin', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', '2023-01-01', '2023-01-01', 1, 'admin', 0, 'admin', 'admin', NULL, NULL, 1, 'US');
-INSERT INTO `user` (`id`, `email`, `username`, `password`, `date_created`, `last_login`, `enabled`, `role`, `sponsor`, `first_name`, `last_name`, `image_url`, `bio`, `address_id`, `origin_country`) VALUES (2, 'joe@shmoe.com', 'joeshmoe', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', '2023-01-01', '2023-01-01', 1, 'admin', 0, 'Joe', 'Shmoe', NULL, NULL, 1, 'US');
+INSERT INTO `user` (`id`, `email`, `username`, `password`, `date_created`, `last_login`, `enabled`, `role`, `sponsor`, `first_name`, `last_name`, `image_url`, `bio`, `address_id`, `origin_country`) VALUES (2, 'joe@shmoe.com', 'joeshmoe', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', '2023-01-01', '2023-01-01', 1, 'admin', 0, 'Joe', 'Shmoe', NULL, NULL, 3, 'US');
 
 COMMIT;
 
@@ -431,7 +433,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `bilingualbuddiesdb`;
-INSERT INTO `meetup` (`id`, `meetup_date`, `content`, `address_id`, `enabled`, `owner_id`, `team_id`, `start_time`, `end_time`, `created_date`, `image_url`, `title`) VALUES (1, '2023-01-01', 'Meet Here to Learn English', 1, 1, 1, 1, NULL, NULL, '2023-01-01', 'https://www.lakewood.org/files/assets/public/community-resources/parks/holbrook-park.jpg?w=1200', 'English Time');
+INSERT INTO `meetup` (`id`, `meetup_date`, `content`, `address_id`, `enabled`, `owner_id`, `team_id`, `start_time`, `end_time`, `created_date`, `image_url`, `title`) VALUES (1, '2023-01-01', 'Meet Here to Learn English', 2, 1, 1, 1, NULL, NULL, '2023-01-01', 'https://www.lakewood.org/files/assets/public/community-resources/parks/holbrook-park.jpg?w=1200', 'English Time');
 
 COMMIT;
 
