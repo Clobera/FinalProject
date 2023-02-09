@@ -1,6 +1,6 @@
 <div class="row">
 
-  <div class="col-2">|</div>
+  <div class="col-1">|</div>
   <div class="register col text-center">
     <h1>Registration</h1>
     <div class="card orange">
@@ -15,28 +15,15 @@
         <input class="form-control" type="email" placeholder="John.Doe@Gmail.com" name="email" [(ngModel)]="user.email">
        <h3> Username: </h3>
         <input class="form-control" type="text" placeholder="Username" name="Username" [(ngModel)]="user.username">
+        <h3> Check if you are open to helping others </h3>
+         <input class="custom-control-input " type="checkbox" name="sponsor" [(ngModel)]="user.sponsor"> <br>
         <h3> Image Url:</h3>
         <input class="form-control" type="text" placeholder="Image Url" name="imgUrl" [(ngModel)]="user.username">
-       <h3> Check if you are open to helping others </h3>
-        <input class="custom-control-input " type="checkbox" name="sponsor" [(ngModel)]="user.sponsor"> <br>
-        How would you describe yourself?
-        <textarea class="form-control" [(ngModel)]="user.bio" name="bio" cols="40" rows="10"></textarea><br>
+        <h3>How would you describe yourself?</h3>
+        <textarea class="form-control" [(ngModel)]="user.bio" name="bio" cols="40" rows="10" placeholder="I have always wanted to learn another language. I am a learner, a lover, coahcable, and want to help others."></textarea><br>
         <button class="btn btn-dark" (click)="register(user)">Complete Registration</button>
-
-
-
-
-
-
-     <!--   id: number = 0;
-
-  firstName: string = '';
-  lastName: string = '';
-  imgUrl: string = '';
-  bio: string = ''; -->
-
       </form>
     </div>
   </div>
-  <div class="col-2">|</div>
+  <div class="col-1">|</div>
 </div>

@@ -15,9 +15,21 @@ div > .register > .orange > form > input {
 }
 div > .register > .orange > form > textarea {
   background-color: gray;
-  color: #EEF1ED;
+  color: #c8cec6;
 }
 input.custom-control-input {
     width: 25px;
     height: 25px;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #c8cec6;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #c8cec6;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #c8cec6;
 }
