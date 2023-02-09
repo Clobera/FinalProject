@@ -1,5 +1,6 @@
 package com.skilldistillery.bilingualbuddies.services;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -10,9 +11,7 @@ public interface MeetupService {
 
 	public Meetup findById(int meetupId);
 
-	public Meetup findByDate(LocalDateTime meetupDate);
-	
-//	public List<Meetup> findByDate(LocalDateTime meetupDate);
+	public List<Meetup> findByDate(LocalDate meetupDate);
 
 	public Meetup show(String meetupName);
 
