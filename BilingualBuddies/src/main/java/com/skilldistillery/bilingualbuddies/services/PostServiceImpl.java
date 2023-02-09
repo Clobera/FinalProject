@@ -37,6 +37,7 @@ public class PostServiceImpl implements PostService {
 
 	@Override
 	public Post create(Post post) {
+		post.setEnabled(true);
 		postRepo.saveAndFlush(post);
 		return post;
 	}
