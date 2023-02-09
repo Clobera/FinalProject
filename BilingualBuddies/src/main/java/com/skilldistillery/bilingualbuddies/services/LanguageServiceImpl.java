@@ -23,6 +23,11 @@ public class LanguageServiceImpl implements LanguageService {
 	public Language findLanguage(String name) {
 		return langRepo.findByName(name);
 	}
+
+	@Override
+	public Language findLanguageByCode(String code) {
+		return langRepo.findByCode(code);
+	}
 	
 	
 }

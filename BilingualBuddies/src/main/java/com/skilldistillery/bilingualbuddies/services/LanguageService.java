@@ -9,5 +9,7 @@ public interface LanguageService {
 	public List<Language> index();
 
 	public Language findLanguage(String name);
+	
+	public Language findLanguageByCode(String code);
 
 }
