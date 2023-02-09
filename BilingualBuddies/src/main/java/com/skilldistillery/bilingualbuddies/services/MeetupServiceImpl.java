@@ -1,6 +1,6 @@
 package com.skilldistillery.bilingualbuddies.services;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,18 +32,10 @@ public class MeetupServiceImpl implements MeetupService {
 	}
 
 	@Override
-	public Meetup findByDate(LocalDateTime meetupDate) {
-		Meetup meetup = meetupRepo.findByMeetupDate(meetupDate);
+	public List<Meetup> findByDate(LocalDate meetupDate) {
+		List<Meetup> meetup = meetupRepo.findByMeetupDate(meetupDate);
 		return meetup;
 	}
-
-	//NOT SURE WHICHONE IS WHAT WE WANT TO USE.
-	
-//	@Override
-//	public List<Meetup> findByDate(LocalDateTime meetupDate) {
-//		List<Meetup> meetup = (List<Meetup>) meetupRepo.findMeetupByDate(meetupDate);
-//		return meetup;
-//	}
 
 	@Override
 	public Meetup show(String meetupName) {

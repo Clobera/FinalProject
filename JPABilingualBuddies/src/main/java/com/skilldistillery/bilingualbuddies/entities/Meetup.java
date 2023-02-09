@@ -1,5 +1,6 @@
 package com.skilldistillery.bilingualbuddies.entities;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -29,32 +30,29 @@ public class Meetup {
 	private int id;
 
 	@Column(name = "meetup_date")
-	private LocalDateTime meetupDate;
+	private LocalDate meetupDate;
 
 	private String content;
-	
+
 	@ManyToOne
-	 @JoinColumn(name = "address_id")
-	 private Address address;
-	
+	@JoinColumn(name = "address_id")
+	private Address address;
+
 	private Boolean enabled;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "owner_id")
 	private User owner;
-		
+
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "team_id")
 	private Team team;
-	
+
 	@ManyToMany
-	@JoinTable(name="user_has_meetup", 
-		joinColumns=@JoinColumn(name = "user_id"),
-		inverseJoinColumns=@JoinColumn(name="event_id"))
+	@JoinTable(name = "user_has_meetup", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "event_id"))
 	private List<User> attendees;
-	
-	
+
 	@Column(name = "start_time")
 	private LocalTime startTime;
 
@@ -69,22 +67,22 @@ public class Meetup {
 	private String imgUrl;
 
 	private String title;
-	
+
 	@JsonIgnore
-	@OneToMany(mappedBy="meetup")
+	@OneToMany(mappedBy = "meetup")
 	private List<Alert> alerts;
-	
-	//MTM add remove methods
+
+	// MTM add remove methods
 	public void addMeetup(User member) {
-		if(attendees == null) {
+		if (attendees == null) {
 			attendees = new ArrayList<>();
 		}
-		if (! attendees.contains(member)) {
+		if (!attendees.contains(member)) {
 			attendees.add(member);
 			member.addMeetup(this);
 		}
 	}
-	
+
 	public void removeMeetup(User member) {
 		if (attendees != null && attendees.contains(member)) {
 			attendees.remove(member);
@@ -96,20 +94,24 @@ public class Meetup {
 		super();
 	}
 
-	public Meetup(int id, LocalDateTime meetupDate, String content, Address address, Boolean enabled, Team team,
-			LocalTime startTime, LocalTime endTime, LocalDateTime createdDate, String imgUrl, String title) {
+	public Meetup(int id, LocalDate meetupDate, String content, Address address, Boolean enabled, User owner, Team team,
+			List<User> attendees, LocalTime startTime, LocalTime endTime, LocalDateTime createdDate, String imgUrl,
+			String title, List<Alert> alerts) {
 		super();
 		this.id = id;
 		this.meetupDate = meetupDate;
 		this.content = content;
 		this.address = address;
 		this.enabled = enabled;
+		this.owner = owner;
 		this.team = team;
+		this.attendees = attendees;
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.createdDate = createdDate;
 		this.imgUrl = imgUrl;
 		this.title = title;
+		this.alerts = alerts;
 	}
 
 	public int getId() {
@@ -120,11 +122,11 @@ public class Meetup {
 		this.id = id;
 	}
 
-	public LocalDateTime getMeetupDate() {
+	public LocalDate getMeetupDate() {
 		return meetupDate;
 	}
 
-	public void setMeetupDate(LocalDateTime meetupDate) {
+	public void setMeetupDate(LocalDate meetupDate) {
 		this.meetupDate = meetupDate;
 	}
 

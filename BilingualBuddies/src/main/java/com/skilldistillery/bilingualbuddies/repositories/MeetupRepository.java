@@ -1,6 +1,7 @@
 package com.skilldistillery.bilingualbuddies.repositories;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -8,9 +9,7 @@ import com.skilldistillery.bilingualbuddies.entities.Meetup;
 
 public interface MeetupRepository extends JpaRepository<Meetup, Integer> {
 
-Meetup findByMeetupDate(LocalDateTime meetupDate);
-
-	Meetup findMeetupByMeetupDate(LocalDateTime meetupDate);
+	List<Meetup> findByMeetupDate(LocalDate meetupDate);
 
 	Meetup findMeetupByTitle(String meetupTitle);
 

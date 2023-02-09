@@ -1,10 +1,9 @@
 package com.skilldistillery.bilingualbuddies.controllers;
 
 import java.security.Principal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -41,8 +40,8 @@ public class MeetupController {
 		return meetupService.show(name);
 	}
 	
-	@GetMapping("meetups/{date}")
-	public Meetup findByDate(Principal principal, HttpServletRequest req, HttpServletResponse res, @PathVariable LocalDateTime date) {
+	@GetMapping("meetups/date/{date}")
+	public List<Meetup> findByDate(Principal principal, HttpServletRequest req, HttpServletResponse res, @PathVariable LocalDate date) {
 		return meetupService.findByDate(date);
 	}
 
