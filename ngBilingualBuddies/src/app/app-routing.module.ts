@@ -10,13 +10,9 @@ import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { MygroupsComponent } from './components/mygroups/mygroups.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
-<<<<<<< HEAD
-import { DatePipe } from '@angular/common';
-//import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
-=======
 import { RegisterComponent } from './register/register.component';
->>>>>>> a43027753a95355e8564b1d82cf77b610195aad3
+import { DatePipe } from '@angular/common';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
