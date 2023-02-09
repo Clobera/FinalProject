@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.bilingualbuddies.entities.Meetup;
 import com.skilldistillery.bilingualbuddies.entities.Post;
 import com.skilldistillery.bilingualbuddies.repositories.PostRepository;
 
@@ -43,15 +44,28 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public Post update(String postName, Post postUpdates) {
-		// TODO Auto-generated method stub
-		return null;
+	public Post update(int postId, Post postUpdates) {
+		Post output = findById(postId);
+		if (output != null) {
+			output.setContent(postUpdates.getContent());
+			output.setImageUrl(postUpdates.getImageUrl());
+			
+			output = postRepo.saveAndFlush(output);
+		}
+		
+		return output;
 	}
 
 	@Override
-	public boolean destroy(String postName) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean destroy(int postId) {
+		Post deleteMe = findById(postId);
+		boolean deleted = false;
+		if (deleteMe != null) {
+			deleteMe.setEnabled(false);
+			deleted = true;
+			postRepo.saveAndFlush(deleteMe);
+		}
+		return deleted;
 	}
 
 }

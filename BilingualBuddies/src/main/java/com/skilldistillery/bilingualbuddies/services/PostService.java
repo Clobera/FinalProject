@@ -16,8 +16,8 @@ public interface PostService {
 
 	public Post create(Post post);
 
-	public Post update(String postName, Post postUpdates);
+	public Post update(int postId, Post postUpdates);
 
-	public boolean destroy(String postName);
+	public boolean destroy(int postId);
 
 }
