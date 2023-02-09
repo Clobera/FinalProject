@@ -86,8 +86,4 @@ public class UserController {
 		}
 	}
 	
-	public User login( User user) {
-		
-		return user;
-	}
 }
