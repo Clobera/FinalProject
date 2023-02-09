@@ -403,7 +403,7 @@ COMMIT;
 START TRANSACTION;
 USE `bilingualbuddiesdb`;
 INSERT INTO `user` (`id`, `email`, `username`, `password`, `date_created`, `last_login`, `enabled`, `role`, `sponsor`, `first_name`, `last_name`, `image_url`, `bio`, `address_id`, `origin_country`) VALUES (1, 'admin@admin.com', 'admin', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', '2023-01-01', '2023-01-01', 1, 'admin', 0, 'admin', 'admin', NULL, NULL, 1, 'US');
-INSERT INTO `user` (`id`, `email`, `username`, `password`, `date_created`, `last_login`, `enabled`, `role`, `sponsor`, `first_name`, `last_name`, `image_url`, `bio`, `address_id`, `origin_country`) VALUES (2, 'joe@shmoe.com', 'joeshmoe', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', '2023-01-01', '2023-01-01', 1, 'admin', 0, 'Joe', 'Shmoe', NULL, NULL, 2, 'US');
+INSERT INTO `user` (`id`, `email`, `username`, `password`, `date_created`, `last_login`, `enabled`, `role`, `sponsor`, `first_name`, `last_name`, `image_url`, `bio`, `address_id`, `origin_country`) VALUES (2, 'joe@shmoe.com', 'joeshmoe', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', '2023-01-01', '2023-01-01', 1, 'admin', 0, 'Joe', 'Shmoe', NULL, NULL, 3, 'US');
 
 COMMIT;
 
