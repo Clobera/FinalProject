@@ -20,51 +20,51 @@ import com.skilldistillery.bilingualbuddies.services.CommentService;
 
 @RestController
 @RequestMapping("api")
-@CrossOrigin({"*","http://localhost/"})
+@CrossOrigin({ "*", "http://localhost/" })
 public class CommentController {
-	
 
 	@Autowired
 	CommentService commentService;
-	
-	
-	@GetMapping("posts/{id}/comments")
-	public List<Comment> index( HttpServletRequest req, HttpServletResponse res, @PathVariable Integer id){
-		
-		return commentService.findAllComments(id);
+
+	@GetMapping(path = "posts/{id}/comments")
+	public List<Comment> listComments(@PathVariable int id) {
+		List<Comment> comments = commentService.findAllComments(id);
+
+		return comments;
 	}
-	
+
 	@GetMapping("comments/{id}")
-	public Comment show( HttpServletRequest req, HttpServletResponse res, @PathVariable int id) {
+	public Comment show(HttpServletRequest req, HttpServletResponse res, @PathVariable int id) {
 		return commentService.findById(id);
-				
+
 	}
+
 	@PostMapping("posts/{id}/comments")
-	public Comment create(HttpServletRequest req, HttpServletResponse res, @RequestBody Comment comment, @PathVariable Integer id) {
+	public Comment create(HttpServletRequest req, HttpServletResponse res, @RequestBody Comment comment,
+			@PathVariable Integer id) {
 		try {
 			commentService.createComment(id, comment);
 			res.setStatus(201);
 			StringBuffer url = req.getRequestURL();
 			url.append("/").append(comment.getId());
 			res.setHeader("Location", url.toString());
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			res.setStatus(400);
 			comment = null;
 		}
 		return null;
 	}
-	
-	
+
 	@DeleteMapping("posts/{id}/comments/{cid}")
-	public void delete( HttpServletRequest req, HttpServletResponse res, @PathVariable Integer id, @PathVariable Integer cid) {
+	public void delete(HttpServletRequest req, HttpServletResponse res, @PathVariable Integer id,
+			@PathVariable Integer cid) {
 		try {
 			commentService.deleteCommentById(id, cid);
 			res.setStatus(204);
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			res.setStatus(400);
 		}
 	}
 }
-
