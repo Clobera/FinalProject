@@ -38,7 +38,10 @@ public class AuthController {
 	     res.setHeader("WWW-Authenticate", "Basic");
 	     return null;
 	  }
-	  return authService.getUserByUsername(principal.getName());
+	  User user = authService.getUserByUsername(principal.getName());
+	  System.out.println(user.getAlerts().get(0));
+	  user.getAlerts().size();
+	  return user;
 	}
 
 }

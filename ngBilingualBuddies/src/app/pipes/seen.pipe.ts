@@ -7,12 +7,15 @@ import { Alert } from '../models/alert';
 export class SeenPipe implements PipeTransform {
 
   transform(alerts : Alert[]):Alert[] {
+    console.log(alerts);
+
     let ans : Alert[] = [];
     for (let al of alerts){
-      if (!al.seen){
+      if (al.seen){
         ans.push(al);
       }
     }
+    console.log(ans);
     return ans;
   }
 

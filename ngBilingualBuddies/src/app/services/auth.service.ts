@@ -82,6 +82,7 @@ export class AuthService {
        );
    }
 
+
    checkLogin(): boolean {
      if (localStorage.getItem('credentials')) {
        return true;

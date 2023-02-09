@@ -1,7 +1,7 @@
 import { SeenPipe } from './../../pipes/seen.pipe';
 import { Router } from '@angular/router';
 import { AuthService } from './../../services/auth.service';
-import { Component, Input } from '@angular/core';
+import { Component, Input, Pipe } from '@angular/core';
 import { User } from 'src/app/models/user';
 
 
@@ -19,6 +19,22 @@ export class NavbarComponent {
 
   constructor(private authservice : AuthService, private router : Router, private seen : SeenPipe){
   }
+
+  loadUser(){
+    this.authservice.getLoggedInUser().subscribe({
+      next: (data) => {
+        this.user = data;
+        this.alerts = this.seen.transform(this.user.alerts);
+      },
+      error: (err) => {
+        console.log(
+          'NavbarCompenent.loadUser: Error getting user'
+        );
+        console.log(err);
+      }
+    });
+  }
+
   toggleCollapsed(): void {
     this.collapsed = !this.collapsed;
 

@@ -26,14 +26,15 @@
       <ul class="navbar-nav me-auto mt-2 mb-lg-0" *ngIf="loggedInMethod()">
         <li class="nav-item">
           <div ngbDropdown>
-            <button class="btn-primary btn" id="gfg" ngbDropdownToggle>
+            <button class="btn-primary btn" id="gfg" ngbDropdownToggle (click)="loadUser()">
               Alerts
             </button>
             <div ngbDropdownMenu="gfg">
               <ul>
                 <li *ngFor="let al of alerts">
-                  al.notificationDate | date : "shortdate" <br />
-                  al.content
+                  {{al.content}}
+                  <br />
+                  {{al.notificationDate}}
                 </li>
               </ul>
             </div>

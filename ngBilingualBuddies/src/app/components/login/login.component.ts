@@ -27,6 +27,7 @@ export class LoginComponent {
     this.authService.login(username, password).subscribe({
       next: (data) => {
         this.router.navigateByUrl("home");
+        console.log(data);
       },
       error: (err) => {
         console.log("Error LoginCompenent.login(): error logging in");

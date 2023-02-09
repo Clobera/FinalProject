@@ -136,8 +136,9 @@ public class Alert {
 
 	@Override
 	public String toString() {
-		return "Alert [id=" + id + ", sender=" + sender + ", receiver=" + receiver + ", meetup=" + meetup + ", content="
-				+ content + ", notificationDate=" + notificationDate + ", seen=" + seen + "]";
+		return "Alert [id=" + id + ", content=" + content + ", notificationDate=" + notificationDate + ", seen=" + seen
+				+ "]";
 	}
+
 
 }
