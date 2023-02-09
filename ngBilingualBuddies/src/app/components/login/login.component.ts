@@ -17,10 +17,6 @@ export class LoginComponent {
   password : string = "";
 
 
-
-
-
-
   register() {
     this.router.navigateByUrl("register");
   }

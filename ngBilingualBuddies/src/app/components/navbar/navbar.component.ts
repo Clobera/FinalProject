@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { AuthService } from './../../services/auth.service';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 
 @Component({
@@ -11,20 +11,23 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
   collapsed = true;
+  @Input() loggedIn = this.authservice.checkLogin();
   toggleCollapsed(): void {
     this.collapsed = !this.collapsed;
 
   }
-  constructor(private authservice : AuthService, private router : Router){}
-
-  loggedIn(){
-return this.authservice.checkLogin();
-}
+  constructor(private authservice : AuthService, private router : Router){
+  }
 
 onLogout(){
   this.authservice.logout();
-  localStorage.removeItem('user');
 this.router.navigate(['/home']);
+this.loggedIn = this.checkLogin();
 }
+
+checkLogin(){
+  return this.authservice.checkLogin();
+}
+
 
 }
