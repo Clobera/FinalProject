@@ -21,7 +21,7 @@ import com.skilldistillery.bilingualbuddies.services.LanguageService;
 public class LanguageController {
 	@Autowired
 	private LanguageService langService;
-	
+
 	@GetMapping("languages")
 	public List<Language> index(HttpServletResponse res, HttpServletRequest req) {
 		return langService.index();
@@ -30,7 +30,21 @@ public class LanguageController {
 
 	@GetMapping("languages/{name}")
 	public Language show(HttpServletResponse res, HttpServletRequest req, @PathVariable String name) {
-		return langService.findLanguage(name);
+		
+		Language lang = langService.findLanguage(name);
+		try {
+			if (lang != null) {
+				res.setStatus(200);
+				return lang;
+			} else {
+				res.setStatus(400);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			res.setStatus(400);
+			lang = null;
+		}
+		return lang;
 
 	}
 

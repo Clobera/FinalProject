@@ -21,7 +21,7 @@ public class LanguageServiceImpl implements LanguageService {
 
 	@Override
 	public Language findLanguage(String name) {
-		return langRepo.findLanuageByName(name);
+		return langRepo.findByName(name);
 	}
 	
 	
