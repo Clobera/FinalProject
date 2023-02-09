@@ -1,27 +1,79 @@
 <div class="row">
-
   <div class="col-1">|</div>
   <div class="register col text-center">
     <h1>Registration</h1>
     <div class="card orange">
       <form>
-        <h3> First Name:</h3>
-        <input [(ngModel)]="user.firstName"  type="text" placeholder="First Name" name="firstName" class="form-control">
-        <h3> Last Name:</h3>
-        <input [(ngModel)]="user.lastName"  type="text" placeholder="Last Name" name="lastName" class="form-control">
-        <h3> Password:</h3>
-        <input [(ngModel)]="user.password"  type="password" placeholder="Password" name="Password" class="form-control">
-       <h3> Email: </h3>
-        <input class="form-control" type="email" placeholder="John.Doe@Gmail.com" name="email" [(ngModel)]="user.email">
-       <h3> Username: </h3>
-        <input class="form-control" type="text" placeholder="Username" name="Username" [(ngModel)]="user.username">
-        <h3> Check if you are open to helping others </h3>
-         <input class="custom-control-input " type="checkbox" name="sponsor" [(ngModel)]="user.sponsor"> <br>
-        <h3> Image Url:</h3>
-        <input class="form-control" type="text" placeholder="Image Url" name="imgUrl" [(ngModel)]="user.username">
+        <h3>First Name:</h3>
+        <input
+          [ngClass]="fnameClass"
+          [(ngModel)]="user.firstName"
+          type="text"
+          placeholder="First Name"
+          name="firstName"
+          class="form-control"
+        />
+        <h3>Last Name:</h3>
+        <input
+          [ngClass]="lnameClass"
+          [(ngModel)]="user.lastName"
+          type="text"
+          placeholder="Last Name"
+          name="lastName"
+        />
+        <h3>Password:</h3>
+        <input
+          [ngClass]="passwordClass"
+          [(ngModel)]="user.password"
+          type="password"
+          placeholder="Password"
+          name="Password"
+        />
+        <h3>Email:</h3>
+        <input
+          [ngClass]="emailClass"
+          type="email"
+          placeholder="John.Doe@Gmail.com"
+          name="email"
+          [(ngModel)]="user.email"
+        />
+        <h3>Username:</h3>
+        <input
+          [ngClass]="usernameClass"
+          type="text"
+          placeholder="Username"
+          name="Username"
+          [(ngModel)]="user.username"
+        />
+        <h3>Check if you are open to helping others</h3>
+        <input
+          class="custom-control-input"
+          type="checkbox"
+          name="sponsor"
+          [(ngModel)]="user.sponsor"
+        />
+        <br />
+        <h3>Image Url:</h3>
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Image Url"
+          name="imgUrl"
+          [(ngModel)]="user.imgUrl"
+        />
         <h3>How would you describe yourself?</h3>
-        <textarea class="form-control" [(ngModel)]="user.bio" name="bio" cols="40" rows="10" placeholder="I have always wanted to learn another language. I am a learner, a lover, coahcable, and want to help others."></textarea><br>
-        <button class="btn btn-dark" (click)="register(user)">Complete Registration</button>
+        <textarea
+          class="form-control"
+          [(ngModel)]="user.bio"
+          name="bio"
+          cols="40"
+          rows="10"
+          placeholder="I have always wanted to learn another language. I am a learner, a lover, coahcable, and want to help others."
+        ></textarea
+        ><br />
+        <button class="btn btn-dark" (click)="register(user)">
+          Complete Registration
+        </button>
       </form>
     </div>
   </div>
