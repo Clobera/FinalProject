@@ -1,3 +1,4 @@
+
 export class User {
   id: number;
   email: string;
@@ -45,3 +46,4 @@ export class User {
     this.bio = bio;
   }
 }
+
