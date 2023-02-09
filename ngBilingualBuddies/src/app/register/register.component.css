@@ -1,0 +1,23 @@
+.register {
+  background-color: #28292D;
+  color: #E34F15;
+}
+.orange {
+  background-color: #E34F15;
+  color: #28292D;
+ }
+.text-orange {
+  color:#E34F15;
+}
+div > .register > .orange > form > input {
+  background-color: gray;
+  color: #EEF1ED;
+}
+div > .register > .orange > form > textarea {
+  background-color: gray;
+  color: #EEF1ED;
+}
+input.custom-control-input {
+    width: 25px;
+    height: 25px;
+}
