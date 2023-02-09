@@ -56,7 +56,7 @@ export class AuthService {
 
    logout(): void {
      localStorage.removeItem('credentials');
-   }
+    }
 
    getLoggedInUser(): Observable<User> {
      if (!this.checkLogin()) {
