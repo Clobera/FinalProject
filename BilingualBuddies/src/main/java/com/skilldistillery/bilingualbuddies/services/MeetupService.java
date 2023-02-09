@@ -1,7 +1,6 @@
 package com.skilldistillery.bilingualbuddies.services;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 import com.skilldistillery.bilingualbuddies.entities.Meetup;

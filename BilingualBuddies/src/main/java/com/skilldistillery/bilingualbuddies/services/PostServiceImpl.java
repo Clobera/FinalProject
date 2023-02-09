@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.skilldistillery.bilingualbuddies.entities.Meetup;
 import com.skilldistillery.bilingualbuddies.entities.Post;
 import com.skilldistillery.bilingualbuddies.repositories.PostRepository;
 
@@ -32,9 +31,8 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public Post findByUserId(int userId) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Post> findByUserId(int userId) {
+		return postRepo.findByUser_Id(userId);
 	}
 
 	@Override

@@ -35,7 +35,13 @@ public class PostController {
 	
 	@GetMapping("posts/{id}")
 	public Post findById(@PathVariable Integer id, HttpServletResponse res) {
-		return pService.findByUserId(id);
+		return pService.findById(id);
+		
+	}
+
+	@GetMapping("users/{uid}/posts")
+	public List<Post> findByUserId(@PathVariable Integer uid, HttpServletResponse res) {
+		return pService.findByUserId(uid);
 		
 	}
 	

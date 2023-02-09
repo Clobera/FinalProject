@@ -10,7 +10,7 @@ public interface PostService {
 
 	public Post findById(int postId);
 
-	public Post findByUserId(int userId);
+	public List<Post> findByUserId(int userId);
 	
 //	public Post show(String postName);
 
