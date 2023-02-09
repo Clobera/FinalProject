@@ -15,6 +15,7 @@ import { AccountComponent } from './components/account/account.component';
 import { MygroupsComponent } from './components/mygroups/mygroups.component';
 import { AlertsComponent } from './components/alerts/alerts.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { IncompletePipe } from './pipes/incomplete.pipe';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { LogoutComponent } from './components/logout/logout.component';
     AccountComponent,
     MygroupsComponent,
     AlertsComponent,
-    LogoutComponent
+    LogoutComponent,
+    IncompletePipe
   ],
   imports: [
     BrowserModule,
