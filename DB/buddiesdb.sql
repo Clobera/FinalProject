@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `image_url` TEXT NULL,
   `bio` TEXT NULL,
   `address_id` INT NULL,
-  `origin_country` CHAR(2) NOT NULL,
+  `origin_country` CHAR(2) NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `username_UNIQUE` (`username` ASC),
   INDEX `fk_user_address1_idx` (`address_id` ASC),
@@ -393,6 +393,105 @@ COMMIT;
 START TRANSACTION;
 USE `bilingualbuddiesdb`;
 INSERT INTO `country` (`country_code`, `country`) VALUES ('US', 'United States');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('AF', 'Afghanistan');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('AX', 'Aland Islands');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('AL', 'Albania');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('DZ', 'Algeria');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('AS', 'American Samoa');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('AD', 'Andorra');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('AO', 'Angola');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('AI', 'Anguilla');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('AQ', 'Antarctica');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('AG', 'Antigua and Barbuda');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('AR', 'Argentina');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('AM', 'Armenia');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('AW', 'Aruba');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('AU', 'Australia');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('AT', 'Austria');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('AZ', 'Azerbaijan');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('BS', 'Bahamas');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('BH', 'Bahrain');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('BD', 'Bangladesh');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('BB', 'Barbados');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('BY', 'Belarus');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('BE', 'Belgium');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('BZ', 'Belize');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('BJ', 'Benin');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('BM', 'Bermuda');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('BT', 'Bhutan');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('BO', 'Bolivia');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('BA', 'Bosnia and Herzegovina');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('BW', 'Botswana');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('BV', 'Bouvet Island');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('BR', 'Brazil');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('VG', 'British Virgin Islands');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('IO', 'British Indian Ocean Territory');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('BN', 'Brunei Darussalam');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('BG', 'Bulgaria');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('BF', 'Burkina Faso');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('BI', 'Burundi');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('KH', 'Cambodia');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('CM', 'Cameroon');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('CA', 'Canada');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('CV', 'Cape Verde');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('KY', 'Cayman Islands');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('CF', 'Central African Republic');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('TD', 'Chad');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('CL', 'Chile');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('CN', 'China');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('HK', 'Hong Kong');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('MO', 'Macao');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('CX', 'Christmas Island');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('CC', 'Cocos Islands');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('CO', 'Colombia');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('KM', 'Comoros');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('CG', 'Congo (Brazzaville)');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('CD', 'Congo(Kinshasa)');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('CK', 'Cook Islands');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('CR', 'Costa Rica');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('CI', 'Côte d\'Ivoire');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('HR', 'Croatia');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('CU', 'Cuba');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('CY', 'Cyprus');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('CZ', 'Czech Republic');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('DK', 'Denmark');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('DJ', 'Djibouti');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('DM', 'Dominica');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('DO', 'Dominican Republic');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('EC', 'Ecuador');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('EG', 'Egypt');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('SV', 'El Salvador');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('GQ', 'Equatorial Guinea');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('ER', 'Eritrea');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('EE', 'Estonia');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('ET', 'Ethiopia');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('FK', 'Falkland Islands');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('FO', 'Faroe Islands');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('FJ', 'Fiji');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('FI', 'Finland');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('FR', 'France');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('GF', 'French Guiana');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('PF', 'French Polynesia');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('TF', 'French Southern Territories');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('GA', 'Gabon');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('GM', 'Gambia');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('GE', 'Georgia');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('DE', 'Germany');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('GH', 'Ghana');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('GI', 'Gibraltar');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('GR', 'Greece');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('GL', 'Greenland');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('GD', 'Grenada');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('GP', 'Guadeloupe');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('GU', 'Guam');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('GT', 'Guatemala');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('GG', 'Guernsey');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('GN', 'Guinea');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('GW', 'Guinea-Bissau');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('GY', 'Guyana');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('HT', 'Haiti');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('HM', 'Heard and Mcdonald Islands');
+INSERT INTO `country` (`country_code`, `country`) VALUES ('VA', 'Holy See (Vatican City State)');
 
 COMMIT;
 
