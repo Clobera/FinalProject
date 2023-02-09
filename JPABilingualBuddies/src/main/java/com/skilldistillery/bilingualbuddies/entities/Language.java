@@ -24,31 +24,35 @@ public class Language {
 	private String name;
 
 	private String description;
-	
+
+	private String code;
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "language")
 	private List<LanguageResource> resources;
-	
+
 	@JsonIgnore
 	@ManyToMany
-	@JoinTable(name = "language_has_user",
-			joinColumns=@JoinColumn(name="language_id"),
-			inverseJoinColumns=@JoinColumn(name="user_id"))
+	@JoinTable(name = "language_has_user", joinColumns = @JoinColumn(name = "language_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
 	private List<User> users;
-	
-	@ManyToMany(mappedBy="langauges")
+
+	@ManyToMany(mappedBy = "langauges")
 	private List<Country> countries;
 
 	public Language() {
 		super();
 	}
 
-	public Language(int id, String name, String description, List<LanguageResource> resources) {
+	public Language(int id, String name, String description, String code, List<LanguageResource> resources,
+			List<User> users, List<Country> countries) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
+		this.code = code;
 		this.resources = resources;
+		this.users = users;
+		this.countries = countries;
 	}
 
 	public int getId() {
@@ -75,6 +79,14 @@ public class Language {
 		this.description = description;
 	}
 
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
 	public List<LanguageResource> getResources() {
 		return resources;
 	}
@@ -87,7 +99,6 @@ public class Language {
 	public int hashCode() {
 		return Objects.hash(id);
 	}
-	
 
 	public List<User> getUsers() {
 		return users;
@@ -119,8 +130,8 @@ public class Language {
 
 	@Override
 	public String toString() {
-		return "Language [id=" + id + ", name=" + name + ", description=" + description + ", resources=" + resources
-				+ "]";
+		return "Language [id=" + id + ", name=" + name + ", description=" + description + ", code=" + code
+				+ ", resources=" + resources + ", users=" + users + ", countries=" + countries + "]";
 	}
 
 }

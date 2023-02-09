@@ -21,7 +21,7 @@ USE `bilingualbuddiesdb` ;
 DROP TABLE IF EXISTS `address` ;
 
 CREATE TABLE IF NOT EXISTS `address` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `address` VARCHAR(50) NULL,
   `state` VARCHAR(50) NULL,
   `postal_code` VARCHAR(10) NULL,
@@ -109,7 +109,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `team` ;
 
 CREATE TABLE IF NOT EXISTS `team` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `owner_id` INT NOT NULL,
   `content` TEXT NULL,
   `image_url` TEXT NULL,
@@ -257,7 +257,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `language` ;
 
 CREATE TABLE IF NOT EXISTS `language` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   `code` VARCHAR(45) NULL,
   `description` TEXT NULL,
@@ -705,78 +705,78 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `bilingualbuddiesdb`;
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (15, 'Afrikaans', '.', 'AF');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (2, 'Albanian', '.', 'SQ');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (3, 'Arabic', '.', 'AR');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (4, 'Armenian', '.', 'HY');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (5, 'Basque', '.', 'EU');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (6, 'Bengali', '.', 'BN');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (7, 'Bulgarian', '.', 'BG');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (8, 'Catalan', '.', 'CA');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (9, 'Cambodian', '.', 'KM');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (10, 'Chinese (Mandarin)', '.', 'ZH');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (11, 'Croatian', '.', 'HR');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (12, 'Czech', '.', 'CS');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (13, 'Danish', '.', 'DA');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (14, 'Dutch', '.', 'NL');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (1, 'English', '.', 'EN');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (16, 'Estonian', '.', 'ET');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (17, 'Fiji', '.', 'FJ');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (18, 'Finnish', '.', 'FI');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (19, 'French', '.', 'FR');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (20, 'Georgian', '.', 'KA');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (21, 'German', '.', 'DE');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (22, 'Greek', '.', 'EL');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (23, 'Gujarati', '.', 'GU');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (24, 'Hebrew', '.', 'HE');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (25, 'Hindi', '.', 'HI');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (26, 'Hungarian', '.', 'HU');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (27, 'Icelandic', '.', 'IS');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (28, 'Indonesian', '.', 'ID');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (29, 'Irish', '.', 'GA');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (30, 'Italian', '.', 'IT');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (31, 'Japanese', '.', 'JA');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (32, 'Javanese', '.', 'JW');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (33, 'Korean', '.', 'KO');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (34, 'Latin', '.', 'LA');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (35, 'Latvian', '.', 'LV');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (36, 'Lithuanian', '.', 'LT');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (37, 'Macedonian', '.', 'MK');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (38, 'Malay', '.', 'MS');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (39, 'Malayalam', '.', 'ML');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (40, 'Maltese', '.', 'MT');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (41, 'Maori', '.', 'MI');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (42, 'Marathi', '.', 'MR');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (43, 'Mongolian', '.', 'MN');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (44, 'Nepali', '.', 'NE');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (45, 'Norwegian', '.', 'NO');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (46, 'Persian', '.', 'FA');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (47, 'Polish', '.', 'PL');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (48, 'Portuguese', '.', 'PT');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (49, 'Punjabi', '.', 'PA');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (50, 'Quechua', '.', 'QU');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (51, 'Romanian', '.', 'RO');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (52, 'Russian', '.', 'RU');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (53, 'Samoan', '.', 'SM');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (54, 'Serbian', '.', 'SR');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (55, 'Slovak', '.', 'SK');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (56, 'Slovenian', '.', 'SL');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (57, 'Spanish', '.', 'ES');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (58, 'Swahili', '.', 'SW');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (59, 'Swedish', '.', 'SV');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (60, 'Tamil', '.', 'TA');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (61, 'Tatar', '.', 'TT');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (62, 'Telugu', '.', 'TE');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (63, 'Thai', '.', 'TH');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (64, 'Tibetan', '.', 'BO');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (65, 'Tonga', '.', 'TO');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (66, 'Turkish', '.', 'TR');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (67, 'Ukrainian', '.', 'UK');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (68, 'Urdu', '.', 'UR');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (69, 'Uzbek', '.', 'UZ');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (70, 'Vietnamese', '.', 'VI');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (71, 'Welsh', '.', 'CY');
-INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (72, 'Xhosa', '.', 'XH');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (15, 'Afrikaans', 'AF', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (2, 'Albanian', 'SQ', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (3, 'Arabic', 'AR', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (4, 'Armenian', 'HY', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (5, 'Basque', 'EU', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (6, 'Bengali', 'BN', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (7, 'Bulgarian', 'BG', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (8, 'Catalan', 'CA', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (9, 'Cambodian', 'KM', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (10, 'Chinese (Mandarin)', 'ZH', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (11, 'Croatian', 'HR', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (12, 'Czech', 'CS', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (13, 'Danish', 'DA', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (14, 'Dutch', 'NL', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (1, 'English', 'EN', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (16, 'Estonian', 'ET', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (17, 'Fiji', 'FJ', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (18, 'Finnish', 'FI', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (19, 'French', 'FR', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (20, 'Georgian', 'KA', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (21, 'German', 'DE', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (22, 'Greek', 'EL', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (23, 'Gujarati', 'GU', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (24, 'Hebrew', 'HE', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (25, 'Hindi', 'HI', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (26, 'Hungarian', 'HU', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (27, 'Icelandic', 'IS', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (28, 'Indonesian', 'ID', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (29, 'Irish', 'GA', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (30, 'Italian', 'IT', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (31, 'Japanese', 'JA', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (32, 'Javanese', 'JW', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (33, 'Korean', 'KO', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (34, 'Latin', 'LA', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (35, 'Latvian', 'LV', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (36, 'Lithuanian', 'LT', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (37, 'Macedonian', 'MK', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (38, 'Malay', 'MS', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (39, 'Malayalam', 'ML', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (40, 'Maltese', 'MT', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (41, 'Maori', 'MI', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (42, 'Marathi', 'MR', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (43, 'Mongolian', 'MN', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (44, 'Nepali', 'NE', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (45, 'Norwegian', 'NO', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (46, 'Persian', 'FA', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (47, 'Polish', 'PL', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (48, 'Portuguese', 'PT', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (49, 'Punjabi', 'PA', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (50, 'Quechua', 'QU', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (51, 'Romanian', 'RO', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (52, 'Russian', 'RU', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (53, 'Samoan', 'SM', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (54, 'Serbian', 'SR', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (55, 'Slovak', 'SK', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (56, 'Slovenian', 'SL', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (57, 'Spanish', 'ES', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (58, 'Swahili', 'SW', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (59, 'Swedish', 'SV', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (60, 'Tamil', 'TA', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (61, 'Tatar', 'TT', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (62, 'Telugu', 'TE', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (63, 'Thai', 'TH', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (64, 'Tibetan', 'BO', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (65, 'Tonga', 'TO', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (66, 'Turkish', 'TR', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (67, 'Ukrainian', 'UK', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (68, 'Urdu', 'UR', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (69, 'Uzbek', 'UZ', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (70, 'Vietnamese', 'VI', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (71, 'Welsh', 'CY', '.');
+INSERT INTO `language` (`id`, `name`, `code`, `description`) VALUES (72, 'Xhosa', 'XH', '.');
 
 COMMIT;
 
