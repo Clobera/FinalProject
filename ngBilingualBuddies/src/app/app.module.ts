@@ -18,27 +18,28 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { IncompletePipe } from './pipes/incomplete.pipe';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    NotfoundComponent,
-    NavbarComponent,
-    FooterComponent,
-    LoginComponent,
-    AccountComponent,
-    MygroupsComponent,
-    AlertsComponent,
-    LogoutComponent,
-    IncompletePipe
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    NgbModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        NotfoundComponent,
+        NavbarComponent,
+        FooterComponent,
+        LoginComponent,
+        AccountComponent,
+        MygroupsComponent,
+        AlertsComponent,
+        LogoutComponent,
+        IncompletePipe
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        HttpClientModule,
+        NgbModule,
+
+    ]
 })
 export class AppModule { }

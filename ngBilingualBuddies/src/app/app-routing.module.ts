@@ -27,15 +27,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-//   declarations: [
 
-// NotfoundComponent,
-// IncompletePipe,
-
-// FooterComponent,
-
-
-//   ],
 
   imports: [RouterModule.forRoot(routes, {useHash: true})],
 
