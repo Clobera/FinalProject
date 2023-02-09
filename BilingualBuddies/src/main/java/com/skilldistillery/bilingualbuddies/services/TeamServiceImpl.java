@@ -33,6 +33,7 @@ public class TeamServiceImpl implements TeamService {
 
 	@Override
 	public Team createTeam(Team team) {
+		team.setEnabled(true);
 		teamRepo.saveAndFlush(team);
 		return team;
 	}
