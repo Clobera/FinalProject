@@ -6,7 +6,6 @@
       <form>
         <h3>First Name:</h3>
         <input
-          [ngClass]="fnameClass"
           [(ngModel)]="user.firstName"
           type="text"
           placeholder="First Name"
@@ -15,7 +14,6 @@
         />
         <h3>Last Name:</h3>
         <input
-          [ngClass]="lnameClass"
           [(ngModel)]="user.lastName"
           type="text"
           placeholder="Last Name"
@@ -23,7 +21,6 @@
         />
         <h3>Password:</h3>
         <input
-          [ngClass]="passwordClass"
           [(ngModel)]="user.password"
           type="password"
           placeholder="Password"
@@ -31,7 +28,6 @@
         />
         <h3>Email:</h3>
         <input
-          [ngClass]="emailClass"
           type="email"
           placeholder="John.Doe@Gmail.com"
           name="email"
@@ -39,7 +35,6 @@
         />
         <h3>Username:</h3>
         <input
-          [ngClass]="usernameClass"
           type="text"
           placeholder="Username"
           name="Username"

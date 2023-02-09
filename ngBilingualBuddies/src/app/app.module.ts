@@ -15,35 +15,8 @@ import { AccountComponent } from './components/account/account.component';
 import { MygroupsComponent } from './components/mygroups/mygroups.component';
 import { AlertsComponent } from './components/alerts/alerts.component';
 import { LogoutComponent } from './components/logout/logout.component';
-<<<<<<< HEAD
-import { IncompletePipe } from './pipes/incomplete.pipe';
-
-@NgModule({
-    declarations: [
-        AppComponent,
-        HomeComponent,
-        NotfoundComponent,
-        NavbarComponent,
-        FooterComponent,
-        LoginComponent,
-        AccountComponent,
-        MygroupsComponent,
-        AlertsComponent,
-        LogoutComponent,
-        IncompletePipe
-    ],
-    providers: [],
-    bootstrap: [AppComponent],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        FormsModule,
-        HttpClientModule,
-        NgbModule,
-
-    ]
-=======
 import { RegisterComponent } from './register/register.component';
+import { IncompletePipe } from './pipes/incomplete.pipe';
 
 @NgModule({
   declarations: [
@@ -68,6 +41,5 @@ import { RegisterComponent } from './register/register.component';
   ],
   providers: [],
   bootstrap: [AppComponent]
->>>>>>> a43027753a95355e8564b1d82cf77b610195aad3
 })
 export class AppModule { }
