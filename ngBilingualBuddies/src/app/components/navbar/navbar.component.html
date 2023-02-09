@@ -40,10 +40,10 @@
           <div ngbDropdown>
             <button class ="btn-primary btn" id="gfg"
                     ngbDropdownToggle>Account Details</button>
-            <div ngbDropdownMenu="gfg">
+            <div ngbDropdownMenu="gfg" *ngIf="loggedIn()">
               <button ngbDropdownItem [routerLink]="['/myGroups']"><a class="nav-link active" >My groups</a></button>
               <button ngbDropdownItem [routerLink]="['/account']"><a class="nav-link active" >Account</a></button>
-              <button ngbDropdownItem (click)=" logout() "><a class="nav-link active" > Log Out </a></button>
+              <button ngbDropdownItem (click)=" onLogout() "><a class="nav-link active" > Log Out </a></button>
             </div>
           </div>
 

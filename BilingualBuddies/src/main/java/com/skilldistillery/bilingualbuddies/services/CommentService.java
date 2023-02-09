@@ -12,5 +12,5 @@ public interface CommentService {
 
 	Comment createComment(int postId, Comment comment);
 	
-	boolean deleteCommentById(int postId, int commentId);
+	boolean deleteCommentById(Comment comment);
 }

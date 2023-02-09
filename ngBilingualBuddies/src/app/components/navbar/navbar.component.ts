@@ -15,16 +15,16 @@ export class NavbarComponent {
     this.collapsed = !this.collapsed;
 
   }
-loggedIn(){
-return this.auth.checkLogin();
+  constructor(private authservice : AuthService, private router : Router){}
+
+  loggedIn(){
+return this.authservice.checkLogin();
 }
 
-logout(){
-  this.auth.logout();
-this.router.navigateByUrl("home");
+onLogout(){
+  this.authservice.logout();
+  localStorage.removeItem('user');
+this.router.navigate(['/home']);
 }
 
-constructor(private auth : AuthService, private router : Router){
-
-}
 }
