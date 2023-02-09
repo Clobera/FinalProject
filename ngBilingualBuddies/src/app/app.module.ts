@@ -16,6 +16,7 @@ import { AccountComponent } from './components/account/account.component';
 import { MygroupsComponent } from './components/mygroups/mygroups.component';
 import { AlertsComponent } from './components/alerts/alerts.component';
 import { LogoutComponent } from './components/logout/logout.component';
+<<<<<<< HEAD
 
 import { IncompletePipe } from './pipes/incomplete.pipe';
 
@@ -44,6 +45,10 @@ import { IncompletePipe } from './pipes/incomplete.pipe';
 
     ]
   })
+=======
+import { RegisterComponent } from './register/register.component';
+import { IncompletePipe } from './pipes/incomplete.pipe';
+>>>>>>> 000a8ba9e318bdf9a45f9b12e09d92312519d1f0
 
 @NgModule({
   declarations: [
@@ -68,6 +73,9 @@ import { IncompletePipe } from './pipes/incomplete.pipe';
   ],
   providers: [],
   bootstrap: [AppComponent]
+<<<<<<< HEAD
 
+=======
+>>>>>>> 000a8ba9e318bdf9a45f9b12e09d92312519d1f0
 })
 export class AppModule { }
