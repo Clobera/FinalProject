@@ -8,7 +8,7 @@ public interface AddressService {
 	
 	public Address findById(int addressId);
 	
-	public List<Address> findAllAdress(int addressid);
+	public List<Address> findAllAdress();
 	
 	public Address createAddress(Address address);
 	
