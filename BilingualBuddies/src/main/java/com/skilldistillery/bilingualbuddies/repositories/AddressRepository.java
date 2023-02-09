@@ -7,5 +7,4 @@ import com.skilldistillery.bilingualbuddies.entities.Address;
 public interface AddressRepository extends JpaRepository<Address, Integer>{
 	
 	
-	
 }

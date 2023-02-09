@@ -26,13 +26,14 @@ public class AddressServiceImpl implements AddressService {
 	}
 
 	@Override
-	public List<Address> findAllAdress() {
+	public List<Address> findAllAddress() {
 		
 		return addressRepo.findAll();
 	}
 
 	@Override
 	public Address createAddress(Address address) {
+		address.setEnabled(true);
 		addressRepo.saveAndFlush(address);
 		return address;
 	}

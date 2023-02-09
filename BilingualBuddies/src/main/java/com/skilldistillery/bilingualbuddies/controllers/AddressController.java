@@ -27,12 +27,12 @@ public class AddressController {
 	@Autowired
 	AddressService addressService;
 
-	@GetMapping(path = "addresses")
+	@GetMapping("addresses")
 	public List<Address> listAddress(HttpServletRequest req, HttpServletResponse res) {
-		return addressService.findAllAdress();
+		return addressService.findAllAddress();
 	}
 
-	@GetMapping(path = "addresses/{id}")
+	@GetMapping("addresses/{id}")
 	public Address show(HttpServletRequest req, HttpServletResponse res, @PathVariable Integer id) {
 		return addressService.findById(id);
 	}
