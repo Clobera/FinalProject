@@ -22,11 +22,11 @@ export class NavbarComponent {
 onLogout(){
   this.authservice.logout();
 this.router.navigate(['/home']);
-this.loggedIn = this.authservice.checkLogin();
+this.loggedIn = this.checkLogin();
 }
 
 checkLogin(){
-  this.loggedIn = this.authservice.checkLogin();
+  return this.authservice.checkLogin();
 }
 
 
