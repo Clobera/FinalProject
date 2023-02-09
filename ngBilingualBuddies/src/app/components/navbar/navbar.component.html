@@ -19,7 +19,7 @@
     >
       <a class="navbar-brand" [routerLink]="['/home']"> Bilingual Buddies </a>
 
-      <ul class="navbar-nav me-auto mt-2 mb-lg-0" *ngIf="loggedIn()">
+      <ul class="navbar-nav me-auto mt-2 mb-lg-0" *ngIf="loggedIn">
 
 
         <li class="nav-item">
@@ -40,10 +40,10 @@
           <div ngbDropdown>
             <button class ="btn-primary btn" id="gfg"
                     ngbDropdownToggle>Account Details</button>
-            <div ngbDropdownMenu="gfg" *ngIf="loggedIn()">
+            <div ngbDropdownMenu="gfg" *ngIf="loggedIn">
               <button ngbDropdownItem [routerLink]="['/myGroups']"><a class="nav-link active" >My groups</a></button>
               <button ngbDropdownItem [routerLink]="['/account']"><a class="nav-link active" >Account</a></button>
-              <button ngbDropdownItem (click)=" onLogout() "><a class="nav-link active" > Log Out </a></button>
+              <button ngbDropdownItem (click)="onLogout()"><a class="nav-link active" > Log Out </a></button>
             </div>
           </div>
 
@@ -51,7 +51,7 @@
 
       </ul>
 
-      <ul class="navbar-nav me-auto mt-2 mb-lg-0" *ngIf="!loggedIn()">
+      <ul class="navbar-nav me-auto mt-2 mb-lg-0" *ngIf="!loggedIn">
         <li class="nav-item">
           <a class="nav-link active" [routerLink]="['/login']">Log In</a>
         </li>
