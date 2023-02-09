@@ -132,7 +132,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `meetup` ;
 
 CREATE TABLE IF NOT EXISTS `meetup` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `meetup_date` DATE NOT NULL,
   `content` TEXT NULL,
   `address_id` INT NOT NULL,
