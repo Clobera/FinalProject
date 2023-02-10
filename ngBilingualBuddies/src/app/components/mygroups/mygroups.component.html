@@ -1,23 +1,22 @@
 <div class="mygroups">
   <table class="table table-striped table-dark table-bordered table-hover" *ngIf="teams.length <= 0">
     <thead>
-      <th>No Results</th>
+      <td><h1>
+        No Groups
+      </h1></td>
     </thead>
   </table>
   <table class="table table-striped table-dark table-bordered table-hover" *ngIf="teams.length > 0">
     <thead>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Name</th>
+      <th>About</th>
+      <th>Symbol</th>
     </thead>
     <tbody>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+      <tr *ngFor="let team of teams">
+        <td>{{team.name}}</td>
+        <td>{{team.content}}</td>
+        <td><img src="{{team.imageUrl}}" alt="None" height="50px" width="50px"></td>
       </tr>
     </tbody>
   </table>
