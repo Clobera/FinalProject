@@ -1,3 +1,5 @@
+import { AddressService } from './../../services/address.service';
+import { Address } from './../../models/address';
 import { Component } from "@angular/core";
 import { Language } from "src/app/models/language";
 import { User } from "src/app/models/user";
@@ -24,18 +26,9 @@ export class SearchComponent {
   searchName = '';
   searchLocation = '';
   users: User[] = [];
+  currCity = '';
+  addresses : Address[] = [];
 
-  switchName() {
-    this.showName = !this.showName;
-    this.emptyUsers();
-  }
-  switchLoc(){
-    this.showLoc = !this.showLoc;
-    this.emptyUsers();
-  }
-  emptyUsers(){
-    this.users = [];
-  }
 
   constructor(
     private langServ: LanguageService,
@@ -43,11 +36,28 @@ export class SearchComponent {
     private enabledUser: EnabledUsersPipe,
     private lang: UserLanguagePipe,
     private sponsorship: UserSponsorPipe,
-    private nameSearch : NameSearchPipe
+    private nameSearch : NameSearchPipe,
+    private addrServ : AddressService
   ) {}
+
+
+  switchName() {
+    this.showName = true;
+    this.showLoc = false;
+    this.emptyUsers();
+  }
+  switchLoc(){
+    this.showLoc = true;
+    this.showName = false;
+    this.emptyUsers();
+  }
+  emptyUsers(){
+    this.users = [];
+  }
 
   ngOnInit() {
     this.loadLanguages();
+    this.loadAddresses();
   }
 
   loadLanguages() {
@@ -96,7 +106,18 @@ export class SearchComponent {
     }
   }
 
-
+  loadAddresses() {
+    this.addrServ.index().subscribe({
+      next: (data) => {
+        this.addresses = data;
+      },
+      error: (err) => {
+        console.log(
+          'SearchComponent.loadAddresses: Error loading Addresses ' + err
+        );
+      },
+    });
+  }
 
 
 

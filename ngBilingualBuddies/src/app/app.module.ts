@@ -23,6 +23,7 @@ import { EnabledUsersPipe } from './pipes/enabled-users.pipe';
 import { UserLanguagePipe } from './pipes/user-language.pipe';
 import { UserSponsorPipe } from './pipes/user-sponsor.pipe';
 import { NameSearchPipe } from './pipes/name-search.pipe';
+import { CityPipe } from './pipes/city.pipe';
 
 @NgModule({
     declarations: [
@@ -44,6 +45,7 @@ import { NameSearchPipe } from './pipes/name-search.pipe';
         UserLanguagePipe,
         UserSponsorPipe,
         NameSearchPipe,
+        CityPipe,
     ],
     providers: [
       SeenPipe,
