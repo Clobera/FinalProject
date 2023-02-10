@@ -1,12 +1,14 @@
-import { NameSearchPipe } from './../../pipes/name-search.pipe';
-import { UserSponsorPipe } from './../../pipes/user-sponsor.pipe';
 import { Component } from "@angular/core";
 import { Language } from "src/app/models/language";
 import { User } from "src/app/models/user";
 import { EnabledUsersPipe } from "src/app/pipes/enabled-users.pipe";
+import { NameSearchPipe } from "src/app/pipes/name-search.pipe";
 import { UserLanguagePipe } from "src/app/pipes/user-language.pipe";
+import { UserSponsorPipe } from "src/app/pipes/user-sponsor.pipe";
 import { LanguageService } from "src/app/services/language.service";
 import { UserService } from "src/app/services/user.service";
+
+
 
 @Component({
   selector: 'app-search',
