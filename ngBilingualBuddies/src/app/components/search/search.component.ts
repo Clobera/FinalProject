@@ -59,6 +59,7 @@ export class SearchComponent {
   loadUsers(num: number, input: string) {
     this.userServ.index().subscribe({
       next: (data) => {
+        this.filterByEnabledAndLanguage(data);
         if (num == 1) {
           this.searchByName(input);
         } else if (num == 2) {
@@ -74,8 +75,12 @@ export class SearchComponent {
   }
 
   filterByEnabledAndLanguage(data: User[]) {
+    console.log(data);
+
     let enabled = this.enabledUser.transform(data);
+    console.log(enabled);
     this.users = this.lang.transform(enabled, this.currLangId);
+    console.log(this.users);
     if (this.sponsor){
       // filter by sponsor
     }
