@@ -1,10 +1,10 @@
-import { UserLanguagePipe } from './../../pipes/user-language.pipe';
-import { EnabledUsersPipe } from './../../pipes/enabled-users.pipe';
-import { UserService } from './../../services/user.service';
-import { Language } from './../../models/language';
-import { Component } from '@angular/core';
-import { LanguageService } from 'src/app/services/language.service';
-import { User } from 'src/app/models/user';
+import { Component } from "@angular/core";
+import { Language } from "src/app/models/language";
+import { User } from "src/app/models/user";
+import { EnabledUsersPipe } from "src/app/pipes/enabled-users.pipe";
+import { UserLanguagePipe } from "src/app/pipes/user-language.pipe";
+import { LanguageService } from "src/app/services/language.service";
+import { UserService } from "src/app/services/user.service";
 
 @Component({
   selector: 'app-search',
