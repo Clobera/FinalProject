@@ -2,3 +2,6 @@
   background-color: rgba(40, 41, 45, .95);
   color: #E34F15;
 }
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+  background-color: #E34F15 !important;
+}

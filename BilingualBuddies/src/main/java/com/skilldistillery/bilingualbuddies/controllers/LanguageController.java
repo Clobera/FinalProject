@@ -17,7 +17,7 @@ import com.skilldistillery.bilingualbuddies.services.LanguageService;
 
 @RestController
 @RequestMapping("api")
-@CrossOrigin({ "*", "http://localhost/" })
+@CrossOrigin({ "*", "http://localhost" })
 public class LanguageController {
 	@Autowired
 	private LanguageService langService;
