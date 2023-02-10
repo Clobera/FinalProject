@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Country } from 'src/app/models/country';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Component({
   selector: 'app-account',
@@ -99,10 +100,19 @@ export class AccountComponent {
         console.error(nojoy);
       }
     })
+  }
 
-
-
-
+  destroy(username: string, user: User): Observable<void> | void{
+    this.userService.destroy(username, user).subscribe({
+      next: (result) =>{
+        this.loadUser();
+        this.showForm = false;
+      },
+      error: (nojoy) =>{
+        console.error('UserListComponent.updateUser(): error deleting User: ');
+        console.error(nojoy);
+      }
+    })
   }
 
   setEditUser(): void {
