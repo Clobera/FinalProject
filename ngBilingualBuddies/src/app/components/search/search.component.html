@@ -1,1 +1,12 @@
-<h1 class="text-white"> Add search function hers</h1>
+<div class="search">
+  <h1>Search By:</h1>
+  <button class="btn btn-primary">Name</button>
+  <button class="btn btn-primary">Location</button>
+  <h6>Filter By:</h6>
+  <label for="sponsor">Sponsor:</label>
+  <input type="checkbox" name="sponsor" [(ngModel)]="sponsor">
+  <select name="language" [(ngModel)]="currLang">
+    <option *ngFor="let lang of languages">lang.name</option>
+  </select>
+
+</div>
