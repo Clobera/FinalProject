@@ -6,7 +6,7 @@ export class User {
   email: string;
   username: string;
   password: string;
-  createDate: Date;
+  dateCreated: Date;
   lastLogin: Date;
   enabled: boolean;
   role: string;
@@ -25,7 +25,7 @@ export class User {
     email: string = '',
     username: string = '',
     password: string = '',
-    createDate: Date = new Date(),
+    dateCreated: Date = new Date(),
     lastLogin: Date = new Date(),
     enabled: boolean = true,
     role: string = '',
@@ -41,7 +41,7 @@ export class User {
     this.email = email;
     this.username = username;
     this.password = password;
-    this.createDate = createDate;
+    this.dateCreated = dateCreated;
     this.lastLogin = lastLogin;
     this.enabled = enabled;
     this.role = role;

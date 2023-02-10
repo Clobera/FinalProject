@@ -12,14 +12,22 @@ export class AccountComponent {
   constructor(private auth: AuthService){
 
   }
+  user = new User();
+  test = 0;
+  showDate(){
+    let date = this.user.dateCreated;
+    console.log(date);
+    return new Date(date).valueOf();
+
+  }
   ngOnInit(){
     this.loadUser();
   }
-  user = new User();
   loadUser(){
     this.auth.getLoggedInUser().subscribe({
       next: (data) => {
         this.user = data;
+        this.test = this.showDate();
       },
       error: (err) => {
         console.log(
