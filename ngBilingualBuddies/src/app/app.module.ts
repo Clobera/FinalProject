@@ -21,6 +21,8 @@ import { SearchComponent } from './components/search/search.component';
 import { SeenPipe } from './pipes/seen.pipe';
 import { EnabledUsersPipe } from './pipes/enabled-users.pipe';
 import { UserLanguagePipe } from './pipes/user-language.pipe';
+import { UserSponsorPipe } from './pipes/user-sponsor.pipe';
+import { NameSearchPipe } from './pipes/name-search.pipe';
 
 @NgModule({
     declarations: [
@@ -40,11 +42,15 @@ import { UserLanguagePipe } from './pipes/user-language.pipe';
         SeenPipe,
         EnabledUsersPipe,
         UserLanguagePipe,
+        UserSponsorPipe,
+        NameSearchPipe,
     ],
     providers: [
       SeenPipe,
       EnabledUsersPipe,
-      UserLanguagePipe
+      UserLanguagePipe,
+      UserSponsorPipe,
+      NameSearchPipe
     ],
     bootstrap: [AppComponent],
     imports: [

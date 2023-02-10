@@ -1,7 +1,7 @@
 <div class="search">
   <h1>Search By:</h1>
-  <button class="btn btn-primary" (click)="switch()">Name</button>
-  <button class="btn btn-primary" (click)="switch()">Location</button>
+  <button class="btn btn-primary" (click)="switchName()">Name</button>
+  <button class="btn btn-primary disabled" (click)="switchLoc()">Location</button>
   <label for="sponsor">Sponsor:</label>
   <input type="checkbox" name="sponsor" [(ngModel)]="sponsor"> <br>
   <label for="language">Language:</label>
