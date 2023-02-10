@@ -1,4 +1,6 @@
+import { Address } from "./address";
 import { Alert } from "./alert";
+import { Country } from "./country";
 
 export class User {
   id: number;
@@ -14,8 +16,8 @@ export class User {
   lastName: string;
   imgUrl: string;
   bio: string;
-  // address: Address;
-  // originCountry: Country;
+  address: Address;
+  originCountry: Country;
   alerts: Array<Alert>;
 
   constructor(
@@ -32,6 +34,8 @@ export class User {
     lastName: string = '',
     imgUrl: string = '',
     bio: string = '',
+    address: Address = new Address(),
+    originCountry: Country = new Country(),
     alerts: Array<Alert> = []
   ) {
     this.id = id;
@@ -47,6 +51,8 @@ export class User {
     this.lastName = lastName;
     this.imgUrl = imgUrl;
     this.bio = bio;
+    this.address = address;
     this.alerts = alerts;
+    this.originCountry = originCountry;
   }
 }
