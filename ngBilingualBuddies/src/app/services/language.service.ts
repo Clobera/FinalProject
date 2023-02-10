@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/services/auth.service';
 import { Language } from './../models/language';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -8,10 +9,17 @@ import { catchError, Observable, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class LanguageService {
-  url = environment.baseUrl + "languages"
+  url = environment.baseUrl + "api/languages"
+
 
   index(): Observable<Language[]> {
-    return this.httpClient.get<Language[]>(this.url).pipe(
+    let httpOptions = {
+      headers: {
+        Authorization: 'Basic ' + this.auth.getCredentials(),
+        'X-Requested-with': 'XMLHttpRequest',
+      }
+    };
+    return this.httpClient.get<Language[]>(this.url, httpOptions).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
@@ -23,5 +31,5 @@ export class LanguageService {
     );
   }
 
-  constructor(private httpClient : HttpClient) { }
+  constructor(private httpClient : HttpClient, private auth : AuthService) { }
 }

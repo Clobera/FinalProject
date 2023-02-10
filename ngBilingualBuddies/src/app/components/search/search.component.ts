@@ -11,6 +11,15 @@ export class SearchComponent {
   sponsor = false;
   languages : Language[] = [];
   currLang : Language = new Language();
+  showName = false;
+  showLoc = true;
+  searchName = "";
+  searchLocation = "";
+
+  switch(){
+    this.showName = !this.showName;
+    this.showLoc = !this.showLoc;
+  }
 
   constructor(private langServ : LanguageService){}
 
@@ -20,7 +29,7 @@ export class SearchComponent {
   loadLanguages(){
     this.langServ.index().subscribe({
       next: (data) => {
-
+        this.languages = data;
       },
       error: (err) => {
         console.log("SearchComponent.loadLanguages: Error loading languages " + err);

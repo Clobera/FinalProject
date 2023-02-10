@@ -1,12 +1,24 @@
 <div class="search">
+  <h1>{{currLang}}</h1>
   <h1>Search By:</h1>
-  <button class="btn btn-primary">Name</button>
-  <button class="btn btn-primary">Location</button>
+  <button class="btn btn-primary" (click)="switch()">Name</button>
+  <button class="btn btn-primary" (click)="switch()">Location</button>
   <h6>Filter By:</h6>
   <label for="sponsor">Sponsor:</label>
-  <input type="checkbox" name="sponsor" [(ngModel)]="sponsor">
+  <input type="checkbox" name="sponsor" [(ngModel)]="sponsor"> <br>
+  <label for="language">Filter By Language:</label>
   <select name="language" [(ngModel)]="currLang">
-    <option *ngFor="let lang of languages">lang.name</option>
+    <option *ngFor="let lang of languages">{{lang.name}}</option>
   </select>
+  <hr>
+  <div *ngIf="showName">
+    <h3>Enter Name To Search By</h3>
+    <input type="text" name="name" [(ngModel)]="searchName">
+  </div>
+  <div *ngIf="showLoc">
+    <h3>Serching By Location</h3>
+    <input type="text" name="location" [(ngModel)]="searchLocation">
+
+  </div>
 
 </div>

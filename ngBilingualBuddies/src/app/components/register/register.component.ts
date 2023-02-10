@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { User } from './../models/user';
+import { User } from '../../models/user';
 import { Component } from '@angular/core';
 
 @Component({
@@ -22,11 +22,21 @@ export class RegisterComponent {
   register(user: User) {
     this.auth.register(user).subscribe({
       next: (data) => {
+        this.login(this.user);
+      },
+      error: (err) => {
+        console.log("ERROR RegisterComponent.register(): Error registering new user");
+      }
+    })
+  }
+  login(user : User){
+    this.auth.login(user.username, user.password).subscribe({
+      next: (data) => {
         this.user = new User();
         this.router.navigateByUrl("home");
       },
       error: (err) => {
-        console.log("ERROR RegisterComponent.register(): Error registering new user");
+        console.log("ERROR RegisterComponent.login(): Error logging  in new user");
       }
     })
   }
