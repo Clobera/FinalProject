@@ -1,4 +1,5 @@
 import { Alert } from "./alert";
+import { Language } from "./language";
 
 export class User {
   id: number;
@@ -17,6 +18,7 @@ export class User {
   // address: Address;
   // originCountry: Country;
   alerts: Array<Alert>;
+  languages : Array<Language> ;
 
   constructor(
     id: number = 0,
@@ -32,7 +34,8 @@ export class User {
     lastName: string = '',
     imgUrl: string = '',
     bio: string = '',
-    alerts: Array<Alert> = []
+    alerts: Array<Alert> = [],
+    languages : Array<Language> = []
   ) {
     this.id = id;
     this.email = email;
@@ -48,5 +51,6 @@ export class User {
     this.imgUrl = imgUrl;
     this.bio = bio;
     this.alerts = alerts;
+    this.languages = languages;
   }
 }

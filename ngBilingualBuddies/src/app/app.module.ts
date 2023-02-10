@@ -19,6 +19,8 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { IncompletePipe } from './pipes/incomplete.pipe';
 import { SearchComponent } from './components/search/search.component';
 import { SeenPipe } from './pipes/seen.pipe';
+import { EnabledUsersPipe } from './pipes/enabled-users.pipe';
+import { UserLanguagePipe } from './pipes/user-language.pipe';
 
 @NgModule({
     declarations: [
@@ -35,10 +37,14 @@ import { SeenPipe } from './pipes/seen.pipe';
         IncompletePipe,
         RegisterComponent,
         SearchComponent,
-        SeenPipe
+        SeenPipe,
+        EnabledUsersPipe,
+        UserLanguagePipe,
     ],
     providers: [
-      SeenPipe
+      SeenPipe,
+      EnabledUsersPipe,
+      UserLanguagePipe
     ],
     bootstrap: [AppComponent],
     imports: [
