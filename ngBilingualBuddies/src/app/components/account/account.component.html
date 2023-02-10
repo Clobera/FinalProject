@@ -1,3 +1,162 @@
 <div class="account">
-  <h1>Fix me blah</h1>
+
 </div>
+
+<div class="container">
+  <div class="main-body">
+
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb" class="main-breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
+            <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+          </ol>
+        </nav>
+        <!-- /Breadcrumb -->
+
+        <div class="row gutters-sm">
+          <div class="col-md-4 mb-3">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex flex-column align-items-center text-center">
+                  <img src="https://www.dmarge.com/wp-content/uploads/2021/01/dwayne-the-rock-.jpg" alt="Admin" class="rounded-circle" width="150">
+                  <div class="mt-3">
+                    <h4>{{user.username}}</h4>
+                    <p class="text-secondary mb-1">{{user.role}}</p>
+                    <p class="text-muted font-size-sm">Location HERE</p>
+                    <button class="btn btn-primary">Follow</button>
+                    <button class="btn btn-outline-primary">Message</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card mt-3">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content">
+                  <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 256 256" xml:space="preserve">
+                    <defs>
+                    </defs>
+                    <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)" >
+                      <path d="M 45.327 27.748 c 2.28 0 4.136 -1.855 4.136 -4.135 v -3.579 c 0 -2.28 -1.855 -4.135 -4.136 -4.135 s -4.135 1.855 -4.135 4.135 v 3.579 C 41.192 25.893 43.047 27.748 45.327 27.748 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                      <path d="M 73.653 0 H 16.347 C 12.494 0 9.36 3.134 9.36 6.987 v 76.026 c 0 3.853 3.134 6.987 6.987 6.987 h 57.307 c 3.853 0 6.986 -3.135 6.986 -6.987 V 6.987 C 80.64 3.134 77.506 0 73.653 0 z M 34.049 39.025 c 0 -4.112 2.219 -7.706 5.516 -9.677 c -1.465 -1.472 -2.373 -3.5 -2.373 -5.736 v -3.579 c 0 -4.486 3.649 -8.135 8.135 -8.135 c 4.486 0 8.136 3.649 8.136 8.135 v 3.579 c 0 2.236 -0.908 4.264 -2.373 5.736 c 3.297 1.971 5.516 5.565 5.516 9.677 v 5.412 c 0 1.104 -0.896 2 -2 2 H 36.049 c -1.104 0 -2 -0.896 -2 -2 V 39.025 z M 69.378 78.103 H 20.622 c -1.104 0 -2 -0.896 -2 -2 s 0.896 -2 2 -2 h 48.756 c 1.104 0 2 0.896 2 2 S 70.482 78.103 69.378 78.103 z M 69.378 68.329 H 20.622 c -1.104 0 -2 -0.896 -2 -2 s 0.896 -2 2 -2 h 48.756 c 1.104 0 2 0.896 2 2 S 70.482 68.329 69.378 68.329 z M 69.378 58.557 H 20.622 c -1.104 0 -2 -0.896 -2 -2 s 0.896 -2 2 -2 h 48.756 c 1.104 0 2 0.896 2 2 S 70.482 58.557 69.378 58.557 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                      <path d="M 52.605 39.025 c 0 -4.013 -3.265 -7.278 -7.278 -7.278 c -4.013 0 -7.278 3.265 -7.278 7.278 v 3.412 h 14.556 V 39.025 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                    </g>
+                    </svg> </h6>
+                  <span class="text-primary">{{user.bio}}</span>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="card mb-3">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Full Name</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    {{user.firstName}} {{user.lastName}}
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Email</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    {{user.email}}
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Date Created</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    {{test | date: "shortDate"}}
+                    <!-- can't get to appear -->
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Last Login</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    {{user.lastLogin | date: "shortDate"}}
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Address</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    Bay Area, San Francisco, CA
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="row gutters-sm">
+              <div class="col-sm-6 mb-3">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2"></i>Groups</h6>
+                    <small>Fix ME</small>
+
+                    <p><small>Fix</small></p>
+
+                    <p><small>Fix </small></p>
+
+                    <p><small>Fix</small></p>
+
+                    <p><small>Fix</small></p>
+
+                  </div>
+                </div>
+              </div> -->
+              <!-- <div class="col-sm-6 mb-3">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Project Status</h6>
+                    <small>Web Design</small>
+                    <div class="progress mb-3" style="height: 5px">
+                      <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <small>Website Markup</small>
+                    <div class="progress mb-3" style="height: 5px">
+                      <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <small>One Page</small>
+                    <div class="progress mb-3" style="height: 5px">
+                      <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <small>Mobile Template</small>
+                    <div class="progress mb-3" style="height: 5px">
+                      <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <small>Backend API</small>
+                    <div class="progress mb-3" style="height: 5px">
+                      <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+            <!-- </div> -->
+
+
+
+          </div>
+        </div>
+
+      </div>
+  </div>

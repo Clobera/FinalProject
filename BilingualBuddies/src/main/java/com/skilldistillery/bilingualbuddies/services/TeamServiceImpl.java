@@ -7,13 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.bilingualbuddies.entities.Team;
+import com.skilldistillery.bilingualbuddies.entities.User;
 import com.skilldistillery.bilingualbuddies.repositories.TeamRepository;
+import com.skilldistillery.bilingualbuddies.repositories.UserRepository;
 
 @Service
 public class TeamServiceImpl implements TeamService {
 	
 	@Autowired
 	private TeamRepository teamRepo;
+	
+	@Autowired
+	private UserRepository userRepo;
 
 	@Override
 	public Team findById(int id) {
@@ -32,7 +37,13 @@ public class TeamServiceImpl implements TeamService {
 	}
 
 	@Override
-	public Team createTeam(Team team) {
+	public Team createTeam(Team team, String username) {
+		User user = userRepo.findByUsername(username);
+		if(user == null || user.getMyTeam() != null) {
+			return null;
+		} 
+		user.setMyTeam(team);
+		team.setOwner(user);
 		team.setEnabled(true);
 		teamRepo.saveAndFlush(team);
 		return team;
