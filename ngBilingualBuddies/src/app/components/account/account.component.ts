@@ -90,12 +90,14 @@ export class AccountComponent {
         this.editUser = null;
         this.selected = user;
         this.loadUser();
+        this.showForm = false;
       },
       error: (nojoy) =>{
         console.error('UserListComponent.updateUser(): error updating User: ');
         console.error(nojoy);
       }
     })
+
 
 
 
