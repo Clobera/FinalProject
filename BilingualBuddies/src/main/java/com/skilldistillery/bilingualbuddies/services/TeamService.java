@@ -10,7 +10,7 @@ public interface TeamService {
 	
 	public List<Team> findAllTeams();
 	
-	public Team createTeam(Team team);
+	public Team createTeam(Team team, String username);
 	
 	public Team update(int id, Team team);
 	

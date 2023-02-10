@@ -8,14 +8,6 @@ city: string;
 state: string;
 postalCode: string;
 enabled: boolean;
-user: User;
-meetup: Meetup;
-meetups: Meetup;
-
-
-
-
-
 
 
 constructor(
@@ -26,9 +18,6 @@ constructor(
   state: string = "",
   postalCode: string = "",
   enabled: boolean = false,
-  user: User = new User(),
-  meetup: Meetup = new Meetup(),
-  meetups: Meetup = new Meetup()
 
 
 ){
@@ -39,9 +28,6 @@ this.state = state;
 this.postalCode = postalCode;
 this.enabled = enabled;
 this.enabled = enabled;
-this.user = user;
-this.meetup = meetup;
-this.meetups = meetups;
 
 
 

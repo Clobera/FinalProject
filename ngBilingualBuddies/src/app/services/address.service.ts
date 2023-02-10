@@ -1,36 +1,35 @@
-import { AuthService } from 'src/app/services/auth.service';
-import { environment } from './../../environments/environment.development';
-import { User } from './../models/user';
+import { Address } from './../models/address';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, throwError } from 'rxjs';
-import { Language } from '../models/language';
+import { Observable, catchError, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { User } from '../models/user';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class AddressService {
 
-  url = environment.baseUrl + "api/users";
+  url = environment.baseUrl + "api/addresses";
   constructor(private httpClient : HttpClient, private auth : AuthService) { }
 
-  index(): Observable<User[]> {
+  index(): Observable<Address[]> {
     let httpOptions = {
       headers: {
         Authorization: 'Basic ' + this.auth.getCredentials(),
         'X-Requested-with': 'XMLHttpRequest',
       }
     };
-    return this.httpClient.get<User[]>(this.url, httpOptions).pipe(
+    return this.httpClient.get<Address[]>(this.url, httpOptions).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
           () => new Error(
-              'LanguageService.index(): error retrieving Languages: ' + err
+              'AddressService.index(): error retrieving Addresses: ' + err
             )
         );
       })
     );
   }
-
 }

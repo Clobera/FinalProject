@@ -2,7 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { RegisterComponent } from './register/register.component';
+import { RegisterComponent } from './components/register/register.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +19,11 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { IncompletePipe } from './pipes/incomplete.pipe';
 import { SearchComponent } from './components/search/search.component';
 import { SeenPipe } from './pipes/seen.pipe';
+import { EnabledUsersPipe } from './pipes/enabled-users.pipe';
+import { UserLanguagePipe } from './pipes/user-language.pipe';
+import { UserSponsorPipe } from './pipes/user-sponsor.pipe';
+import { NameSearchPipe } from './pipes/name-search.pipe';
+import { CityPipe } from './pipes/city.pipe';
 
 @NgModule({
     declarations: [
@@ -35,10 +40,20 @@ import { SeenPipe } from './pipes/seen.pipe';
         IncompletePipe,
         RegisterComponent,
         SearchComponent,
-        SeenPipe
+        SeenPipe,
+        EnabledUsersPipe,
+        UserLanguagePipe,
+        UserSponsorPipe,
+        NameSearchPipe,
+        CityPipe,
     ],
     providers: [
-      SeenPipe
+      SeenPipe,
+      EnabledUsersPipe,
+      UserLanguagePipe,
+      UserSponsorPipe,
+      NameSearchPipe,
+      CityPipe
     ],
     bootstrap: [AppComponent],
     imports: [

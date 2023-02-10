@@ -1,12 +1,65 @@
 <div class="search">
   <h1>Search By:</h1>
-  <button class="btn btn-primary">Name</button>
-  <button class="btn btn-primary">Location</button>
-  <h6>Filter By:</h6>
+  <button class="btn btn-primary" (click)="switchName()">Name</button>
+  <button class="btn btn-primary" (click)="switchLoc()">
+    Location
+  </button> <br>
   <label for="sponsor">Sponsor:</label>
-  <input type="checkbox" name="sponsor" [(ngModel)]="sponsor">
-  <select name="language" [(ngModel)]="currLang">
-    <option *ngFor="let lang of languages">lang.name</option>
+  <input type="checkbox" name="sponsor" [(ngModel)]="sponsor" /> <br />
+  <label for="language">Language:</label>
+  <select name="language" [(ngModel)]="currLangId">
+    <option *ngFor="let lang of languages" value="{{ lang.id }}">
+      {{ lang.name }}
+    </option>
   </select>
-
+  <hr />
+  <div *ngIf="showName">
+    <h3>Enter Name To Search By</h3>
+    <input type="text" name="name" [(ngModel)]="searchName" />
+    <button class="btn btn-primary" (click)="loadUsers(1, searchName)">
+      Search
+    </button>
+  </div>
+  <div *ngIf="showLoc">
+    <h3>Serching By Location</h3>
+    <select name="city" [(ngModel)]="currCity">
+      <option *ngFor="let city of addresses | city" value="{{city}}">
+        {{city}}
+      </option>
+    </select>
+    <button class="btn btn-primary" (click)="loadUsers(2, searchLocation)">
+      Search
+    </button>
+  </div>
+  <div>
+    <table
+      *ngIf="users.length <= 0"
+      class="table table-striped table-dark table-bordered table-hover"
+    >
+      <thead>
+        <tr>
+          <td>No Results</td>
+        </tr>
+      </thead>
+    </table>
+    <table
+      *ngIf="users.length > 0"
+      class="table table-striped table-dark table-bordered table-hover"
+    >
+      <thead>
+        <tr>
+          <td>Username</td>
+          <td>First Name</td>
+          <td>Last Name</td>
+          <td>Bio</td>
+        </tr>
+      </thead>
+      <tr *ngFor="let user of users">
+        <td>{{ user.username }}</td>
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user.bio }}</td>
+      </tr>
+    </table>
+  </div>
 </div>

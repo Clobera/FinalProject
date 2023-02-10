@@ -1,6 +1,6 @@
 package com.skilldistillery.bilingualbuddies.entities;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -16,6 +16,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -30,12 +33,14 @@ public class User {
 	private String username;
 
 	private String password;
-
+	
 	@Column(name = "date_created")
-	private LocalDateTime dateCreated;
+	@CreationTimestamp
+	private LocalDate dateCreated;
 
 	@Column(name = "last_login")
-	private LocalDateTime lastLogin;
+	@UpdateTimestamp
+	private LocalDate lastLogin;
 
 	private boolean enabled;
 
@@ -144,8 +149,8 @@ public class User {
 		super();
 	}
 
-	public User(int id, String email, String username, String password, LocalDateTime dateCreated,
-			LocalDateTime lastLogin, boolean enabled, String role, boolean sponsor, String firstName, String lastName,
+	public User(int id, String email, String username, String password, LocalDate dateCreated,
+			LocalDate lastLogin, boolean enabled, String role, boolean sponsor, String firstName, String lastName,
 			String imageUrl, String bio, Country country, List<Comment> comments, Address address) {
 		super();
 		this.id = id;
@@ -230,19 +235,19 @@ public class User {
 		this.sponsor = sponsor;
 	}
 
-	public LocalDateTime getDateCreated() {
+	public LocalDate getDateCreated() {
 		return dateCreated;
 	}
 
-	public void setDateCreated(LocalDateTime dateCreated) {
+	public void setDateCreated(LocalDate dateCreated) {
 		this.dateCreated = dateCreated;
 	}
 
-	public LocalDateTime getLastLogin() {
+	public LocalDate getLastLogin() {
 		return lastLogin;
 	}
 
-	public void setLastLogin(LocalDateTime lastLogin) {
+	public void setLastLogin(LocalDate lastLogin) {
 		this.lastLogin = lastLogin;
 	}
 
