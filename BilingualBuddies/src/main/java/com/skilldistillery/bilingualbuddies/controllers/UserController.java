@@ -41,21 +41,6 @@ public class UserController {
 		return userService.show(username);
 				
 	}
-	@PostMapping("users")
-	public User create(Principal principal ,HttpServletRequest req, HttpServletResponse res, @RequestBody User user) {
-		try {
-			userService.create(user);
-			res.setStatus(201);
-			StringBuffer url = req.getRequestURL();
-			url.append("/").append(user.getId());
-			res.setHeader("Location", url.toString());
-		} catch(Exception e) {
-			e.printStackTrace();
-			res.setStatus(400);
-			user = null;
-		}
-		return user;
-	}
 	
 	@PutMapping("users/{username}")
 	public User update(Principal principal, HttpServletRequest req, HttpServletResponse res, @PathVariable String username, @RequestBody User user) {

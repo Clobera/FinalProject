@@ -38,9 +38,9 @@ public class TeamController {
 	}
 	
 	@PostMapping("teams")
-	public Team create(HttpServletRequest req, HttpServletResponse res, @RequestBody Team team) {
+	public Team create(Principal principal, HttpServletRequest req, HttpServletResponse res, @RequestBody Team team) {
 		try {
-			teamService.createTeam(team);
+			teamService.createTeam(team, principal.getName());
 			res.setStatus(201);
 			StringBuffer url = req.getRequestURL();
 			url.append("/").append(team.getId());
