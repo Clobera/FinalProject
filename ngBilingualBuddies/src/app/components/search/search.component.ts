@@ -1,6 +1,7 @@
 import { Language } from './../../models/language';
 import { Component } from '@angular/core';
 import { LanguageService } from 'src/app/services/language.service';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-search',
@@ -15,6 +16,7 @@ export class SearchComponent {
   showLoc = true;
   searchName = "";
   searchLocation = "";
+  users : User[] = [];
 
   switch(){
     this.showName = !this.showName;
@@ -26,6 +28,7 @@ export class SearchComponent {
   ngOnInit (){
     this.loadLanguages();
   }
+
   loadLanguages(){
     this.langServ.index().subscribe({
       next: (data) => {
@@ -37,5 +40,13 @@ export class SearchComponent {
     });
   }
 
+  searchByName(searchName : string, currLang : Language, sponsor : boolean){
+    console.log("searchByName");
+
+  }
+  searchByLocation(searchLocation : string, currLang : Language, sponsor : boolean){
+    console.log("searchByLoc");
+
+  }
 
 }

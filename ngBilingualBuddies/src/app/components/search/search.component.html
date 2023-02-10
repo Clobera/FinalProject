@@ -1,9 +1,7 @@
 <div class="search">
-  <h1>{{currLang}}</h1>
   <h1>Search By:</h1>
   <button class="btn btn-primary" (click)="switch()">Name</button>
   <button class="btn btn-primary" (click)="switch()">Location</button>
-  <h6>Filter By:</h6>
   <label for="sponsor">Sponsor:</label>
   <input type="checkbox" name="sponsor" [(ngModel)]="sponsor"> <br>
   <label for="language">Filter By Language:</label>
@@ -14,11 +12,31 @@
   <div *ngIf="showName">
     <h3>Enter Name To Search By</h3>
     <input type="text" name="name" [(ngModel)]="searchName">
+    <button class="btn btn-primary" (click)="searchByName(searchName, currLang, sponsor)">Search</button>
   </div>
   <div *ngIf="showLoc">
     <h3>Serching By Location</h3>
     <input type="text" name="location" [(ngModel)]="searchLocation">
+    <button class="btn btn-primary" (click)="searchByLocation(searchLocation, currLang, sponsor)">Search</button>
 
+  </div>
+  <div>
+    <table class="table table-striped table-dark table-bordered table-hover">
+      <thead>
+        <tr>
+          <td>Username</td>
+          <td>First Name</td>
+          <td>Last Name</td>
+          <td>Bio</td>
+        </tr>
+      </thead>
+      <tr *ngFor="let user of users">
+        <td>{{user.username}}</td>
+        <td>{{user.firstName}</td>
+        <td>{{user.lastName}}</td>
+        <td>{{user.bio}}</td>
+      </tr>
+    </table>
   </div>
 
 </div>
