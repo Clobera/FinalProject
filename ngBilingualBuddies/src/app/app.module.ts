@@ -25,6 +25,7 @@ import { UserSponsorPipe } from './pipes/user-sponsor.pipe';
 import { NameSearchPipe } from './pipes/name-search.pipe';
 import { CityPipe } from './pipes/city.pipe';
 import { NewsfeedComponent } from './components/newsfeed/newsfeed.component';
+import { TeamPipe } from './pipes/team.pipe';
 
 @NgModule({
     declarations: [
@@ -48,6 +49,7 @@ import { NewsfeedComponent } from './components/newsfeed/newsfeed.component';
         NameSearchPipe,
         CityPipe,
         NewsfeedComponent,
+        TeamPipe,
     ],
     providers: [
       SeenPipe,
@@ -55,7 +57,8 @@ import { NewsfeedComponent } from './components/newsfeed/newsfeed.component';
       UserLanguagePipe,
       UserSponsorPipe,
       NameSearchPipe,
-      CityPipe
+      CityPipe,
+      TeamPipe
     ],
     bootstrap: [AppComponent],
     imports: [

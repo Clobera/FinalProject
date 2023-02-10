@@ -24,7 +24,7 @@ const routes: Routes = [
   {path: 'account', component: AccountComponent},
   {path: 'myGroups', component: MygroupsComponent},
   {path: 'alerts', component: AlertsComponent},
-  {path: 'logOut', component: LogoutComponent},
+  {path: 'logout', component: LogoutComponent},
   {path: 'search', component: SearchComponent},
   {path: 'newsfeed', component: NewsfeedComponent},
   {path: '**', component: NotfoundComponent}

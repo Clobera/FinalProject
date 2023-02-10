@@ -46,7 +46,7 @@ loggedInMethod(){
 
 onLogout(){
   this.authservice.logout();
-this.router.navigate(['/home']);
+this.router.navigate(['/logout']);
 
 }
 
