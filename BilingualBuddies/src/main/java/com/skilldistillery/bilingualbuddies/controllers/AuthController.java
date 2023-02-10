@@ -39,7 +39,6 @@ public class AuthController {
 	     return null;
 	  }
 	  User user = authService.getUserByUsername(principal.getName());
-	  System.out.println(user.getAlerts().get(0));
 	  user.getAlerts().size();
 	  return user;
 	}

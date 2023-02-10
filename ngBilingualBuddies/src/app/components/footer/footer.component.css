@@ -1,3 +1,14 @@
 .footer {
   color: #EEF1ED;
+  background-color: rgba(40, 41, 45, .95);
 }
+#bg-black {
+  background-color: rgba(40, 41, 45, .95);
+}
+.card {
+  background-color: rgba(40, 41, 45, .95);
+  border-left: #EEF1ED;
+  border-right: #EEF1ED;
+
+}
+
