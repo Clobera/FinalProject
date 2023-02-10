@@ -40,6 +40,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User create(User user) {
 		User sendMe = new User();
+		user.setRole("user");
 		sendMe = userRepo.saveAndFlush(user);
 		return sendMe;
 	}
