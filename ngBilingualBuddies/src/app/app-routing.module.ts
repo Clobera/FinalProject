@@ -13,6 +13,7 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
 import { DatePipe } from '@angular/common';
 import { RegisterComponent } from './components/register/register.component';
 import { SearchComponent } from './components/search/search.component';
+import { NewsfeedComponent } from './components/newsfeed/newsfeed.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'alerts', component: AlertsComponent},
   {path: 'logOut', component: LogoutComponent},
   {path: 'search', component: SearchComponent},
+  {path: 'newsfeed', component: NewsfeedComponent},
   {path: '**', component: NotfoundComponent}
 ];
 

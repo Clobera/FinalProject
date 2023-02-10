@@ -24,6 +24,7 @@ import { UserLanguagePipe } from './pipes/user-language.pipe';
 import { UserSponsorPipe } from './pipes/user-sponsor.pipe';
 import { NameSearchPipe } from './pipes/name-search.pipe';
 import { CityPipe } from './pipes/city.pipe';
+import { NewsfeedComponent } from './components/newsfeed/newsfeed.component';
 
 @NgModule({
     declarations: [
@@ -46,6 +47,7 @@ import { CityPipe } from './pipes/city.pipe';
         UserSponsorPipe,
         NameSearchPipe,
         CityPipe,
+        NewsfeedComponent,
     ],
     providers: [
       SeenPipe,
