@@ -52,7 +52,8 @@ import { CityPipe } from './pipes/city.pipe';
       EnabledUsersPipe,
       UserLanguagePipe,
       UserSponsorPipe,
-      NameSearchPipe
+      NameSearchPipe,
+      CityPipe
     ],
     bootstrap: [AppComponent],
     imports: [
