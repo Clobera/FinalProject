@@ -2,7 +2,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { environment } from './../../environments/environment.development';
 import { User } from './../models/user';
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Pipe } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { Language } from '../models/language';
 
@@ -12,7 +12,7 @@ import { Language } from '../models/language';
 export class UserService {
 
   url = environment.baseUrl + "api/users";
-  constructor(private httpClient : HttpClient, private auth : AuthService) { }
+  constructor(private http : HttpClient, private auth : AuthService) { }
 
   index(): Observable<User[]> {
     let httpOptions = {
@@ -21,7 +21,7 @@ export class UserService {
         'X-Requested-with': 'XMLHttpRequest',
       }
     };
-    return this.httpClient.get<User[]>(this.url, httpOptions).pipe(
+    return this.http.get<User[]>(this.url, httpOptions).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
@@ -32,5 +32,58 @@ export class UserService {
       })
     );
   }
+
+  show(username: string): Observable<User> {
+    return this.http.get<User>(`${this.url}/${username}`, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () =>
+            new Error('UserService.show(): error retrieving user: ' + err)
+        );
+      })
+    );
+  }
+
+  update(user: User, username: string): Observable<User> {
+    return this.http.put<User>(`${this.url}/${username}`, user, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error('UserService.update(): error updating user: ' + err)
+        );
+      })
+    );
+  }
+  destroy(username: string, user: User): Observable<void> | void {
+    if(user.role === "admin" || user.username === username){
+    return this.http.delete<void>(`${this.url}/${username}`, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error('TodoService.delete(): error deleting todo: ' + err)
+        );
+      })
+    );
+    }
+
+  }
+
+
+
+
+
+  getHttpOptions() {
+    let options = {
+      headers: {
+        Authorization: 'Basic ' + this.auth.getCredentials(),
+        'X-Requested-With': 'XMLHttpRequest',
+      },
+    };
+    return options;
+  }
+
+
+
 
 }
