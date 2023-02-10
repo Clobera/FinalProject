@@ -1,3 +1,6 @@
+import { Meetup } from "./meetup";
+import { User } from "./user";
+
 export class Address {
 id: number;
 address: string;
@@ -5,9 +8,9 @@ city: string;
 state: string;
 postalCode: string;
 enabled: boolean;
-//  user: string;
-//  meetup: string;
-//  meetups: string;
+user: User;
+meetup: Meetup;
+meetups: Meetup;
 
 
 
@@ -23,9 +26,9 @@ constructor(
   state: string = "",
   postalCode: string = "",
   enabled: boolean = false,
-  // user: user = "",
-  // meetup: meetup = "",
-  // meetups: meetups = ""
+  user: User = new User(),
+  meetup: Meetup = new Meetup(),
+  meetups: Meetup = new Meetup()
 
 
 ){
@@ -36,9 +39,9 @@ this.state = state;
 this.postalCode = postalCode;
 this.enabled = enabled;
 this.enabled = enabled;
-// this.user = user;
-// this.meetup = meetup;
-// this.meetups = meetups;
+this.user = user;
+this.meetup = meetup;
+this.meetups = meetups;
 
 
 
