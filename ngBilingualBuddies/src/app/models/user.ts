@@ -1,7 +1,9 @@
-import { Address } from './address';
-import { Alert } from './alert';
-import { Country } from './country';
-import { Language } from './language';
+
+import { Address } from "./address";
+import { Alert } from "./alert";
+import { Country } from "./country";
+import { Language } from "./language";
+
 
 export class User {
   id: number;
@@ -36,10 +38,13 @@ export class User {
     lastName: string = '',
     imgUrl: string = '',
     bio: string = '',
-    alerts: Array<Alert> = [],
-    languages: Array<Language> = [],
     address: Address = new Address(),
-    originCountry: Country = new Country()
+    originCountry: Country = new Country(),
+    alerts: Array<Alert> = [],
+    languages: Array<Language> = []
+
+
+
   ) {
     this.id = id;
     this.email = email;
@@ -54,9 +59,9 @@ export class User {
     this.lastName = lastName;
     this.imgUrl = imgUrl;
     this.bio = bio;
+    this.address = address;
     this.alerts = alerts;
     this.languages = languages;
-    this.address = address;
     this.originCountry = originCountry;
   }
 }
