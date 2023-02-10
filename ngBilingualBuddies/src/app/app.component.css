@@ -6,3 +6,6 @@ hr{
   background-color: #EEF1ED;
   border: none;
 }
+.bg-black {
+  background-color: rgba(40, 41, 45, .95);
+}
