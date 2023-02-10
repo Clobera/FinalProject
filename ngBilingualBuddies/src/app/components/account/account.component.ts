@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Component } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Country } from 'src/app/models/country';
 
 @Component({
   selector: 'app-account',
@@ -24,6 +25,7 @@ export class AccountComponent {
   test = 0;
   selected: null | User = null;
   showForm: boolean = false;
+  // country: String = this.user.originCountry.country;
   showDate(){
     let date = this.user.dateCreated;
     console.log(date);

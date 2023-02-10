@@ -20,7 +20,7 @@ export class User {
   imgUrl: string;
   bio: string;
   address: Address;
-  originCountry: Country;
+  country: Country;
   alerts: Array<Alert>;
   languages: Array<Language>;
 
@@ -39,7 +39,7 @@ export class User {
     imgUrl: string = '',
     bio: string = '',
     address: Address = new Address(),
-    originCountry: Country = new Country(),
+    country: Country = new Country(),
     alerts: Array<Alert> = [],
     languages: Array<Language> = []
 
@@ -62,6 +62,6 @@ export class User {
     this.address = address;
     this.alerts = alerts;
     this.languages = languages;
-    this.originCountry = originCountry;
+    this.country = country;
   }
 }
