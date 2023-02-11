@@ -30,19 +30,15 @@ public class Address {
 	private String postalCode;
 
 	private Boolean enabled;
-	
+
 	@JsonIgnore
-	@OneToOne(mappedBy="address")
+	@OneToOne(mappedBy = "address")
 	private User user;
-	
-	@JsonIgnore
-	@OneToMany(mappedBy="address")
-	private List<Meetup> meetup;
-	
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "address")
 	private List<Meetup> meetups;
-	
+
 	public Address() {
 		super();
 	}
@@ -60,18 +56,8 @@ public class Address {
 		this.user = user;
 	}
 
-	public List<Meetup> getMeetup() {
-		return meetup;
-	}
-
-	public void setMeetup(List<Meetup> meetup) {
-		this.meetup = meetup;
-	}
-
-
-
-	public Address(int id, String address, String city, String state, String postalCode, Boolean enabled
-			,List<Meetup> meetups) {
+	public Address(int id, String address, String city, String state, String postalCode, Boolean enabled,
+			List<Meetup> meetups) {
 		super();
 		this.id = id;
 		this.address = address;

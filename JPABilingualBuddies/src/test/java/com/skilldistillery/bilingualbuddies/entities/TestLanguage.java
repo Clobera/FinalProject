@@ -44,7 +44,7 @@ class TestLanguage {
 		assertNotNull(language);
 		assertEquals(1, language.getId());
 		assertEquals("English", language.getName());
-		assertEquals("Most spoken language in the world", language.getDescription());
+		assertEquals(".", language.getDescription());
 
 	}
 
