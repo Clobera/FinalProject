@@ -17,10 +17,10 @@ export class User {
   sponsor: boolean;
   firstName: string;
   lastName: string;
-  imgUrl: string;
+  imageUrl: string;
   bio: string;
   address: Address;
-  originCountry: Country;
+  country: Country;
   alerts: Array<Alert>;
   languages: Array<Language>;
 
@@ -36,10 +36,10 @@ export class User {
     sponsor: boolean = false,
     firstName: string = '',
     lastName: string = '',
-    imgUrl: string = '',
+    imageUrl: string = '',
     bio: string = '',
     address: Address = new Address(),
-    originCountry: Country = new Country(),
+    country: Country = new Country(),
     alerts: Array<Alert> = [],
     languages: Array<Language> = []
 
@@ -57,11 +57,11 @@ export class User {
     this.sponsor = sponsor;
     this.firstName = firstName;
     this.lastName = lastName;
-    this.imgUrl = imgUrl;
+    this.imageUrl = imageUrl;
     this.bio = bio;
     this.address = address;
     this.alerts = alerts;
     this.languages = languages;
-    this.originCountry = originCountry;
+    this.country = country;
   }
 }

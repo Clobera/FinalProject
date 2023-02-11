@@ -1,3 +1,5 @@
+import { UserInCityPipe } from './../../pipes/user-in-city.pipe';
+import { CityPipe } from './../../pipes/city.pipe';
 import { Component } from "@angular/core";
 import { Address } from "src/app/models/address";
 import { Language } from "src/app/models/language";
@@ -37,7 +39,9 @@ export class SearchComponent {
     private lang: UserLanguagePipe,
     private sponsorship: UserSponsorPipe,
     private nameSearch : NameSearchPipe,
-    private addrServ : AddressService
+    private addrServ : AddressService,
+    private cityPipe : CityPipe,
+    private userInCityPipe : UserInCityPipe
   ) {}
 
 
@@ -77,13 +81,15 @@ export class SearchComponent {
     this.users = this.nameSearch.transform(this.users, searchName);
   }
   searchByLocation(searchLocation: string) {
-    console.log('Loc');
+    this.users = this.userInCityPipe.transform(this.users, this.currCity);
+    console.log("currCity:"+ this.currCity);
+
   }
 
   loadUsers(num: number, input: string) {
     this.userServ.index().subscribe({
       next: (data) => {
-        this.filterByEnabledAndLanguageAndSponsor(data);
+       this.filterByEnabledAndLanguageAndSponsor(data);
         if (num == 1) {
           this.searchByName(input);
         } else if (num == 2) {
@@ -100,6 +106,7 @@ export class SearchComponent {
 
   filterByEnabledAndLanguageAndSponsor(data: User[]) {
     let enabled = this.enabledUser.transform(data);
+    console.log(enabled);
     this.users = this.lang.transform(enabled, this.currLangId);
     if (this.sponsor){
       this.users = this.sponsorship.transform(this.users);

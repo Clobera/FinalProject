@@ -11,39 +11,61 @@
           placeholder="First Name"
           name="firstName"
           class="form-control"
-          />
-          <h3>Last Name:</h3>
-          <input
+        />
+        <h3>Last Name:</h3>
+        <input
           class="form-control"
           [(ngModel)]="user.lastName"
           type="text"
           placeholder="Last Name"
           name="lastName"
-          />
-          <h3>Password:</h3>
-          <input
+        />
+        <h3>Password:</h3>
+        <input
           class="form-control"
           [(ngModel)]="user.password"
           type="password"
           placeholder="Password"
           name="Password"
-          />
-          <h3>Email:</h3>
-          <input
+        />
+        <h3>Email:</h3>
+        <input
           class="form-control"
           type="email"
           placeholder="John.Doe@Gmail.com"
           name="email"
           [(ngModel)]="user.email"
-          />
-          <h3>Username:</h3>
-          <input
+        />
+        <h3>Username:</h3>
+        <input
           class="form-control"
           type="text"
           placeholder="Username"
           name="Username"
           [(ngModel)]="user.username"
         />
+        <h3>City:</h3>
+        <input
+          class="form-control"
+          type="text"
+          placeholder="City"
+          name="city"
+          [(ngModel)]="user.address.city"
+        />
+        <h3>State:</h3>
+        <input
+          class="form-control"
+          type="text"
+          placeholder="state"
+          name="state"
+          [(ngModel)]="user.address.state"
+        />
+        <label for="language">Language: {{user.languages[0] | json}}</label>
+        <select name="language" [(ngModel)]="currLangId" (ngModelChange)="user.languages[0] = languages[currLangId - 1]">
+          <option *ngFor="let lang of languages" value="{{ lang.id }}">
+            {{ lang.name }}
+          </option>
+        </select>
         <h3>Check if you are open to helping others</h3>
         <input
           class="custom-control-input"
@@ -58,7 +80,7 @@
           type="text"
           placeholder="Image Url"
           name="imgUrl"
-          [(ngModel)]="user.imgUrl"
+          [(ngModel)]="user.imageUrl"
         />
         <h3>How would you describe yourself?</h3>
         <textarea

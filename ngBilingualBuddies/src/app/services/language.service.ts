@@ -31,5 +31,24 @@ export class LanguageService {
     );
   }
 
+  indexNoCred(): Observable<Language[]> {
+    let httpOptions = {
+      headers: {
+        Authorization: 'Basic ' + 'YWRtaW46d29tYmF0MQ==',
+        'X-Requested-with': 'XMLHttpRequest',
+      }
+    };
+    return this.httpClient.get<Language[]>(this.url, httpOptions).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error(
+              'LanguageService.index(): error retrieving Languages: ' + err
+            )
+        );
+      })
+    );
+  }
+
   constructor(private httpClient : HttpClient, private auth : AuthService) { }
 }

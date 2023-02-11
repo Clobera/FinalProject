@@ -1,4 +1,9 @@
 .notFound {
+<<<<<<< HEAD
   background-color: rgba(0, 0, 0, 0.75);
 
+=======
+  background-color: black;
+  color: #E34F15;
+>>>>>>> d16089ad07478f84012b915f9188566092cc3471
 }

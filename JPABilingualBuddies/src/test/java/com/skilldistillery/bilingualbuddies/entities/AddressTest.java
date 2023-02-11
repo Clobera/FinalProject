@@ -54,8 +54,12 @@ class AddressTest {
 
 	@Test
 	void test_RM_address_meetup() {
+		address = em.find(Address.class, 2);
 		assertNotNull(address);
+		System.out.println(address.getMeetups().size());
 		assertTrue(address.getMeetups().size() > 0);
+		
+		
 	}
 
 	

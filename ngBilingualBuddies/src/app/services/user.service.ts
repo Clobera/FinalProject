@@ -55,17 +55,12 @@ export class UserService {
       })
     );
   }
-  destroy(username: string, user: User): Observable<void> | void {
-    if(user.role === "admin" || user.username === username){
-    return this.http.delete<void>(`${this.url}/${username}`, this.getHttpOptions()).pipe(
-      catchError((err: any) => {
-        console.log(err);
-        return throwError(
-          () => new Error('TodoService.delete(): error deleting todo: ' + err)
-        );
-      })
-    );
+
+  destroy(username: string, user: User): Observable<void>{
+    if(user.role !== "admin" || user.username !== username){
+      username = '';
     }
+    return this.http.delete<void>(`${this.url}/${username}`, this.getHttpOptions());
 
   }
 

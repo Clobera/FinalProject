@@ -1,7 +1,9 @@
+import { LanguageService } from 'src/app/services/language.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from '../../models/user';
 import { Component } from '@angular/core';
+import { Language } from 'src/app/models/language';
 
 @Component({
   selector: 'app-register',
@@ -9,19 +11,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
-  constructor(private auth: AuthService, private router : Router) {}
   user: User = new User();
+  languages: Language[] = [];
+  currLangId: number = 0;
 
-  // class variable to implement form control later
-  fnameClass = 'form-control';
-  lnameClass = 'form-control';
-  passwordClass = 'form-control';
-  emailClass = 'form-control';
-  usernameClass = 'form-control';
+  constructor(private auth: AuthService, private router : Router, private langServ : LanguageService) {}
+  ngOnInit(){
+    this.loadLanguages();
+  }
 
   register(user: User) {
     this.auth.register(user).subscribe({
       next: (data) => {
+        console.log(data.languages[0]);
         this.login(this.user);
       },
       error: (err) => {
@@ -40,4 +42,18 @@ export class RegisterComponent {
       }
     })
   }
+
+  loadLanguages() {
+    this.langServ.indexNoCred().subscribe({
+      next: (data) => {
+        this.languages = data;
+      },
+      error: (err) => {
+        console.log(
+          'SearchComponent.loadLanguages: Error loading languages ' + err
+        );
+      },
+    });
+  }
+
 }
