@@ -130,8 +130,7 @@ public class Language {
 
 	@Override
 	public String toString() {
-		return "Language [id=" + id + ", name=" + name + ", description=" + description + ", code=" + code
-				+ ", resources=" + resources + ", users=" + users + ", countries=" + countries + "]";
+		return "Language [id=" + id + ", name=" + name + ", description=" + description + ", code=" + code + "]";
 	}
 
 }
