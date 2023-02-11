@@ -33,10 +33,10 @@ public class AuthServiceImpl implements AuthService {
 		user.setPassword(encoder.encode(user.getPassword()));
 		user.setEnabled(true);
 		user.setRole("standard");
-		
+		user.setCountry(null);
+		Language lang = user.getLanguages().get(0);
 		addrRepo.saveAndFlush(user.getAddress());
 		user = userRepo.saveAndFlush(user);
-		Language lang = user.getLanguages().get(0);
 		Optional<Language> opt = langRepo.findById(lang.getId());
 		if (opt.isPresent()) {
 			lang = opt.get();
