@@ -1,10 +1,8 @@
 <div class="search">
   <h1>Search By:</h1>
   <button class="btn btn-primary" (click)="switchName()">Name</button>
-  <br>
-  <button class="btn btn-primary" (click)="switchLoc()">
-    Location
-  </button> <br>
+  <br />
+  <button class="btn btn-primary" (click)="switchLoc()">Location</button> <br />
   <label for="sponsor">Sponsor:</label>
   <input type="checkbox" name="sponsor" [(ngModel)]="sponsor" /> <br />
   <label for="language">Language:</label>
@@ -24,11 +22,11 @@
   <div *ngIf="showLoc">
     <h3>Serching By Location</h3>
     <select name="city" [(ngModel)]="currCity">
-      <option *ngFor="let city of addresses | city" value="{{city}}">
-        {{city}}
+      <option *ngFor="let city of addresses | city" value="{{ city }}">
+        {{ city }}
       </option>
     </select>
-    <button class="btn btn-primary" (click)="loadUsers(2, searchLocation)">
+    <button class="btn btn-primary" (click)="loadUsers(2, currCity)">
       Search
     </button>
   </div>

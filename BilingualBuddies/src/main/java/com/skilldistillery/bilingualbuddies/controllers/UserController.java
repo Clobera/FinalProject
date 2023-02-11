@@ -31,8 +31,11 @@ public class UserController {
 	
 	@GetMapping("users")
 	public List<User> index(Principal principal, HttpServletRequest req, HttpServletResponse res){
-		
-		return userService.index();
+		List<User> users = userService.index();
+		for (User user : users) {
+			user.getLanguages().size();
+		}
+		return users;
 	}
 	
 	@GetMapping("users/{username}")
