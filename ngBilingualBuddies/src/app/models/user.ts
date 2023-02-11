@@ -17,7 +17,7 @@ export class User {
   sponsor: boolean;
   firstName: string;
   lastName: string;
-  imgUrl: string;
+  imageUrl: string;
   bio: string;
   address: Address;
   country: Country;
@@ -36,7 +36,7 @@ export class User {
     sponsor: boolean = false,
     firstName: string = '',
     lastName: string = '',
-    imgUrl: string = '',
+    imageUrl: string = '',
     bio: string = '',
     address: Address = new Address(),
     country: Country = new Country(),
@@ -57,7 +57,7 @@ export class User {
     this.sponsor = sponsor;
     this.firstName = firstName;
     this.lastName = lastName;
-    this.imgUrl = imgUrl;
+    this.imageUrl = imageUrl;
     this.bio = bio;
     this.address = address;
     this.alerts = alerts;
