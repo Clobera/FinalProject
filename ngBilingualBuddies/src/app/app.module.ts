@@ -1,3 +1,4 @@
+import { UserPostComponent } from './components/user-post/user-post.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -39,6 +40,7 @@ import { UserInCityPipe } from './pipes/user-in-city.pipe';
         AccountComponent,
         MygroupsComponent,
         AlertsComponent,
+        UserPostComponent,
         LogoutComponent,
         IncompletePipe,
         RegisterComponent,

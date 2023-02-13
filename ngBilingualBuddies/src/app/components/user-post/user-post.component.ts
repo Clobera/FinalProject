@@ -28,60 +28,74 @@ newPost: Post = new Post();
 
 
 ngOnInit() : void{
-  // this.loadUser();
+   this.loadUser();
 }
-// loadUser(){
-//   this.auth.getLoggedInUser().subscribe({
-//     next: (data) => {
-//       this.user = data;
-//     },
-//     error: (err) => {
-//       console.log(
-//         'NavbarCompenent.loadUser: Error getting user'
-//       );
-//       console.log(err);
-//     }
-//   });
-// }
+loadUser(){
+  this.auth.getLoggedInUser().subscribe({
+    next: (data) => {
+      this.user = data;
+    },
+    error: (err) => {
+      console.log(
+        'NavbarCompenent.loadUser: Error getting user'
+      );
+      console.log(err);
+    }
+  });
+}
 
-// create(post: Post)  {
-//   this.postService.create(post).subscribe({
-//     next: (result) =>{
-//       this.newPost = new Post();
-//       this.reload();
-//     },
-//     error: (error) =>{
-//       console.error("Error creating post");
-//       console.error(error);
-//     }
-//   });
-// }
+create(post: Post)  {
+  post.user = this.user;
+  this.postService.create(post).subscribe({
+    next: (result) =>{
+      this.newPost = new Post();
+      this.reload();
+    },
+    error: (error) =>{
+      console.error("Error creating post");
+      console.error(error);
+    }
+  });
+}
 
-// deletePost(id: number, post: Post){
-//   this.postService.destroy(id).subscribe({
-//     next: () =>{
-//       this.reload();
-//     },
-//     error(fail) => {
-//       console.console.error("Error deleting post");
-//       console.error(fail);
+deletePost(id: number, post: Post){
+  this.postService.destroy(id, post).subscribe({
+    next: () => {
+      this.reload();
+    },
+    error: (fail) => {
+      console.error(' Error deleting post');
+      console.error(fail);
+    },
+  });
+}
 
-//     }
-//   })
-// }
+reload(){
+  this.postService.index().subscribe({
+    next: (posts) =>{
+      this.posts = posts;
+    },
+    error:(oops) => {
+      console.error("Error retrieving posts");
+      console.error(oops);
+    }
+  });
+}
 
-// reload(){
-//   this.postService.index().subscribe({
-//     next: (posts) =>{
-//       this.posts = posts;
-//     },
-//     error:(oops) => {
-//       console.error("Error retrieving posts");
-//       console.error(oops);
-//     }
-//   });
-// }
+styleUserPosts(){
+  let num = this.getNumberOfPosts();
+  if(num > 10){
+    return 'bg-success';
+  } else if( num >= 5){
+    return 'bg-warning';
+  } else {
+    return 'bg-danger';
+  }
+}
+
+getNumberOfPosts(){
+  return this.posts.length;
+}
 
 
-// }
 }
