@@ -1,0 +1,19 @@
+<h1 style="text-align: center;" > Comment <span class ="badge" [ngClass]="styleUserComments()"> {{getNumberOfComments()}}</span></h1>
+
+<div  style="top:50%; left: 50% "class="col-md-8">
+  <div class="col-lg-8">
+    <div class="card">
+      <div class="card-body">
+        <div class="row mb-3">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Comment Content</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            <input type="text" class="form-control" name="newComment.content" [(ngModel)]="newComment.content"/>
+            <button (click)="create(newComment)"> Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
