@@ -11,7 +11,7 @@ import { AuthService } from './auth.service';
 export class PostService {
 
   url = environment.baseUrl + "api/posts";
-  constructor(private httpClient : HttpClient, private auth : AuthService) { }
+  constructor(private http : HttpClient, private auth : AuthService) { }
 
   index(): Observable<Post[]> {
     let httpOptions = {
@@ -20,7 +20,7 @@ export class PostService {
         'X-Requested-with': 'XMLHttpRequest',
       }
     };
-    return this.httpClient.get<Post[]>(this.url, httpOptions).pipe(
+    return this.http.get<Post[]>(this.url, httpOptions).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
@@ -30,5 +30,62 @@ export class PostService {
         );
       })
     );
+  }
+  show(id: number): Observable<Post>{
+    return this.http.get<Post>(`${this.url}/${id}`, this.getHttpOptions()).pipe(
+      catchError((err: any) =>{
+        console.log(err);
+        return throwError(
+          () =>
+          new Error('PostService.show(): error retrieving post: ' + err)
+        );
+      })
+    );
+  }
+
+  update(post: Post, id: number): Observable<Post>{
+    return this.http.put<Post>(`${this.url}/${id}`, post, this.getHttpOptions()).pipe(
+      catchError((err: any) =>{
+        console.log(err);
+        return throwError(
+          () => new Error('PostService.update(): error updating post: ' + err)
+        );
+      })
+    );
+  }
+
+  create(post: Post): Observable<Post>{
+    return this.http.post<Post>(`${this.url}`, post, this.getHttpOptions()).pipe(
+      catchError((err: any) =>{
+        console.log(err);
+        return throwError(
+          () => new Error('PostService.create(): error creating post: ' + err)
+        );
+      })
+    );
+  }
+
+  destroy(id: number, post: Post): Observable<void>{
+    return this.http.delete<void>(`${this.url}/${id}`, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error('PostService.destroy(): error deleting Post: ' + err)
+        );
+      })
+    );
+  }
+
+
+
+
+  getHttpOptions() {
+    let options = {
+      headers: {
+        Authorization: 'Basic ' + this.auth.getCredentials(),
+        'X-Requested-With': 'XMLHttpRequest',
+      },
+    };
+    return options;
   }
 }
