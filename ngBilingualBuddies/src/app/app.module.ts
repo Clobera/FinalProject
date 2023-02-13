@@ -29,6 +29,8 @@ import { NewsfeedComponent } from './components/newsfeed/newsfeed.component';
 import { TeamPipe } from './pipes/team.pipe';
 import { UserInCityPipe } from './pipes/user-in-city.pipe';
 import { OtherUserComponent } from './components/other-user/other-user.component';
+import { CommentComponent } from './components/comment/comment.component';
+import { MeetupComponent } from './components/meetup/meetup.component';
 
 @NgModule({
     declarations: [
@@ -56,6 +58,8 @@ import { OtherUserComponent } from './components/other-user/other-user.component
         TeamPipe,
         UserInCityPipe,
         OtherUserComponent,
+        CommentComponent,
+        MeetupComponent,
 
     ],
     providers: [

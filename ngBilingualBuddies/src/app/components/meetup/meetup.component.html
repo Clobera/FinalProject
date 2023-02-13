@@ -1,0 +1,40 @@
+<h1 style="text-align: center;" > Meetup <span class ="badge" [ngClass]="styleUserMeetups()"> {{getNumberOfMeetups()}}</span></h1>
+
+<div  style="top:50%; left: 50% "class="col-md-8">
+  <div class="col-lg-8">
+    <div class="card">
+      <div class="card-body">
+        <div class="row mb-3">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Meetup Title</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            <input type="text" class="form-control" name="newMeetup.title" [(ngModel)]="newMeetup.title"/>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Content</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            <textarea type="text" class="form-control" name="newMeetup.content" [(ngModel)]="newMeetup.content" > </textarea>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Start Date</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            <input required type="text" class="form-control" name="newPost.startTime" [(ngModel)]="newMeetup.startTime" >
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3"></div>
+          <div class="col-sm-9 text-secondary">
+            <button class="btn btn-primary"  (click)="create(newMeetup)"> Create Meetup</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
