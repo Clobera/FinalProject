@@ -145,6 +145,24 @@ public class User {
 		}
 	}
 
+	//MTM add remove methods
+	public void addLanguage(Language language) {
+		if(languages == null) {
+			languages = new ArrayList<>();
+		}
+		if (! languages.contains(language)) {
+			languages.add(language);
+			language.addUser(this);
+		}
+	}
+	
+	public void removeLanguage(Language language) {
+		if (languages != null && languages.contains(language)) {
+			languages.remove(language);
+			language.removeUser(this);
+		}
+	}
+	
 	public User() {
 		super();
 	}
