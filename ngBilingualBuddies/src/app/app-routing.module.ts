@@ -1,3 +1,5 @@
+import { OtherUserComponent } from './components/other-user/other-user.component';
+import { UserPostComponent } from './components/user-post/user-post.component';
 
 import { AppComponent } from './app.component';
 import { IncompletePipe } from './pipes/incomplete.pipe';
@@ -27,6 +29,8 @@ const routes: Routes = [
   {path: 'logout', component: LogoutComponent},
   {path: 'search', component: SearchComponent},
   {path: 'newsfeed', component: NewsfeedComponent},
+  {path: 'post', component: UserPostComponent},
+  {path: 'other/:id', component: OtherUserComponent},
   {path: '**', component: NotfoundComponent}
 ];
 

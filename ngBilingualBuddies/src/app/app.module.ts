@@ -27,6 +27,7 @@ import { CityPipe } from './pipes/city.pipe';
 import { NewsfeedComponent } from './components/newsfeed/newsfeed.component';
 import { TeamPipe } from './pipes/team.pipe';
 import { UserInCityPipe } from './pipes/user-in-city.pipe';
+import { OtherUserComponent } from './components/other-user/other-user.component';
 
 @NgModule({
     declarations: [
@@ -52,6 +53,7 @@ import { UserInCityPipe } from './pipes/user-in-city.pipe';
         NewsfeedComponent,
         TeamPipe,
         UserInCityPipe,
+        OtherUserComponent,
 
     ],
     providers: [

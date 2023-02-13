@@ -1,12 +1,15 @@
 package com.skilldistillery.bilingualbuddies.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.bilingualbuddies.entities.Language;
 import com.skilldistillery.bilingualbuddies.entities.User;
+import com.skilldistillery.bilingualbuddies.repositories.LangeuageRepository;
 import com.skilldistillery.bilingualbuddies.repositories.UserRepository;
 
 @Service
@@ -14,6 +17,9 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private UserRepository userRepo;
+	
+	@Autowired
+	private LangeuageRepository langRepo;
 
 	@Override
 	public List<User> index() {
@@ -57,6 +63,24 @@ public class UserServiceImpl implements UserService {
 			output.setEnabled(user.isEnabled());
 			output.setImageUrl(user.getImageUrl());
 			output.setBio(user.getBio());
+			
+			if (output.getLanguages().size() < user.getLanguages().size()) {
+				Language lang = user.getLanguages().get(user.getLanguages().size() - 1);
+				Optional<Language> opt = langRepo.findById(lang.getId());
+				if (opt.isPresent()) {
+					lang = opt.get();
+				}
+				output.addLanguage(lang);				
+			}
+			
+			if (output.getLanguages().size() > user.getLanguages().size()) {
+				List<Language> languages = new ArrayList<>(output.getLanguages());
+				for (Language lang : languages) {
+					if (!user.getLanguages().contains(lang)) {
+						output.removeLanguage(lang);
+					}
+				}
+			}
 			
 			output = userRepo.saveAndFlush(output);
 		}
