@@ -3,6 +3,7 @@ import { Address } from "./address";
 import { Alert } from "./alert";
 import { Country } from "./country";
 import { Language } from "./language";
+import { Team } from "./team";
 
 
 export class User {

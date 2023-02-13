@@ -17,6 +17,7 @@ import { DatePipe } from '@angular/common';
 import { RegisterComponent } from './components/register/register.component';
 import { SearchComponent } from './components/search/search.component';
 import { NewsfeedComponent } from './components/newsfeed/newsfeed.component';
+import { TeamComponent } from './components/team/team.component';
 
 
 const routes: Routes = [
@@ -33,6 +34,7 @@ const routes: Routes = [
   {path: 'user-post', component: UserPostComponent},
   {path: 'post', component: UserPostComponent},
   {path: 'other/:id', component: OtherUserComponent},
+  {path: 'team', component: TeamComponent},
   {path: '**', component: NotfoundComponent}
 ];
 

@@ -30,6 +30,7 @@ newPost: Post = new Post();
 ngOnInit() : void{
    this.loadUser();
 }
+
 loadUser(){
   this.auth.getLoggedInUser().subscribe({
     next: (data) => {

@@ -32,9 +32,19 @@ public class TeamController {
 	public List<Team> index(HttpServletRequest req, HttpServletResponse res){
 		return teamService.findAllTeams();
 	}
+	
 	@GetMapping("teams/{id}")
 	public Team show(HttpServletRequest req, HttpServletResponse res, @PathVariable Integer id) {
 		return teamService.findById(id);
+	}
+	
+	@GetMapping("teams/myTeam")
+	public Team show(HttpServletRequest req, HttpServletResponse res, Principal principal) {
+		Team team = teamService.finByUser(principal.getName());
+		if (team == null) {
+			res.setStatus(404);
+		}
+		return team;
 	}
 	
 	@PostMapping("teams")

@@ -46,6 +46,19 @@ export class TeamService {
     )
   }
 
+  showByUsername(username: String): Observable<Team>{
+    return this.http.get<Team>(`${this.url}/myTeam`, this.getHttpOptions()).pipe(
+      catchError((err: any) =>{
+        console.log(err);
+        return throwError(
+          () =>
+          new Error('Error retrieving Team: ' + err
+          )
+        )
+      })
+    )
+  }
+
   create(team: Team): Observable<Team>{
     return this.http.post<Team>(this.url, team, this.getHttpOptions()).pipe(
       catchError((err: any) => {

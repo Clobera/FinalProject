@@ -31,6 +31,7 @@ export class PostService {
       })
     );
   }
+
   show(id: number): Observable<Post>{
     return this.http.get<Post>(`${this.url}/${id}`, this.getHttpOptions()).pipe(
       catchError((err: any) =>{
@@ -75,9 +76,6 @@ export class PostService {
       })
     );
   }
-
-
-
 
   getHttpOptions() {
     let options = {

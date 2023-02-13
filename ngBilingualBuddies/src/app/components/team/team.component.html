@@ -1,0 +1,47 @@
+
+<h1 style="text-align: center;" > TEAM <span class ="badge" [ngClass]="styleUserTeams()"> {{getNumberOfTeams()}}</span></h1>
+<div *ngIf="myTeam">
+  <h1>{{myTeam.name}}</h1>
+</div>
+
+
+<div *ngIf="myTeam == null">
+  <div  style="top:50%; left: 50% "class="col-md-8">
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-body">
+          <div class="row mb-3">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Group Name</h6>
+            </div>
+          <div class="col-sm-9 text-secondary">
+            <input type="text" class="form-control" name="newTeam.name" [(ngModel)]="newTeam.name"/>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Image</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            <input type="text" class="form-control" name="newTeam.imageUrl" [(ngModel)]="newTeam.imageUrl"/>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Describe your Group!</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            <textarea type="text" class="form-control" name="newTeam.content" [(ngModel)]="newTeam.content" > </textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3"></div>
+          <div class="col-sm-9 text-secondary">
+            <button class="btn btn-primary"  (click)="create(newTeam)"> Create Team</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

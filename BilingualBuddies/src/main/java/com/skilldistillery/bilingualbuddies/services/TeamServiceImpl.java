@@ -35,6 +35,12 @@ public class TeamServiceImpl implements TeamService {
 		
 		return teamRepo.findAll();
 	}
+	
+	@Override
+	public Team finByUser(String user) {
+		
+		return teamRepo.findByOwnerUsername(user);
+	}
 
 	@Override
 	public Team createTeam(Team team, String username) {

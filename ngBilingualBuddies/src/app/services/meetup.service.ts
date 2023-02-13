@@ -77,8 +77,6 @@ export class MeetupService {
     );
   }
 
-
-
   getHttpOptions() {
     let options = {
       headers: {
@@ -88,11 +86,6 @@ export class MeetupService {
     };
     return options;
   }
-
-
-
-
-
 
 }
 
