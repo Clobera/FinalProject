@@ -1,6 +1,7 @@
+import { Router } from '@angular/router';
 import { UserInCityPipe } from './../../pipes/user-in-city.pipe';
 import { CityPipe } from './../../pipes/city.pipe';
-import { Component } from "@angular/core";
+import { Component, EventEmitter, Output } from "@angular/core";
 import { Address } from "src/app/models/address";
 import { Language } from "src/app/models/language";
 import { User } from "src/app/models/user";
@@ -31,7 +32,6 @@ export class SearchComponent {
   currCity = '';
   addresses : Address[] = [];
 
-
   constructor(
     private langServ: LanguageService,
     private userServ: UserService,
@@ -41,7 +41,8 @@ export class SearchComponent {
     private nameSearch : NameSearchPipe,
     private addrServ : AddressService,
     private cityPipe : CityPipe,
-    private userInCityPipe : UserInCityPipe
+    private userInCityPipe : UserInCityPipe,
+    private router : Router
   ) {}
 
 
@@ -126,7 +127,8 @@ export class SearchComponent {
     });
   }
 
-
-
+routeUser(user :User){
+  this.router.navigateByUrl('other/' + user.username);
+}
 
 }

@@ -111,13 +111,8 @@
         </div>
       </div>
 
-      <div *ngIf="!showForm" class="col-md-8">
+      <div class="col-md-8">
         <div class="card mb-3">
-          <div class="card-title">
-            <button class="btn btn-primary" [routerLink]="['/post']">
-              Create New Post
-            </button>
-          </div>
           <div class="card-body">
             <div class="row">
               <div class="col-sm-3">
@@ -164,13 +159,6 @@
               </div>
             </div>
             <hr />
-            <div class="row">
-              <div class="col-sm-12">
-                <button (click)="showForm = !showForm" class="btn btn-info">
-                  Edit
-                </button>
-              </div>
-            </div>
           </div>
         </div>
         <div class="card row">
@@ -178,165 +166,14 @@
           <div class="card-body">
             <div
               *ngFor="
-                let language of user.languages;
-                let indexOfelement = index
+                let language of user.languages
               "
             >
               <p>
                 {{ language.name }}
-                <button
-                  *ngIf="remove"
-                  class="btn btn-outline-danger"
-                  (click)="removeLanguage(indexOfelement)"
-                >
-                  X
-                </button>
               </p>
             </div>
-            <button
-              class="btn btn-primary"
-              (click)="addLanguage()"
-              *ngIf="addedLanguage"
-            >
-              Add a Language
-            </button>
-            <button
-              class="btn btn-danger"
-              *ngIf="addedLanguage"
-              (click)="remove = true"
-            >
-              Remove A Langauge
-            </button>
 
-            <div *ngIf="!addedLanguage">
-              <label for="language">Language: </label>
-              <select
-                name="language"
-                class="form-select"
-                [(ngModel)]="currLangId"
-              >
-                <option *ngFor="let lang of languages" value="{{ lang.id }}">
-                  {{ lang.name }}
-                </option>
-              </select>
-              <button
-                class="btn btn-primary"
-                (click)="update(user, user.username)"
-              >
-                Save
-              </button>
-              <button class="btn btn-danger" (click)="addedLanguage = true">
-                Cancel
-              </button>
-            </div>
-          </div>
-        </div>
-        <div>
-<<<<<<< HEAD
-          <input type="text" class="form-control" placeholder="Update Content" name="">
-
-
-=======
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Update Content"
-          />
->>>>>>> alex
-        </div>
-      </div>
-      <!-- NEW STUFF -->
-
-      <div *ngIf="showForm" class="col-md-8">
-        <div class="col-lg-8">
-          <div class="card">
-            <div class="card-body">
-              <div class="row mb-3">
-                <div class="col-sm-3">
-                  <h6 class="mb-0">First Name</h6>
-                </div>
-                <div class="col-sm-9 text-secondary">
-                  <input
-                    type="text"
-                    class="form-control"
-                    name="user.firstName"
-                    [(ngModel)]="user.firstName"
-                  />
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-sm-3">
-                  <h6 class="mb-0">Last Name</h6>
-                </div>
-                <div class="col-sm-9 text-secondary">
-                  <input
-                    type="text"
-                    class="form-control"
-                    name="user.lastName"
-                    [(ngModel)]="user.lastName"
-                  />
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-sm-3">
-                  <h6 class="mb-0">Email</h6>
-                </div>
-                <div class="col-sm-9 text-secondary">
-                  <input
-                    type="text"
-                    class="form-control"
-                    name="user.email"
-                    [(ngModel)]="user.email"
-                  />
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-sm-3">
-                  <h6 class="mb-0">Profile Pic</h6>
-                </div>
-                <div class="col-sm-9 text-secondary">
-                  <input
-                    type="text"
-                    class="form-control"
-                    name=" user.imgUrl"
-                    [(ngModel)]="user.imageUrl"
-                  />
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-sm-3">
-                  <h6 class="mb-0">Bio</h6>
-                </div>
-                <div class="col-sm-9 text-secondary">
-                  <input
-                    type="text"
-                    class="form-control"
-                    name=" user.bio"
-                    [(ngModel)]="user.bio"
-                  />
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-3"></div>
-                <div class="col-sm-9 text-secondary">
-                  <button
-                    (click)="update(user, user.username)"
-                    class="btn btn-primary px-4"
-                  >
-                    Save Changes
-                  </button>
-                  <button (click)="showForm = false" class="btn btn-warning">
-                    Cancel
-                  </button>
-                  <button
-                    (click)="destroy(user.username, user)"
-                    class="btn btn-danger"
-                  >
-                    Delete
-                  </button>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

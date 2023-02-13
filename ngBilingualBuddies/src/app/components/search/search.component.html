@@ -53,7 +53,7 @@
           <td>Bio</td>
         </tr>
       </thead>
-      <tr *ngFor="let user of users" [routerLink]="['/account']">
+      <tr *ngFor="let user of users" (click)="routeUser(user)">
         <td>{{ user.username }}</td>
         <td>{{ user.firstName }}</td>
         <td>{{ user.lastName }}</td>
