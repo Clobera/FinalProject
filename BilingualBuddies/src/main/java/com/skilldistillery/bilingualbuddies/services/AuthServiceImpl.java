@@ -40,11 +40,15 @@ public class AuthServiceImpl implements AuthService {
 		Language lang = user.getLanguages().get(0);
 		Country country = user.getCountry();
 		country.addUser(user);
-		addrRepo.saveAndFlush(user.getAddress());
-		user = userRepo.saveAndFlush(user);
+		addrRepo.save(user.getAddress());
+		user = userRepo.save(user);
 		country = countryRepo.saveAndFlush(country);
-		lang.addUser(user);
-		lang = langRepo.saveAndFlush(lang);
+		Optional<Language> opt = langRepo.findById(lang.getId());
+		if (opt.isPresent()) {
+			lang = opt.get();
+			lang.addUser(user);
+			lang = langRepo.saveAndFlush(lang);
+		}
 		
 		return user;
 	}
