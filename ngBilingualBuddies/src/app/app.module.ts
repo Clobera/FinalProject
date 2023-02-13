@@ -52,6 +52,7 @@ import { UserInCityPipe } from './pipes/user-in-city.pipe';
         NewsfeedComponent,
         TeamPipe,
         UserInCityPipe,
+
     ],
     providers: [
       SeenPipe,

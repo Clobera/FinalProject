@@ -20,7 +20,7 @@ export class PostService {
         'X-Requested-with': 'XMLHttpRequest',
       }
     };
-    return this.http.get<Post[]>(this.url, httpOptions).pipe(
+    return this.http.get<Post[]>(this.url, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
