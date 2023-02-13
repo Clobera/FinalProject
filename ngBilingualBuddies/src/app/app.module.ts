@@ -30,6 +30,8 @@ import { TeamPipe } from './pipes/team.pipe';
 import { UserInCityPipe } from './pipes/user-in-city.pipe';
 import { OtherUserComponent } from './components/other-user/other-user.component';
 import { TeamComponent } from './components/team/team.component';
+import { MeetupComponent } from './components/meetup/meetup.component';
+import { CommentComponent } from './components/comment/comment.component';
 
 @NgModule({
     declarations: [
@@ -58,7 +60,8 @@ import { TeamComponent } from './components/team/team.component';
         UserInCityPipe,
         OtherUserComponent,
         TeamComponent,
-
+        CommentComponent,
+        MeetupComponent
     ],
     providers: [
       SeenPipe,

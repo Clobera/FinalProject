@@ -20,8 +20,8 @@
                 <p class="text-muted font-size-sm">
                   {{ user.country.country }}
                 </p>
-                <!-- <button class="btn btn-primary">Follow</button>
-                    <button class="btn btn-outline-primary">Message</button> -->
+                <button class="btn btn-primary" (click)="addFriend()" *ngIf="!friend">Add Friend</button>
+                    <button class="btn btn-outline-primary">Ask to Sponsor</button>
               </div>
             </div>
           </div>

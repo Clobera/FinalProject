@@ -4,7 +4,7 @@ export class Alert {
 
   id : number;
   sender : User;
-  reciever: User;
+  receiver: User;
   meetup: Meetup;
   content: string;
   notificationDate: Date;
@@ -13,7 +13,7 @@ export class Alert {
   constructor(
     id : number = 0,
     sender : User = new User(),
-    reciever: User = new User(),
+    receiver: User = new User(),
     meetup: Meetup = new Meetup(),
     content: string = '',
     notificationDate: Date = new Date(),
@@ -21,7 +21,7 @@ export class Alert {
   ) {
     this.id  = id;
   this.sender  = sender;
-  this.reciever = reciever;
+  this.receiver = receiver;
   this.meetup = meetup;
   this.content = content;
   this.notificationDate = notificationDate;

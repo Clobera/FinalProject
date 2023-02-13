@@ -172,7 +172,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `alert` ;
 
 CREATE TABLE IF NOT EXISTS `alert` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `sender_id` INT NOT NULL,
   `content` VARCHAR(200) NULL,
   `receiver_id` INT NOT NULL,
@@ -384,6 +384,7 @@ USE `bilingualbuddiesdb`;
 INSERT INTO `address` (`id`, `address`, `state`, `postal_code`, `city`, `enabled`) VALUES (1, '810 Garrison St.', 'Colorado', '80215', 'Lakewood', 1);
 INSERT INTO `address` (`id`, `address`, `state`, `postal_code`, `city`, `enabled`) VALUES (2, '715 Street St.', 'Colorado', '80312', 'Lakewood', 1);
 INSERT INTO `address` (`id`, `address`, `state`, `postal_code`, `city`, `enabled`) VALUES (3, '515 Big St.', 'Colorado', '80721', 'Lakewood', 1);
+INSERT INTO `address` (`id`, `address`, `state`, `postal_code`, `city`, `enabled`) VALUES (4, '435 Fat St.', 'Colorado', '81234', 'Lakewood', 1);
 
 COMMIT;
 
@@ -636,7 +637,7 @@ START TRANSACTION;
 USE `bilingualbuddiesdb`;
 INSERT INTO `user` (`id`, `email`, `username`, `password`, `date_created`, `last_login`, `enabled`, `role`, `sponsor`, `first_name`, `last_name`, `image_url`, `bio`, `address_id`, `origin_country`) VALUES (1, 'admin@admin.com', 'admin', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', '2023-01-01', '2023-01-01', 1, 'admin', 0, 'admin', 'admin', 'https://www.dmarge.com/wp-content/uploads/2021/01/dwayne-the-rock-.jpg', 'If You Smell What the Rock is Cooking!', 1, 'US');
 INSERT INTO `user` (`id`, `email`, `username`, `password`, `date_created`, `last_login`, `enabled`, `role`, `sponsor`, `first_name`, `last_name`, `image_url`, `bio`, `address_id`, `origin_country`) VALUES (2, 'joe@shmoe.com', 'joeshmoe', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', '2023-01-01', '2023-01-01', 1, 'admin', 0, 'Joe', 'Shmoe', NULL, NULL, 3, 'US');
-INSERT INTO `user` (`id`, `email`, `username`, `password`, `date_created`, `last_login`, `enabled`, `role`, `sponsor`, `first_name`, `last_name`, `image_url`, `bio`, `address_id`, `origin_country`) VALUES (3, 'TBD', 'DeleteME', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', '2023-01-01', '2023-01-01', 1, 'user', 0, 'Delete', 'Me', NULL, NULL, 2, 'US');
+INSERT INTO `user` (`id`, `email`, `username`, `password`, `date_created`, `last_login`, `enabled`, `role`, `sponsor`, `first_name`, `last_name`, `image_url`, `bio`, `address_id`, `origin_country`) VALUES (3, 'TBD', 'DeleteME', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', '2023-01-01', '2023-01-01', 1, 'user', 0, 'Delete', 'Me', NULL, NULL, 4, 'US');
 
 COMMIT;
 

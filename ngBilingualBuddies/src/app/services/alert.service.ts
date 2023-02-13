@@ -47,6 +47,7 @@ export class AlertService {
   }
 
   create(alert: Alert): Observable<Alert>{
+    console.log(alert);
     return this.http.post<Alert>(`${this.url}`, alert, this.getHttpOptions()).pipe(
       catchError((err: any) =>{
         console.log(err);

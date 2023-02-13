@@ -7,13 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.bilingualbuddies.entities.Alert;
+import com.skilldistillery.bilingualbuddies.entities.User;
 import com.skilldistillery.bilingualbuddies.repositories.AlertRepository;
+import com.skilldistillery.bilingualbuddies.repositories.UserRepository;
 
 @Service
 public class AlertServiceImpl implements AlertService {
 
 	@Autowired
 	private AlertRepository alertRepo;
+
+	@Autowired
+	private UserRepository userRepo;
 
 	@Override
 	public Alert findById(int alertId) {
@@ -33,8 +38,26 @@ public class AlertServiceImpl implements AlertService {
 
 	@Override
 	public Alert create(Alert alert) {
-		alertRepo.saveAndFlush(alert);
-		return alert;
+		User sender = alert.getSender();
+		System.out.print(alert);
+		alert.setMeetup(null);
+		User receiver = alert.getReceiver();
+System.out.print(receiver);
+		Optional<User> optSender = userRepo.findById(sender.getId());
+		Optional<User> optReceiver = userRepo.findById(receiver.getId());
+
+		if (optSender.isPresent() && optReceiver.isPresent()) {
+			sender = optSender.get();
+			receiver = optReceiver.get();
+			
+			alert.setSender(sender);
+			alert.setReceiver(receiver);
+			
+			alertRepo.saveAndFlush(alert);
+			return alert;
+		}
+
+		return null;
 	}
 
 //	@Override
@@ -43,8 +66,7 @@ public class AlertServiceImpl implements AlertService {
 //		return null;
 //	}
 
-	
-	//this method doesn't delete(faux deletes by changing if it was seen or not.)
+	// this method doesn't delete(faux deletes by changing if it was seen or not.)
 	@Override
 	public boolean destroy(int alertId) {
 		Alert deleteMe = findById(alertId);
