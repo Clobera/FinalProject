@@ -55,9 +55,11 @@ loadUser(){
 }
 addFriend(){
 let alert = new Alert();
-alert.reciever = this.user;
+alert.receiver = this.user;
 alert.sender =  this.loggedInUser;
 alert.content = "New Friend Request From: " + this.loggedInUser.firstName + " " + this.loggedInUser.lastName + "."
+
+console.log(alert.receiver);
 
   this.alertService.create(alert).subscribe({
     next: (data) => {

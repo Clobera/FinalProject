@@ -99,6 +99,7 @@ public class User {
 	@OneToMany(mappedBy="sender")
 	private List<Alert> sentAlert;
 
+	
 	@OneToMany(mappedBy="receiver")
 	private List<Alert> alerts;
 	

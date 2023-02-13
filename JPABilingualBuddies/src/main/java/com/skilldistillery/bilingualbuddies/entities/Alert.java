@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Alert {
@@ -26,7 +26,7 @@ public class Alert {
 	@JoinColumn(name = "sender_id")
 	private User sender;
 	
-	@JsonIgnore
+	@JsonIgnoreProperties({"alerts", "languages"})
 	@ManyToOne
 	@JoinColumn(name = "receiver_id")
 	private User receiver;
