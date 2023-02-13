@@ -60,10 +60,16 @@
           name="state"
           [(ngModel)]="user.address.state"
         />
-        <label for="language">Language: {{user.languages[0] | json}}</label>
-        <select name="language" [(ngModel)]="currLangId" (ngModelChange)="user.languages[0] = languages[currLangId - 1]">
+        <label for="language">Language: </label>
+        <select name="language" class="form-select" [(ngModel)]="currLangId" (ngModelChange)="user.languages[0] = languages[currLangId - 1]">
           <option *ngFor="let lang of languages" value="{{ lang.id }}">
             {{ lang.name }}
+          </option>
+        </select>
+        <label for="language">Origin Country: {{currCountryCode}}</label>
+        <select name="language" class="form-select" [(ngModel)]="currCountryCode" (ngModelChange)="setUserCountry()">
+          <option *ngFor="let country of countries" value="{{ country.countryCode }}">
+            {{ country.country }}
           </option>
         </select>
         <h3>Check if you are open to helping others</h3>

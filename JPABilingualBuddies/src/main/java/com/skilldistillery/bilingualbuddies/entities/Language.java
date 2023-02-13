@@ -1,5 +1,6 @@
 package com.skilldistillery.bilingualbuddies.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -38,6 +39,26 @@ public class Language {
 
 	@ManyToMany(mappedBy = "langauges")
 	private List<Country> countries;
+	
+	
+	//MTM add remove methods
+	public void addUser(User user) {
+		if(users == null) {
+			users = new ArrayList<>();
+		}
+		if (! users.contains(user)) {
+			users.add(user);
+			user.addLanguage(this);
+		}
+	}
+	
+	public void removeUser(User user) {
+		if (users != null && users.contains(user)) {
+			users.remove(user);
+			user.removeLanguage(this);
+		}
+	}
+	
 
 	public Language() {
 		super();

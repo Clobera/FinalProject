@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.bilingualbuddies.entities.Country;
 import com.skilldistillery.bilingualbuddies.entities.Language;
 import com.skilldistillery.bilingualbuddies.entities.User;
 import com.skilldistillery.bilingualbuddies.repositories.AddressRepository;
+import com.skilldistillery.bilingualbuddies.repositories.CountryRepository;
 import com.skilldistillery.bilingualbuddies.repositories.LangeuageRepository;
 import com.skilldistillery.bilingualbuddies.repositories.UserRepository;
 
@@ -27,22 +29,22 @@ public class AuthServiceImpl implements AuthService {
 	@Autowired
 	private LangeuageRepository langRepo;
 	
+	@Autowired
+	private CountryRepository countryRepo;
 	
 	@Override
 	public User register(User user) {
 		user.setPassword(encoder.encode(user.getPassword()));
 		user.setEnabled(true);
 		user.setRole("standard");
-		user.setCountry(null);
 		Language lang = user.getLanguages().get(0);
+		Country country = user.getCountry();
+		country.addUser(user);
 		addrRepo.saveAndFlush(user.getAddress());
 		user = userRepo.saveAndFlush(user);
-		Optional<Language> opt = langRepo.findById(lang.getId());
-		if (opt.isPresent()) {
-			lang = opt.get();
-			lang.getUsers().add(user);
-			lang = langRepo.saveAndFlush(lang);
-		}
+		country = countryRepo.saveAndFlush(country);
+		lang.addUser(user);
+		lang = langRepo.saveAndFlush(lang);
 		
 		return user;
 	}

@@ -1,5 +1,6 @@
 package com.skilldistillery.bilingualbuddies.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -36,6 +37,25 @@ public class Country {
 
 	public Country() {
 		super();
+	}
+	
+	
+	public void addUser(User user) {
+		if (users == null ) {
+			users = new ArrayList<>();
+		}
+		if (! users.contains(user)) {
+			users.add(user);
+			user.getCountry().removeUser(user);
+		}
+		user.setCountry(this);
+	}
+	
+	public void removeUser(User user) {
+		if (user != null && users.contains(user)) {
+			users.remove(user);
+			user.setCountry(null);
+		}
 	}
 
 	public Country(String countryCode, String country, List<User> users) {
