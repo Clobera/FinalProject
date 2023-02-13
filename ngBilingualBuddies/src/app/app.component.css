@@ -1,5 +1,5 @@
 body {
-  background-color: #28292D;
+  background-color: rgba(40, 41, 45, .85);
 }
 hr{
   height: 1px;
@@ -7,5 +7,5 @@ hr{
   border: none;
 }
 .bg-black {
-  background-color: rgba(40, 41, 45, .75);
+  background-color: rgba(40, 41, 45, .85);
 }
