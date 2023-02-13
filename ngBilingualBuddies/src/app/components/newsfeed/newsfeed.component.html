@@ -1,13 +1,22 @@
 <div class="row text-center display:flex" id="newsfeed">
-  <div class="mx-auto col-10 card" *ngFor="let post of posts">
-    <h3 class="card-title">{{ post.user.username }} Said:</h3>
-    <img
-      class="mx-auto"
-      src="{{ post.imageUrl }}"
-      alt=""
-      width="100px"
-      height="100px"
-    />
-    <p class="card-body">{{ post.content }}</p>
+  <div *ngIf="!selected">
+    <div class="mx-auto col-10 card" *ngFor="let post of posts">
+      <h3 class="card-title">{{ post.user.username }} Said:</h3>
+      <img
+        class="mx-auto"
+        src="{{ post.imageUrl }}"
+        alt=""
+        width="100px"
+        height="100px"
+(click)="showPost(post)"
+        />
+      <p class="card-body">{{ post.content }}</p>
+    </div>
   </div>
+<div *ngIf="selected">
+
+<h1>{{selected.content}}</h1>
+
+<button (click)="selected = null">Back</button>
+</div>
 </div>

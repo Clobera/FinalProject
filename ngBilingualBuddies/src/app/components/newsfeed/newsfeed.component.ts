@@ -11,7 +11,7 @@ import { User } from 'src/app/models/user';
 })
 export class NewsfeedComponent {
   posts : Post[] = [];
-
+selected: null | Post = null;
 constructor(private postServ : PostService){}
 
  ngOnInit(){
@@ -32,7 +32,9 @@ constructor(private postServ : PostService){}
  }
 
 
-
+showPost(post: Post) {
+  this.selected = post;
+}
 
 
 

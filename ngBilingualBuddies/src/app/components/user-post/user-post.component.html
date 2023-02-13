@@ -1,36 +1,97 @@
 <div class="user-post">
-
-
-<h1 style="text-align: center;" > Post <span class ="badge" [ngClass]="styleUserPosts()"> {{getNumberOfPosts()}}</span></h1>
-
-<div  style="top:50%; left: 50% "class="col-md-8">
-  <div class="col-lg-8">
-    <div class="card">
-      <div class="card-body">
-        <div class="row mb-3">
-          <div class="col-sm-3">
-            <h6 class="mb-0">Image</h6>
-          </div>
-          <div class="col-sm-9 text-secondary">
-            <input type="text" class="form-control" name="newPost.imageUrl" [(ngModel)]="newPost.imageUrl"/>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col-sm-3">
-            <h6 class="mb-0">Text Area</h6>
-          </div>
-          <div class="col-sm-9 text-secondary">
-            <textarea type="text" class="form-control" name="newPost.content" [(ngModel)]="newPost.content" > </textarea>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-3"></div>
-          <div class="col-sm-9 text-secondary">
-            <button class="btn btn-primary"  (click)="create(newPost)"> Create Post</button>
-
+  <h1 style="text-align: center">
+    Post
+    <span class="badge" [ngClass]="styleUserPosts()">
+      {{ getNumberOfPosts() }}</span
+    >
+  </h1>
+  <div *ngIf="showForm">
+    <div style="top: 50%; left: 50%" class="col-md-8">
+      <div class="col-lg-8">
+        <div class="card">
+          <div class="card-body">
+            <div class="row mb-3">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Image</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="newPost.imageUrl"
+                  [(ngModel)]="newPost.imageUrl"
+                />
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Text Area</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                <textarea
+                  type="text"
+                  class="form-control"
+                  name="newPost.content"
+                  [(ngModel)]="newPost.content"
+                >
+                </textarea>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-3"></div>
+              <div class="col-sm-9 text-secondary">
+                <button class="btn btn-primary" (click)="create(newPost)">
+                  Create Post
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
+
+    <div *ngIf="!showForm">
+     <div style="top: 50%; left: 50%" class="col-md-8">
+       <div class="col-lg-8">
+         <div class="card">
+           <div class="card-body">
+             <div class="row mb-3">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Content</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                <img [src]="newPost.imageUrl" />
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Image</h6>
+              </div>
+
+              <Blockquote>
+                {{ newPost.content }}
+              </Blockquote>
+            </div>
+          </div>
+
+          <!-- <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-9 text-secondary">
+              <button class="btn btn-primary" (click)="updateTeam(myTeam)">
+                Save Changes
+              </button>
+              <button
+                class="btn btn-danger"
+                (click)="deleteTeam(myTeam.id)"
+              >
+                DELETE GROUP
+              </button> -->
+          <!-- </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
   </div>
+</div>
 </div>

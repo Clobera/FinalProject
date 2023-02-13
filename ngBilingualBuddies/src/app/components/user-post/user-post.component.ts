@@ -24,7 +24,7 @@ posts: Post[] = [];
 selected: null | Post = null;
 user = new User();
 newPost: Post = new Post();
-
+showForm: boolean = true;
 
 
 ngOnInit() : void{
@@ -50,6 +50,8 @@ create(post: Post)  {
   this.postService.create(post).subscribe({
     next: (result) =>{
       this.newPost = new Post();
+      this.showForm = false;
+
       this.reload();
     },
     error: (error) =>{

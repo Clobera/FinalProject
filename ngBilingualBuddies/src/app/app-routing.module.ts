@@ -1,3 +1,4 @@
+import { MeetupComponent } from './components/meetup/meetup.component';
 
 import { OtherUserComponent } from './components/other-user/other-user.component';
 import { UserPostComponent } from './components/user-post/user-post.component';
@@ -35,6 +36,7 @@ const routes: Routes = [
   {path: 'post', component: UserPostComponent},
   {path: 'other/:id', component: OtherUserComponent},
   {path: 'team', component: TeamComponent},
+  {path: 'meetup', component: MeetupComponent},
   {path: '**', component: NotfoundComponent}
 ];
 
