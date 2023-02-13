@@ -83,9 +83,24 @@ export class TeamComponent {
     this.teamService.update(team).subscribe({
       next: () => {
         this.reload();
+        this.showForm = false;
       },
       error: (fail) => {
-        console.error(' Error deleting team');
+        console.error(' Error updating team');
+        console.error(fail);
+      },
+    });
+  }
+
+  enableTeam(team: Team){
+    team.enabled = true;
+    this.teamService.update(team).subscribe({
+      next: () => {
+        this.reload();
+        this.showForm = false;
+      },
+      error: (fail) => {
+        console.error(' Error enabling team');
         console.error(fail);
       },
     });
@@ -98,6 +113,7 @@ export class TeamComponent {
     this.teamService.destroy(id).subscribe({
       next: () => {
         this.reload();
+        this.loadUser();
       },
       error: (fail) => {
         console.error(' Error deleting team');
