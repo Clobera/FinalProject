@@ -32,6 +32,7 @@ import { OtherUserComponent } from './components/other-user/other-user.component
 import { TeamComponent } from './components/team/team.component';
 import { MeetupComponent } from './components/meetup/meetup.component';
 import { CommentComponent } from './components/comment/comment.component';
+import { TeamsearchComponent } from './components/teamsearch/teamsearch.component';
 
 @NgModule({
     declarations: [
@@ -61,7 +62,8 @@ import { CommentComponent } from './components/comment/comment.component';
         OtherUserComponent,
         TeamComponent,
         CommentComponent,
-        MeetupComponent
+        MeetupComponent,
+        TeamsearchComponent
     ],
     providers: [
       SeenPipe,

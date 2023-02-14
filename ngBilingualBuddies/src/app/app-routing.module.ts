@@ -1,3 +1,4 @@
+import { TeamsearchComponent } from './components/teamsearch/teamsearch.component';
 import { MeetupComponent } from './components/meetup/meetup.component';
 
 import { OtherUserComponent } from './components/other-user/other-user.component';
@@ -21,6 +22,7 @@ import { NewsfeedComponent } from './components/newsfeed/newsfeed.component';
 import { TeamComponent } from './components/team/team.component';
 
 
+
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
@@ -37,6 +39,7 @@ const routes: Routes = [
   {path: 'other/:id', component: OtherUserComponent},
   {path: 'team', component: TeamComponent},
   {path: 'meetup', component: MeetupComponent},
+  {path: 'teamsearch', component: TeamsearchComponent},
   {path: '**', component: NotfoundComponent}
 ];
 
