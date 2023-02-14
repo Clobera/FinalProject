@@ -1,7 +1,11 @@
 .teamsearch {
-  background-color: rgba(40, 41, 45, .85);
+  background-color: #f8f5e8;
+  color: #294232;
 
 }
 .teamsearch{
-  color: antiquewhite;
+  color: #294232;
+}
+tr{
+  color:#294232;
 }

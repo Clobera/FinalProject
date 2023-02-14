@@ -1,12 +1,12 @@
 .navbar {
-  background-color: rgba(40, 41, 45, .85);
+  background-color: #f8f5e8;
 }
 nav > div > div > ul > li > a{
-  color: #EEF1ED;
+  color: #294232;
 
 }
 nav > div > div > a{
-  color: #E34F15;
+  color:  #294232;
 
 }
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {

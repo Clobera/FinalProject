@@ -2,7 +2,7 @@
   <div *ngIf="!selected">
   <table class="table table-hover">
     <thead>
-      <th>Name</th>
+      <th>Team Name</th>
     </thead>
     <tbody class="table-group-divider">
       <tr *ngFor="let team of teams">
@@ -19,15 +19,9 @@
     <blockquote>{{selected.content}}</blockquote>
     <button class="btn btn-success" *ngIf="!selected.members.includes(user)" (click)="joinTeam(selected)">Join Team</button>
     <button class="btn btn-danger" *ngIf="selected.members.includes(user)" (click)="leaveTeam(selected)">Leave Team</button>
-
-
-
-
-
+    <button class="btn btn-warning" (click)="!selected = null">Back</button>
 
   </div>
-
-
 
 
 

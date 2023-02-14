@@ -1,6 +1,7 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
 body {
-  background-color: rgba(40, 41, 45, .75);
-  background-image: url(https://previews.123rf.com/images/ricochet64/ricochet641601/ricochet64160100070/51338277-hello-in-different-languages-word-cloud.jpg);
+  /* background-color: rgba(40, 41, 45, .75);
+  background-image: url(https://previews.123rf.com/images/ricochet64/ricochet641601/ricochet64160100070/51338277-hello-in-different-languages-word-cloud.jpg); */
+  background-color: #f8f5e8;
 }

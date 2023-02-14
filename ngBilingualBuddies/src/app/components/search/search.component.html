@@ -2,9 +2,12 @@
   <h1>Search By:</h1>
   <button class="btn btn-primary" (click)="switchName()">Name</button>
   <br />
+  <br>
   <button class="btn btn-primary" (click)="switchLoc()">Location</button> <br />
+  <br>
   <label for="sponsor">Sponsor:</label>
   <input type="checkbox" name="sponsor" [(ngModel)]="sponsor" /> <br />
+  <br>
   <label for="language">Language:</label>
   <select name="language" [(ngModel)]="currLangId">
     <option *ngFor="let lang of languages" value="{{ lang.id }}">

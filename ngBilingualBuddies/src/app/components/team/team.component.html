@@ -1,13 +1,11 @@
-<h1 style="text-align: center">
-  TEAM
-  <span class="badge" [ngClass]="styleUserTeams()">
-    {{ getNumberOfTeams() }}</span
-  >
-</h1>
+<h1>My Team</h1>
 <div *ngIf="myTeam">
   <div *ngIf="myTeam.enabled">
     <div *ngIf="!showForm">
-      <h1 style="color: white">{{ myTeam.name }}</h1>
+     <u> <h1 style="color: #294232">{{ myTeam.name }}</h1></u>
+     <img [src]="myTeam.imageUrl" alt="">
+     <br>
+     <blockquote>{{myTeam.content}}</blockquote>
       <button (click)="showForm = true" class="btn btn-primary">Edit</button>
     </div>
 
