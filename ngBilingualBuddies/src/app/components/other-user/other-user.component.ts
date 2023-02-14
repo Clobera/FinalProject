@@ -55,6 +55,8 @@ loadUser(){
 }
 addFriend(){
 let alert = new Alert();
+// alert.notificationDate = null
+alert.meetup = null;
 alert.receiver = this.user;
 alert.sender =  this.loggedInUser;
 alert.content = "New Friend Request From: " + this.loggedInUser.firstName + " " + this.loggedInUser.lastName + "."

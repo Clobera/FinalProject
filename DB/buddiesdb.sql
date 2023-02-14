@@ -638,6 +638,10 @@ USE `bilingualbuddiesdb`;
 INSERT INTO `user` (`id`, `email`, `username`, `password`, `date_created`, `last_login`, `enabled`, `role`, `sponsor`, `first_name`, `last_name`, `image_url`, `bio`, `address_id`, `origin_country`) VALUES (1, 'admin@admin.com', 'admin', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', '2023-01-01', '2023-01-01', 1, 'admin', 0, 'admin', 'admin', 'https://www.dmarge.com/wp-content/uploads/2021/01/dwayne-the-rock-.jpg', 'If You Smell What the Rock is Cooking!', 1, 'US');
 INSERT INTO `user` (`id`, `email`, `username`, `password`, `date_created`, `last_login`, `enabled`, `role`, `sponsor`, `first_name`, `last_name`, `image_url`, `bio`, `address_id`, `origin_country`) VALUES (2, 'joe@shmoe.com', 'joeshmoe', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', '2023-01-01', '2023-01-01', 1, 'admin', 0, 'Joe', 'Shmoe', NULL, NULL, 3, 'US');
 INSERT INTO `user` (`id`, `email`, `username`, `password`, `date_created`, `last_login`, `enabled`, `role`, `sponsor`, `first_name`, `last_name`, `image_url`, `bio`, `address_id`, `origin_country`) VALUES (3, 'TBD', 'DeleteME', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', '2023-01-01', '2023-01-01', 1, 'user', 0, 'Delete', 'Me', NULL, NULL, 4, 'US');
+INSERT INTO `user` (`id`, `email`, `username`, `password`, `date_created`, `last_login`, `enabled`, `role`, `sponsor`, `first_name`, `last_name`, `image_url`, `bio`, `address_id`, `origin_country`) VALUES (4, 'samcassidy22@gmail.com', 'samcassidy4', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', '2023-01-01', '2023-01-01', 1, 'admin', 0, 'Sam', 'Cassidy', 'https://www.rd.com/wp-content/uploads/2019/09/Cute-cat-lying-on-his-back-on-the-carpet.-Breed-British-mackerel-with-yellow-eyes-and-a-bushy-mustache.-Close-up-e1573490045672.jpg', 'I Want nothing more than to help', NULL, 'IT');
+INSERT INTO `user` (`id`, `email`, `username`, `password`, `date_created`, `last_login`, `enabled`, `role`, `sponsor`, `first_name`, `last_name`, `image_url`, `bio`, `address_id`, `origin_country`) VALUES (5, 'lolo297@gmail.com', 'lolo297', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', '2023-01-01', '2023-01-01', 1, 'admin', 0, 'Carlos', 'Lobera', 'https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_2x3.jpg', 'I cannot wait to get started!', NULL, 'US');
+INSERT INTO `user` (`id`, `email`, `username`, `password`, `date_created`, `last_login`, `enabled`, `role`, `sponsor`, `first_name`, `last_name`, `image_url`, `bio`, `address_id`, `origin_country`) VALUES (6, 'lowelb@gmail.com', 'beastbay97', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', '2023-01-01', '2023-01-01', 1, 'admin', 0, 'Lowell', 'Belany', 'https://hips.hearstapps.com/hmg-prod/images/close-up-of-cat-wearing-sunglasses-while-sitting-royalty-free-image-1571755145.jpg?crop=0.670xw:1.00xh;0.147xw,0&resize=1200:*', 'I\'m here to make a difference!', NULL, 'US');
+INSERT INTO `user` (`id`, `email`, `username`, `password`, `date_created`, `last_login`, `enabled`, `role`, `sponsor`, `first_name`, `last_name`, `image_url`, `bio`, `address_id`, `origin_country`) VALUES (7, 'amcmichael@gmail.com', 'amcmike3', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', '2023-01-01', '2023-01-01', 1, 'admin', 0, 'Alex', 'McMichael', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSARxgqb4YX-s02OxYQjqdRKRhH41hOfqh0Cw&usqp=CAU', 'All I want to do is help', NULL, 'US');
 
 COMMIT;
 
@@ -648,6 +652,10 @@ COMMIT;
 START TRANSACTION;
 USE `bilingualbuddiesdb`;
 INSERT INTO `post` (`id`, `user_id`, `content`, `image_url`, `post_date`, `enabled`) VALUES (1, 1, 'This is so cool!', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT92-R1QhOfOpRc9FmRhePfW3eBBwLWSO4GVC72iqGDoA&s', '2023-01-01', 1);
+INSERT INTO `post` (`id`, `user_id`, `content`, `image_url`, `post_date`, `enabled`) VALUES (2, 4, 'Anyone know where I can find a cheap ham?', 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Ham_%284%29.jpg', '2023-01-01', 1);
+INSERT INTO `post` (`id`, `user_id`, `content`, `image_url`, `post_date`, `enabled`) VALUES (3, 5, 'I found this great restaurant near me', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS59xulEC0P_e5zfB8vgCzik5sW4nbMBTx0zw&usqp=CAU', '2023-01-01', 1);
+INSERT INTO `post` (`id`, `user_id`, `content`, `image_url`, `post_date`, `enabled`) VALUES (4, 6, 'Does anybody know where a good vietnamese grocery store is?', 'https://s3-media0.fl.yelpcdn.com/bphoto/loHFGc62bH6grR8GD4s4Eg/348s.jpg', '2023-01-01', 1);
+INSERT INTO `post` (`id`, `user_id`, `content`, `image_url`, `post_date`, `enabled`) VALUES (5, 7, 'My son is having a birthday party this weekend and I\'d like to invite all of you!', 'https://berkscountyliving.com/downloads/18196/download/iStock-918933880.jpg?cb=1155e4a7652ab617e102986ad35ab972', '2023-01-01', 1);
 
 COMMIT;
 
@@ -658,6 +666,10 @@ COMMIT;
 START TRANSACTION;
 USE `bilingualbuddiesdb`;
 INSERT INTO `team` (`id`, `owner_id`, `content`, `image_url`, `name`, `create_date`, `enabled`) VALUES (1, 1, 'We are a group who just wants to make the world a better place', 'https://d3mvlb3hz2g78.cloudfront.net/wp-content/uploads/2020/11/thumb_720_450_dreamstime_m_44810592_(1).jpg', 'Better People Better World', '2023-01-01', 1);
+INSERT INTO `team` (`id`, `owner_id`, `content`, `image_url`, `name`, `create_date`, `enabled`) VALUES (2, 4, 'We are dedicated to cleaning up trash around town.', 'https://ibanplastic.com/wp-content/uploads/2018/05/Clean-The-World.jpg', 'Green Clean people machine', '2023-01-01', 1);
+INSERT INTO `team` (`id`, `owner_id`, `content`, `image_url`, `name`, `create_date`, `enabled`) VALUES (3, 5, 'If you need a friend, we\'re here for you', 'https://www.healthyplace.com/sites/default/files/2020-11/making-friends-with-someone.jpg', 'Friend Finder', '2023-01-01', 1);
+INSERT INTO `team` (`id`, `owner_id`, `content`, `image_url`, `name`, `create_date`, `enabled`) VALUES (4, 6, 'Healthy people healthy office', 'https://energyresourcing.com/wp-content/uploads/2022/07/man-making-a-plan-for-the-year-ahead.jpg', 'Work Life Balance', '2023-01-01', 1);
+INSERT INTO `team` (`id`, `owner_id`, `content`, `image_url`, `name`, `create_date`, `enabled`) VALUES (5, 7, 'We are a videogame club', 'https://www.materacademybay.com/ourpages/auto/2019/9/5/38352958/gaming%20club-photo.jpg', 'Videogame Club', '2023-01-01', 1);
 
 COMMIT;
 
@@ -799,6 +811,10 @@ COMMIT;
 START TRANSACTION;
 USE `bilingualbuddiesdb`;
 INSERT INTO `language_has_user` (`language_id`, `user_id`) VALUES (1, 1);
+INSERT INTO `language_has_user` (`language_id`, `user_id`) VALUES (1, 4);
+INSERT INTO `language_has_user` (`language_id`, `user_id`) VALUES (1, 5);
+INSERT INTO `language_has_user` (`language_id`, `user_id`) VALUES (1, 6);
+INSERT INTO `language_has_user` (`language_id`, `user_id`) VALUES (1, 7);
 
 COMMIT;
 

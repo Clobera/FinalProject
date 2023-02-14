@@ -1,20 +1,17 @@
 <div class="user-post">
   <h1 style="text-align: center">
-    Post
-    <span class="badge" [ngClass]="styleUserPosts()">
-      {{ getNumberOfPosts() }}</span
-    >
+    Create a Post
   </h1>
-  <div *ngIf="showForm">
-    <div style="top: 50%; left: 50%" class="col-md-8">
-      <div class="col-lg-8">
-        <div class="card">
-          <div class="card-body">
-            <div class="row mb-3">
+  <div class="display:flex"  *ngIf="showForm">
+    <div style="top: 50%; left: 50%" class="col-md-8 mx-auto">
+      <div class="col-lg-8 mx-auto" >
+        <div class="card mx-auto">
+          <div class="card-body mx-auto">
+            <div class="row mb-3 mx-auto">
               <div class="col-sm-3">
                 <h6 class="mb-0">Image</h6>
               </div>
-              <div class="col-sm-9 text-secondary">
+              <div class="col-sm-9 text-secondary mx-auto">
                 <input
                   type="text"
                   class="form-control"
@@ -27,7 +24,7 @@
               <div class="col-sm-3">
                 <h6 class="mb-0">Text Area</h6>
               </div>
-              <div class="col-sm-9 text-secondary">
+              <div class="col-sm-9 text-secondary mx-auto">
                 <textarea
                   type="text"
                   class="form-control"
