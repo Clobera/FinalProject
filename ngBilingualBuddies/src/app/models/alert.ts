@@ -5,9 +5,9 @@ export class Alert {
   id : number;
   sender : User;
   receiver: User;
-  meetup: Meetup;
+  meetup: Meetup | null;
   content: string;
-  notificationDate: Date;
+  notificationDate: Date | null | undefined;
   seen: boolean;
 
   constructor(
@@ -16,7 +16,7 @@ export class Alert {
     receiver: User = new User(),
     meetup: Meetup = new Meetup(),
     content: string = '',
-    notificationDate: Date = new Date(),
+    notificationDate: Date | null = null,
     seen: boolean = true
   ) {
     this.id  = id;
