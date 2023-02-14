@@ -1,8 +1,13 @@
-.notFound {
+#notfound {
 
-  background-color: rgba(0, 0, 0, 0.95);
+  background-color: rgba(0, 0, 0, 0.85) !important;
+  background-size: vh-100;
+}
+.override {
+  background-color: rgba(40, 41, 45, .85) !important;
+  color: #000000;
+}
 
-  background-color: black;
-  color: #E34F15;
-
+.alsonotfound{
+  background-color: rgba(0, 0, 0, 0.85) !important;
 }
