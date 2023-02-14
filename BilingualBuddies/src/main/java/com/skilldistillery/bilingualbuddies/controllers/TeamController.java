@@ -30,7 +30,12 @@ public class TeamController {
 	
 	@GetMapping("teams")
 	public List<Team> index(HttpServletRequest req, HttpServletResponse res){
-		return teamService.findAllTeams();
+		List<Team> teams = teamService.findAllTeams();
+		
+		for(Team team : teams) {
+			team.getMembers().size();
+		}
+		return teams;
 	}
 	
 	@GetMapping("teams/{id}")
@@ -40,10 +45,7 @@ public class TeamController {
 	
 	@GetMapping("teams/myTeam")
 	public Team show(HttpServletRequest req, HttpServletResponse res, Principal principal) {
-		Team team = teamService.finByUser(principal.getName());
-		if (team == null) {
-			res.setStatus(404);
-		}
+		Team team = teamService.finByUser(principal.getName());		
 		return team;
 	}
 	

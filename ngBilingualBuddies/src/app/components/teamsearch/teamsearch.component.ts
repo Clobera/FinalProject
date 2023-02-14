@@ -1,6 +1,8 @@
+import { AuthService } from './../../services/auth.service';
 import { TeamService } from 'src/app/services/team.service';
 import { Component } from '@angular/core';
 import { Team } from 'src/app/models/team';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-teamsearch',
@@ -11,20 +13,29 @@ export class TeamsearchComponent {
 
 teams: Team[] = [];
 team = new Team();
+selected : null  | Team = null;
+user= new User();
 
 
-constructor(private teamService: TeamService){
+constructor(private teamService: TeamService, private authService: AuthService){
 
 }
 
 ngOnInit(){
   this.loadTeams();
+  this.getLoggedInUser();
 }
 
 loadTeams(){
   this.teamService.index().subscribe({
     next: (data) =>
-    {this.teams = data},
+    {this.teams = data
+    for(let team of this.teams){
+      if(team.members === undefined){
+        team.members = [];
+      }
+    }
+    },
     error: (err) => {
       console.error("error retrieving teams");
       console.error(err);
@@ -32,16 +43,40 @@ loadTeams(){
   });
 }
 
-loadTeam(id: number){
-  this.teamService.show(id).subscribe({
-    next: (data) =>
-    {this.team = data},
+displayTeam(team: Team){
+  this.selected = team;
+}
+
+joinTeam(team: Team){
+  team.members.push(this.user)
+  console.log(team.members);
+  this.teamService.update(team).subscribe({
+    next:(data) =>{
+    },
     error: (err) => {
-      console.error("error retrieving teams");
-      console.error(err);
+      console.log(
+        'NavbarCompenent.loadUser: Error getting user'
+      );
+      console.log(err);
+    }
+  });
+
+}
+
+getLoggedInUser(){
+  this.authService.getLoggedInUser().subscribe({
+    next:(data) =>{
+      this.user = data;
+    },
+    error: (err) => {
+      console.log(
+        'NavbarCompenent.loadUser: Error getting user'
+      );
+      console.log(err);
     }
   });
 }
+
 
 
 

@@ -164,6 +164,23 @@ public class User {
 		}
 	}
 	
+	public void addTeam(Team team) {
+		if(memberOfTeams == null) {
+			memberOfTeams = new ArrayList<>();
+		}
+		if (! memberOfTeams.contains(team)) {
+			memberOfTeams.add(team);
+			team.addUser(this);
+		}
+	}
+	
+	public void removeTeam(Team team) {
+		if (memberOfTeams != null && memberOfTeams.contains(team)) {
+			memberOfTeams.remove(team);
+			team.removeUser(this);
+		}
+	}
+	
 	public User() {
 		super();
 	}

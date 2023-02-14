@@ -25,6 +25,7 @@ export class User {
   alerts: Array<Alert>;
   languages: Array<Language>;
 
+
   constructor(
     id: number = 0,
     email: string = '',

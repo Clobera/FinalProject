@@ -1,6 +1,7 @@
 package com.skilldistillery.bilingualbuddies.entities;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -17,7 +18,7 @@ import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Team {
@@ -47,7 +48,7 @@ public class Team {
 	@OneToMany(mappedBy = "team")
 	private List<Meetup> meetups;
 
-	@JsonIgnore
+	
 	@ManyToMany
 	@JoinTable(name = "team_has_member", joinColumns = @JoinColumn(name = "group_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
 	private List<User> members;
@@ -141,6 +142,24 @@ public class Team {
 	public void setMembers(List<User> members) {
 		this.members = members;
 	}
+	
+	//MTM add remove methods
+		public void addUser(User user) {
+			if(members == null) {
+				members = new ArrayList<>();
+			}
+			if (! members.contains(user)) {
+				members.add(user);
+				user.addTeam(this);
+			}
+		}
+		
+		public void removeUser(User user) {
+			if (members != null && members.contains(user)) {
+				members.remove(user);
+				user.removeTeam(this);
+			}
+		}
 
 	@Override
 	public int hashCode() {
