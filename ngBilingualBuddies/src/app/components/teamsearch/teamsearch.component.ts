@@ -52,10 +52,11 @@ joinTeam(team: Team){
   console.log(team.members);
   this.teamService.update(team).subscribe({
     next:(data) =>{
+      this.team = data;
     },
     error: (err) => {
       console.log(
-        'NavbarCompenent.loadUser: Error getting user'
+        'NavbarCompenent.loadUser: Error joining team'
       );
       console.log(err);
     }
@@ -75,6 +76,22 @@ getLoggedInUser(){
       console.log(err);
     }
   });
+}
+
+leaveTeam(team: Team){
+  team.members.splice(team.members.indexOf(this.user), 1);
+  this.teamService.update(team).subscribe({
+    next:(data) =>{
+      this.team = data;
+    },
+    error: (err) => {
+      console.log(
+        'NavbarCompenent.loadUser: Error leaving team'
+      );
+      console.log(err);
+    }
+  });
+
 }
 
 

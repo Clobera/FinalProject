@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.bilingualbuddies.entities.Team;
+import com.skilldistillery.bilingualbuddies.entities.User;
 import com.skilldistillery.bilingualbuddies.services.TeamService;
+import com.skilldistillery.bilingualbuddies.services.UserService;
 
 @RestController
 @RequestMapping("api")
@@ -27,6 +29,9 @@ public class TeamController {
 	
 	@Autowired
 	TeamService teamService;
+	
+	@Autowired
+	UserService userService;
 	
 	@GetMapping("teams")
 	public List<Team> index(HttpServletRequest req, HttpServletResponse res){
@@ -66,9 +71,10 @@ public class TeamController {
 	
 	}
 	@PutMapping("teams/{id}")
-	public Team update(HttpServletRequest req, HttpServletResponse res, @PathVariable Integer id, @RequestBody Team team) {
+	public Team update(Principal principal, HttpServletRequest req, HttpServletResponse res, @PathVariable Integer id, @RequestBody Team team) {
 		try {
-			team = teamService.update(id, team );
+			User user = userService.show(principal.getName());
+			team = teamService.update(id, team, user );
 			if(team == null) {
 				res.setStatus(404);
 			}

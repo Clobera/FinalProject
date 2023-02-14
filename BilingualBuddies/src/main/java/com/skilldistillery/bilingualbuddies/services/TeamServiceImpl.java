@@ -56,15 +56,22 @@ public class TeamServiceImpl implements TeamService {
 	}
 
 	@Override
-	public Team update(int id, Team team) {
+	public Team update(int id, Team team, User loggedInUser) {
 		Team teamUpdate = findById(id);
 		if(teamUpdate != null) {
 			teamUpdate.setName(team.getName());
 			teamUpdate.setContent(team.getContent());
 			teamUpdate.setImageUrl(team.getImageUrl());
-			User user = userRepo.findByUsername(team.getMembers().get(team.getMembers().size() - 1).getUsername());
-			teamUpdate.addUser(user);
-			user = userRepo.saveAndFlush(user);
+			if(team.getMembers().size() < teamUpdate.getMembers().size()) {
+				User user = userRepo.findByUsername(team.getMembers().get(team.getMembers().size() - 1).getUsername());
+				teamUpdate.addUser(user);
+				user = userRepo.saveAndFlush(user);
+			}
+			if(team.getMembers().size() > teamUpdate.getMembers().size()) {
+				loggedInUser = userRepo.findByUsername(loggedInUser.getUsername());
+				teamUpdate.removeUser(loggedInUser);
+				loggedInUser = userRepo.saveAndFlush(loggedInUser);
+			}
 			teamUpdate = teamRepo.saveAndFlush(teamUpdate);
 		}
 		return teamUpdate;
