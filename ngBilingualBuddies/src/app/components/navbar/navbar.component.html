@@ -49,8 +49,9 @@
           <a class="nav-link active" [routerLink]="['/search']">Search</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" [routerLink]="['/team']">Teams</a>
+          <a class="nav-link active" [routerLink]="['/teamsearch']">Teams</a>
         </li>
+
 
 
 
@@ -62,6 +63,9 @@
             <div ngbDropdownMenu="gfg">
               <button ngbDropdownItem [routerLink]="['/myGroups']">
                 <a class="nav-link active">My groups</a>
+              </button>
+              <button ngbDropdownItem class="nav-item" [routerLink]="['/team']">
+                <a class="nav-link active">Create a Team</a>
               </button>
 
               <button ngbDropdownItem [routerLink]="['/account']">
