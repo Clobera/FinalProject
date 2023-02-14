@@ -33,6 +33,8 @@ import { TeamComponent } from './components/team/team.component';
 import { MeetupComponent } from './components/meetup/meetup.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { TeamsearchComponent } from './components/teamsearch/teamsearch.component';
+import { LinksComponent } from './components/links/links.component';
+
 
 @NgModule({
     declarations: [
@@ -63,7 +65,8 @@ import { TeamsearchComponent } from './components/teamsearch/teamsearch.componen
         TeamComponent,
         CommentComponent,
         MeetupComponent,
-        TeamsearchComponent
+        TeamsearchComponent,
+        LinksComponent,
     ],
     providers: [
       SeenPipe,

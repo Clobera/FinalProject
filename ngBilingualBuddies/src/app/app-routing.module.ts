@@ -1,3 +1,4 @@
+import { LinksComponent } from './components/links/links.component';
 import { TeamsearchComponent } from './components/teamsearch/teamsearch.component';
 import { MeetupComponent } from './components/meetup/meetup.component';
 
@@ -40,6 +41,7 @@ const routes: Routes = [
   {path: 'team', component: TeamComponent},
   {path: 'meetup', component: MeetupComponent},
   {path: 'teamsearch', component: TeamsearchComponent},
+  {path: 'resources', component: LinksComponent},
   {path: '**', component: NotfoundComponent}
 ];
 
