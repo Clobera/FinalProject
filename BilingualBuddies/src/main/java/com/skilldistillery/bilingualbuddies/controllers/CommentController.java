@@ -1,5 +1,6 @@
 package com.skilldistillery.bilingualbuddies.controllers;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.bilingualbuddies.entities.Comment;
+import com.skilldistillery.bilingualbuddies.entities.User;
 import com.skilldistillery.bilingualbuddies.services.CommentService;
+import com.skilldistillery.bilingualbuddies.services.UserService;
 
 @RestController
 @RequestMapping("api")
@@ -25,6 +28,9 @@ public class CommentController {
 
 	@Autowired
 	CommentService commentService;
+	
+	@Autowired
+	UserService userService;
 
 	@GetMapping(path = "posts/{id}/comments")
 	public List<Comment> listComments(@PathVariable int id) {
@@ -40,9 +46,11 @@ public class CommentController {
 	}
 
 	@PostMapping("posts/{id}/comments")
-	public Comment create(HttpServletRequest req, HttpServletResponse res, @RequestBody Comment comment,
+	public Comment create(Principal principal, HttpServletRequest req, HttpServletResponse res, @RequestBody Comment comment,
 			@PathVariable Integer id) {
 		try {
+			User user = userService.show(principal.getName());
+			comment.setUser(user);
 			commentService.createComment(id, comment);
 			res.setStatus(201);
 			StringBuffer url = req.getRequestURL();

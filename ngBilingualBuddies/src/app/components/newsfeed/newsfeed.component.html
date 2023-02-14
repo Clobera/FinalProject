@@ -14,9 +14,19 @@
     </div>
   </div>
 <div *ngIf="selected">
-
+  <button (click)="selected = null">Back</button>
+  <img
+        class="mx-auto"
+        src="{{ selected.imageUrl }}"
+        />
 <h1>{{selected.content}}</h1>
+<input type="text" name="newComment.content" [(ngModel)]="newComment.content">
+<button (click)="create(newComment, selected)">Comment</button>
 
-<button (click)="selected = null">Back</button>
+
+<h3>
+COMMENTS
+</h3>
+<p *ngFor="let comment of comments">{{comment.content}}</p>
 </div>
 </div>

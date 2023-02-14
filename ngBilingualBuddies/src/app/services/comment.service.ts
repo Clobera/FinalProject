@@ -5,6 +5,7 @@ import { Observable, catchError, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Team } from '../models/team';
 import { AuthService } from './auth.service';
+import { Post } from '../models/post';
 
 @Injectable({
   providedIn: 'root'
@@ -12,17 +13,17 @@ import { AuthService } from './auth.service';
 export class CommentService {
 
 
-  url = environment.baseUrl + "api/teams";
+  url = environment.baseUrl + "api/posts";
   constructor(private http : HttpClient, private auth : AuthService) { }
 
-  index(): Observable<Comment[]> {
+  index(post: Post): Observable<Comment[]> {
     let httpOptions = {
       headers: {
         Authorization: 'Basic ' + this.auth.getCredentials(),
         'X-Requested-with': 'XMLHttpRequest',
       }
     };
-    return this.http.get<Comment[]>(this.url, httpOptions).pipe(
+    return this.http.get<Comment[]>(this.url +"/" + post.id+ "/comments", httpOptions).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
@@ -47,8 +48,8 @@ export class CommentService {
     )
   }
 
-  create(comment: Comment): Observable<Comment>{
-    return this.http.post<Comment>(this.url, comment, this.getHttpOptions()).pipe(
+  create(comment: Comment, post: Post): Observable<Comment>{
+    return this.http.post<Comment>(this.url + '/'+ post.id + "/comments", comment, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(

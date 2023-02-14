@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Comment } from 'src/app/models/comment';
+import { Post } from 'src/app/models/post';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { CommentService } from 'src/app/services/comment.service';
@@ -43,12 +44,12 @@ export class CommentComponent {
   });
   }
 
-  create(comment: Comment){
+  create(comment: Comment, post: Post){
     comment.user = this.user
-    this.commentService.create(comment).subscribe({
+    this.commentService.create(comment, post).subscribe({
       next: (result) =>{
         this.newComment = new Comment();
-        this.reload();
+        // this.reload();
       },
       error: (error) =>{
         console.error("Error creating Comment");
@@ -61,7 +62,7 @@ export class CommentComponent {
     if(comment.user === this.user){
   this.commentService.destroy(id).subscribe({
     next: () => {
-      this.reload();
+      // this.reload();
     },
     error: (fail) => {
       console.error(' Error deleting comment');
@@ -72,15 +73,15 @@ export class CommentComponent {
 }
 
 reload(){
-  this.commentService.index().subscribe({
-    next: (comments) =>{
-      this.comments = comments;
-    },
-    error:(oops) => {
-      console.error("Error retrieving comments");
-      console.error(oops);
-    }
-  });
+  // this.commentService.index().subscribe({
+  //   next: (comments) =>{
+  //     this.comments = comments;
+  //   },
+  //   error:(oops) => {
+  //     console.error("Error retrieving comments");
+  //     console.error(oops);
+  //   }
+  // });
 }
 styleUserComments(){
   let num = this.getNumberOfComments();
