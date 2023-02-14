@@ -94,6 +94,17 @@ leaveTeam(team: Team){
 
 }
 
+joinedTeam(){
+  if(this.selected){
+    for(let member of this.selected.members){
+      if(this.user.id === member.id){
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
 
 
 

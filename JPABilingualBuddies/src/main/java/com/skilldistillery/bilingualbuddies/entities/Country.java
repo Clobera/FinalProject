@@ -116,7 +116,7 @@ public class Country {
 
 	@Override
 	public String toString() {
-		return "Country [countryCode=" + countryCode + ", country=" + country + ", users=" + users + "]";
+		return "Country [countryCode=" + countryCode + ", country=" + country+ "]";
 	}
 
 }

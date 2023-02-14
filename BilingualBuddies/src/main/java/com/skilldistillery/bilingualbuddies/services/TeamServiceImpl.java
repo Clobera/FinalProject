@@ -62,12 +62,14 @@ public class TeamServiceImpl implements TeamService {
 			teamUpdate.setName(team.getName());
 			teamUpdate.setContent(team.getContent());
 			teamUpdate.setImageUrl(team.getImageUrl());
-			if(team.getMembers().size() < teamUpdate.getMembers().size()) {
+			System.out.println(teamUpdate.getMembers());
+			System.out.println(team.getMembers());
+			if(team.getMembers().size() > teamUpdate.getMembers().size()) {
 				User user = userRepo.findByUsername(team.getMembers().get(team.getMembers().size() - 1).getUsername());
 				teamUpdate.addUser(user);
 				user = userRepo.saveAndFlush(user);
 			}
-			if(team.getMembers().size() > teamUpdate.getMembers().size()) {
+			if(team.getMembers().size() < teamUpdate.getMembers().size()) {
 				loggedInUser = userRepo.findByUsername(loggedInUser.getUsername());
 				teamUpdate.removeUser(loggedInUser);
 				loggedInUser = userRepo.saveAndFlush(loggedInUser);
