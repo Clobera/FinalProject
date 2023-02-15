@@ -38,7 +38,7 @@ From the Account details drop down  menu a user can: Look at teams/groups, creat
 * Needed better feature prioritization 
 
 
-#Future Implementations
+# Future Implementations
 * Use a Language api parse all text on the website to one of the languages
 in the api that we located.
 
