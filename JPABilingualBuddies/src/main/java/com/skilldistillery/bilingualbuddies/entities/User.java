@@ -432,10 +432,8 @@ public class User {
 	public String toString() {
 		return "User [id=" + id + ", email=" + email + ", username=" + username + ", password=" + password
 				+ ", dateCreated=" + dateCreated + ", lastLogin=" + lastLogin + ", enabled=" + enabled + ", role="
-				+ role + ", sponsor=" + sponsor + ", firstName=" + firstName + ", lastName=" + lastName + ", imageUrl="
-				+ imageUrl + ", bio=" + bio + ", myTeam=" + myTeam + ", memberOfTeams=" + memberOfTeams + ", country="
-				+ country + ", languages=" + languages + ", comments=" + comments + ", address=" + address
-				+ ", sentAlert=" + sentAlert + ", alerts=" + alerts + ", languageResource=" + languageResource + "]";
+				+ role + ", firstName=" + firstName + ", lastName=" + lastName + ", imageUrl=" + imageUrl + ", bio="
+				+ bio + "]";
 	}
 
 }

@@ -1,5 +1,5 @@
 import { AuthService } from 'src/app/services/auth.service';
-import { environment } from './../../environments/environment.development';
+import { environment } from './../../environments/environment';
 import { User } from './../models/user';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, Pipe } from '@angular/core';

@@ -151,8 +151,8 @@ public class Post {
 
 	@Override
 	public String toString() {
-		return "Post [id=" + id + ", user=" + user + ", content=" + content + ", imageUrl=" + imageUrl + ", postDate="
-				+ postDate + ", enabled=" + enabled + ", comments=" + comments + "]";
+		return "Post [id=" + id + ", content=" + content + ", imageUrl=" + imageUrl + ", postDate=" + postDate
+				+ ", enabled=" + enabled + "]";
 	}
 
 }

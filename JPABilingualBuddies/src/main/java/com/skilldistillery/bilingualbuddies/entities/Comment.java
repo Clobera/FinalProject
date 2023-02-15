@@ -13,7 +13,6 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -122,8 +121,8 @@ public class Comment {
 
 	@Override
 	public String toString() {
-		return "Comment [id=" + id + ", post=" + post + ", user=" + user + ", content=" + content + ", commentDate="
-				+ commentDate + ", enabled=" + enabled + "]";
+		return "Comment [id=" + id + ", content=" + content + ", commentDate=" + commentDate + ", enabled=" + enabled
+				+ "]";
 	}
 
 }

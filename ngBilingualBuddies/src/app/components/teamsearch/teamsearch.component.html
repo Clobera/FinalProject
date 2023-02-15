@@ -17,19 +17,9 @@
     <h1>{{selected.name}}</h1>
     <img [src]="selected.imageUrl" alt="">
     <blockquote>{{selected.content}}</blockquote>
-<<<<<<< HEAD
-    <button class="btn btn-success" *ngIf="!joinedTeam()" (click)="joinTeam(selected)">Join Team</button>
-    <button class="btn btn-danger" *ngIf="joinedTeam()" (click)="leaveTeam(selected)">Leave Team</button>
-
-
-
-
-
-=======
     <button class="btn btn-success" *ngIf="!selected.members.includes(user)" (click)="joinTeam(selected)">Join Team</button>
     <button class="btn btn-danger" *ngIf="selected.members.includes(user)" (click)="leaveTeam(selected)">Leave Team</button>
     <button class="btn btn-warning" (click)="!selected = null">Back</button>
->>>>>>> css
 
   </div>
 
