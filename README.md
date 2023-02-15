@@ -5,7 +5,7 @@ Team Tropical Twirl Presents: Bilingual Buddies. A project by: Alex McMichael, C
 #Vision
 The Bilingual Buddies began as a vision to push through a barrier of communication called language. The key idea being, if you are new to any country and don't speak the native language our web based social media application will provide plenty of resources for a non native speaker to get started.
 
-#Capabilities
+# Capabilities
 
 A user can register for an account, write a bio, choose a native/preferred language and at the same time check a box to volunteer.
 
@@ -29,7 +29,7 @@ From the Account details drop down  menu a user can: Look at teams/groups, creat
 |Hibernate|JPA|
 |Eclpise|Visual Studio Code|
 
-#Lessons Learned
+# Lessons Learned
 * Git Branching
 * Spell-Check
 * Naming Convetions(Angular and java naming consistency)
