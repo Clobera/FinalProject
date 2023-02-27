@@ -1,19 +1,22 @@
 import { Router } from '@angular/router';
 import { UserInCityPipe } from './../../pipes/user-in-city.pipe';
 import { CityPipe } from './../../pipes/city.pipe';
-import { Component, EventEmitter, Output } from "@angular/core";
-import { Address } from "src/app/models/address";
-import { Language } from "src/app/models/language";
-import { User } from "src/app/models/user";
-import { EnabledUsersPipe } from "src/app/pipes/enabled-users.pipe";
-import { NameSearchPipe } from "src/app/pipes/name-search.pipe";
-import { UserLanguagePipe } from "src/app/pipes/user-language.pipe";
-import { UserSponsorPipe } from "src/app/pipes/user-sponsor.pipe";
-import { AddressService } from "src/app/services/address.service";
-import { LanguageService } from "src/app/services/language.service";
-import { UserService } from "src/app/services/user.service";
-
-
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Address } from 'src/app/models/address';
+import { Language } from 'src/app/models/language';
+import { User } from 'src/app/models/user';
+import { EnabledUsersPipe } from 'src/app/pipes/enabled-users.pipe';
+import { NameSearchPipe } from 'src/app/pipes/name-search.pipe';
+import { UserLanguagePipe } from 'src/app/pipes/user-language.pipe';
+import { UserSponsorPipe } from 'src/app/pipes/user-sponsor.pipe';
+import { AddressService } from 'src/app/services/address.service';
+import { LanguageService } from 'src/app/services/language.service';
+import { UserService } from 'src/app/services/user.service';
+import { Team } from 'src/app/models/team';
+import { Meetup } from 'src/app/models/meetup';
+import { TeamSearchPipe } from 'src/app/pipes/team-search.pipe';
+import { TeamService } from 'src/app/services/team.service';
+import { EnabledTeamsPipe } from 'src/app/pipes/enabled-teams.pipe';
 
 @Component({
   selector: 'app-search',
@@ -29,34 +32,39 @@ export class SearchComponent {
   searchName = '';
   searchLocation = '';
   users: User[] = [];
+  teams: Team[] = [];
+  searchTeams: Team[] = [];
+  searchMeetups: Meetup[] = [];
   currCity = '';
-  addresses : Address[] = [];
+  addresses: Address[] = [];
 
   constructor(
     private langServ: LanguageService,
     private userServ: UserService,
+    private teamServ: TeamService,
     private enabledUser: EnabledUsersPipe,
+    private enabledTeams: EnabledTeamsPipe,
     private lang: UserLanguagePipe,
     private sponsorship: UserSponsorPipe,
-    private nameSearch : NameSearchPipe,
-    private addrServ : AddressService,
-    private cityPipe : CityPipe,
-    private userInCityPipe : UserInCityPipe,
-    private router : Router
+    private nameSearch: NameSearchPipe,
+    private teamSearch: TeamSearchPipe,
+    private addrServ: AddressService,
+    private cityPipe: CityPipe,
+    private userInCityPipe: UserInCityPipe,
+    private router: Router
   ) {}
-
 
   switchName() {
     this.showName = true;
     this.showLoc = false;
     this.emptyUsers();
   }
-  switchLoc(){
+  switchLoc() {
     this.showLoc = true;
     this.showName = false;
     this.emptyUsers();
   }
-  emptyUsers(){
+  emptyUsers() {
     this.users = [];
   }
 
@@ -78,40 +86,65 @@ export class SearchComponent {
     });
   }
 
-  searchByName(searchName: string) {
+  searchUsersByName(searchName: string) {
     this.users = this.nameSearch.transform(this.users, searchName);
   }
+
+  searchTeamsByName(searchName: string) {
+    this.searchTeams = this.teamSearch.transform(this.teams, searchName);
+
+
+  }
+
   searchByLocation(searchLocation: string) {
     this.users = this.userInCityPipe.transform(this.users, this.currCity);
-    console.log("currCity:"+ this.currCity);
-
+    console.log('currCity:' + this.currCity);
   }
 
   loadUsers(num: number, input: string) {
     this.userServ.index().subscribe({
       next: (data) => {
-       this.filterByEnabledAndLanguageAndSponsor(data);
+        this.filterByEnabledAndLanguageAndSponsor(data);
         if (num == 1) {
-          this.searchByName(input);
+          this.searchUsersByName(input);
         } else if (num == 2) {
           this.searchByLocation(input);
         }
       },
       error: (err) => {
-        console.log(
-          'SearchComponent.loadLanguages: Error loading languages ' + err
-        );
+        console.log('SearchComponent.loadUsers: Error loading users ' + err);
       },
     });
+
+  }
+
+  loadTeams(num: number, input: string) {
+    this.teamServ.index().subscribe({
+      next: (data) => {
+        this.filterTeamsByEnabled(data);
+        if (num == 1) {
+          this.searchTeamsByName(input);
+        }
+      },
+      error: (err) => {
+        console.log('SearchComponent.loadUsers: Error loading users ' + err);
+      },
+    });
+
   }
 
   filterByEnabledAndLanguageAndSponsor(data: User[]) {
     let enabled = this.enabledUser.transform(data);
     console.log(enabled);
     this.users = this.lang.transform(enabled, this.currLangId);
-    if (this.sponsor){
+    if (this.sponsor) {
       this.users = this.sponsorship.transform(this.users);
     }
+  }
+
+  filterTeamsByEnabled(data: Team[]) {
+    this.teams = this.enabledTeams.transform(data);
+    console.log(this.teams);
   }
 
   loadAddresses() {
@@ -127,8 +160,7 @@ export class SearchComponent {
     });
   }
 
-routeUser(user :User){
-  this.router.navigateByUrl('other/' + user.username);
-}
-
+  routeUser(user: User) {
+    this.router.navigateByUrl('other/' + user.username);
+  }
 }

@@ -18,7 +18,7 @@
   <div *ngIf="showName">
     <h3>Enter Name To Search By</h3>
     <input type="text" name="name" [(ngModel)]="searchName" />
-    <button class="btn btn-primary" (click)="loadUsers(1, searchName)">
+    <button class="btn btn-primary" (click)="loadUsers(1, searchName)" (click)="loadTeams(1, searchName)">
       Search
     </button>
   </div>
@@ -33,6 +33,10 @@
       Search
     </button>
   </div>
+
+
+
+
   <div name="ResultsDiv">
     <table
       *ngIf="users.length <= 0"

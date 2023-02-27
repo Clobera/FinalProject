@@ -34,6 +34,10 @@ import { MeetupComponent } from './components/meetup/meetup.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { TeamsearchComponent } from './components/teamsearch/teamsearch.component';
 import { LinksComponent } from './components/links/links.component';
+import { TeamSearchPipe } from './pipes/team-search.pipe';
+import { EnabledTeamsPipe } from './pipes/enabled-teams.pipe';
+import { MeetupSearchPipe } from './pipes/meetup-search.pipe';
+import { EnabledMeetupsPipe } from './pipes/enabled-meetups.pipe';
 
 
 @NgModule({
@@ -67,13 +71,21 @@ import { LinksComponent } from './components/links/links.component';
         MeetupComponent,
         TeamsearchComponent,
         LinksComponent,
+        TeamSearchPipe,
+        EnabledTeamsPipe,
+        MeetupSearchPipe,
+        EnabledMeetupsPipe,
     ],
     providers: [
       SeenPipe,
       EnabledUsersPipe,
       UserLanguagePipe,
+      MeetupSearchPipe,
+      EnabledMeetupsPipe,
       UserSponsorPipe,
       NameSearchPipe,
+      TeamSearchPipe,
+      EnabledTeamsPipe,
       CityPipe,
       TeamPipe,
       UserInCityPipe

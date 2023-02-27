@@ -9,7 +9,7 @@ export class NameSearchPipe implements PipeTransform {
   transform(users : User[], name : string): User [] {
 let ans : User[] = [];
     for (let user of users){
-      if (user.firstName.includes(name) || user.lastName.includes(name) || user.username.includes(name)){
+      if (user.firstName.toUpperCase().includes(name.toUpperCase()) || user.lastName.toUpperCase().includes(name.toUpperCase()) || user.username.toUpperCase().includes(name.toUpperCase())){
         ans.push(user);
       }
     }
