@@ -1,15 +1,16 @@
 <div class="search">
   <h1>Search By:</h1>
-  <button class="btn btn-primary" (click)="switchName()">Name</button>
-  <br />
-  <br>
+  <div>
+  <button class="btn btn-primary" (click)="switchName()">Name</button> or
   <button class="btn btn-primary" (click)="switchLoc()">Location</button> <br />
+  </div>
   <br>
   <label for="sponsor">Sponsor:</label>
   <input type="checkbox" name="sponsor" [(ngModel)]="sponsor" /> <br />
   <br>
   <label for="language">Language:</label>
   <select name="language" [(ngModel)]="currLangId">
+    <option value="0">Please Pick a Language</option>
     <option *ngFor="let lang of languages" value="{{ lang.id }}">
       {{ lang.name }}
     </option>
@@ -29,14 +30,14 @@
         {{ city }}
       </option>
     </select>
-    <button class="btn btn-primary" (click)="loadUsers(2, currCity)">
+    <button class="btn btn-primary" (click)="loadUsers(2, currCity)" (click)="loadMeetups(2, currCity)">
       Search
     </button>
   </div>
 
 
 
-
+  <span *ngFor="let type of types" (click)= "selectedType = type" (click)= "assignSelectedTypes()"> {{type}} |</span>
   <div name="ResultsDiv">
     <table
       *ngIf="users.length <= 0"

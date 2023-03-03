@@ -38,6 +38,7 @@ import { TeamSearchPipe } from './pipes/team-search.pipe';
 import { EnabledTeamsPipe } from './pipes/enabled-teams.pipe';
 import { MeetupSearchPipe } from './pipes/meetup-search.pipe';
 import { EnabledMeetupsPipe } from './pipes/enabled-meetups.pipe';
+import { MeetupInCityPipe } from './pipes/meetup-in-city.pipe';
 
 
 @NgModule({
@@ -75,6 +76,7 @@ import { EnabledMeetupsPipe } from './pipes/enabled-meetups.pipe';
         EnabledTeamsPipe,
         MeetupSearchPipe,
         EnabledMeetupsPipe,
+        MeetupInCityPipe,
     ],
     providers: [
       SeenPipe,
@@ -88,7 +90,8 @@ import { EnabledMeetupsPipe } from './pipes/enabled-meetups.pipe';
       EnabledTeamsPipe,
       CityPipe,
       TeamPipe,
-      UserInCityPipe
+      UserInCityPipe,
+      MeetupInCityPipe
     ],
     bootstrap: [AppComponent],
     imports: [

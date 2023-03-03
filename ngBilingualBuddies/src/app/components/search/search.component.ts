@@ -17,6 +17,9 @@ import { Meetup } from 'src/app/models/meetup';
 import { TeamSearchPipe } from 'src/app/pipes/team-search.pipe';
 import { TeamService } from 'src/app/services/team.service';
 import { EnabledTeamsPipe } from 'src/app/pipes/enabled-teams.pipe';
+import { MeetupService } from 'src/app/services/meetup.service';
+import { EnabledMeetupsPipe } from 'src/app/pipes/enabled-meetups.pipe';
+import { MeetupInCityPipe } from 'src/app/pipes/meetup-in-city.pipe';
 
 @Component({
   selector: 'app-search',
@@ -33,17 +36,28 @@ export class SearchComponent {
   searchLocation = '';
   users: User[] = [];
   teams: Team[] = [];
+  meetups: Meetup[] = [];
   searchTeams: Team[] = [];
   searchMeetups: Meetup[] = [];
   currCity = '';
   addresses: Address[] = [];
 
+  selectedType: string = 'users';
+
+  types = [
+    'users',
+    'teams',
+    'meetups'
+  ];
+
   constructor(
     private langServ: LanguageService,
     private userServ: UserService,
     private teamServ: TeamService,
+    private meetupServ: MeetupService,
     private enabledUser: EnabledUsersPipe,
     private enabledTeams: EnabledTeamsPipe,
+    private enabledMeetups: EnabledMeetupsPipe,
     private lang: UserLanguagePipe,
     private sponsorship: UserSponsorPipe,
     private nameSearch: NameSearchPipe,
@@ -51,8 +65,13 @@ export class SearchComponent {
     private addrServ: AddressService,
     private cityPipe: CityPipe,
     private userInCityPipe: UserInCityPipe,
+    private meetupInCityPipe: MeetupInCityPipe,
     private router: Router
   ) {}
+
+  assignSelectedTypes(){
+
+  }
 
   switchName() {
     this.showName = true;
@@ -96,9 +115,15 @@ export class SearchComponent {
 
   }
 
-  searchByLocation(searchLocation: string) {
+  searchUserByLocation(searchLocation: string) {
     this.users = this.userInCityPipe.transform(this.users, this.currCity);
     console.log('currCity:' + this.currCity);
+  }
+
+  searchMeetupByLocation(searchLocation: string) {
+    this.meetups = this.meetupInCityPipe.transform(this.meetups, this.currCity);
+    console.log('currCity:' + this.currCity);
+    console.log(this.meetups.length + "******************** num meetups in currcity");
   }
 
   loadUsers(num: number, input: string) {
@@ -108,7 +133,7 @@ export class SearchComponent {
         if (num == 1) {
           this.searchUsersByName(input);
         } else if (num == 2) {
-          this.searchByLocation(input);
+          this.searchUserByLocation(input);
         }
       },
       error: (err) => {
@@ -127,7 +152,24 @@ export class SearchComponent {
         }
       },
       error: (err) => {
-        console.log('SearchComponent.loadUsers: Error loading users ' + err);
+        console.log('SearchComponent.loadUsers: Error loading teams ' + err);
+      },
+    });
+
+  }
+
+  loadMeetups(num: number, input: string) {
+    this.meetupServ.index().subscribe({
+      next: (data) => {
+        this.filterMeetupsByEnabled(data);
+        if (num == 1) {
+          this.searchTeamsByName(input);
+        }else if (num == 2) {
+          this.searchMeetupByLocation(input);
+        }
+      },
+      error: (err) => {
+        console.log('SearchComponent.loadUsers: Error loading meetups ' + err);
       },
     });
 
@@ -145,6 +187,11 @@ export class SearchComponent {
   filterTeamsByEnabled(data: Team[]) {
     this.teams = this.enabledTeams.transform(data);
     console.log(this.teams);
+  }
+
+  filterMeetupsByEnabled(data: Meetup[]) {
+    this.meetups = this.enabledMeetups.transform(data);
+    console.log(this.meetups);
   }
 
   loadAddresses() {
